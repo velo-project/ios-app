@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct VeloiOSAppApp: App {
+    @StateObject var router = NavigationRouter()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack(path : $router.path) {
+                HomeView().navigationDestination(for: Route.self) { route in
+                    switch route {
+                    case .home:
+                        HomeView()
+                    case .login:
+                        LoginView()
+                    }
+                }
+            }
+            .environmentObject(router)
         }
     }
 }
