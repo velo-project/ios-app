@@ -14,10 +14,10 @@ struct VeloiOSAppApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path : $router.path) {
-                HomeView().navigationDestination(for: Route.self) { route in
+                MainAppView().navigationDestination(for: Route.self) { route in
                     switch route {
                     case .home:
-                        HomeView()
+                        MainAppView()
                     case .login:
                         LoginView()
                     }

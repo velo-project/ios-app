@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		911B835D2E3BDA2A00281364 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B835C2E3BDA2A00281364 /* HomeViewModel.swift */; };
+		911B83612E3BE67400281364 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B83602E3BE67400281364 /* MainAppView.swift */; };
 		91A5B65A2E3B058900038DE9 /* VeloiOSAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B6592E3B058900038DE9 /* VeloiOSAppApp.swift */; };
 		91A5B65E2E3B058D00038DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91A5B65D2E3B058D00038DE9 /* Assets.xcassets */; };
 		91A5B6612E3B058D00038DE9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91A5B6602E3B058D00038DE9 /* Preview Assets.xcassets */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		911B835C2E3BDA2A00281364 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		911B83602E3BE67400281364 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
 		91A5B6562E3B058900038DE9 /* VeloiOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeloiOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A5B6592E3B058900038DE9 /* VeloiOSAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloiOSAppApp.swift; sourceTree = "<group>"; };
 		91A5B65D2E3B058D00038DE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,6 +89,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		911B835E2E3BE65B00281364 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				911B83602E3BE67400281364 /* MainAppView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		91A5B64D2E3B058900038DE9 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +120,7 @@
 		91A5B6582E3B058900038DE9 /* VeloiOSApp */ = {
 			isa = PBXGroup;
 			children = (
+				911B835E2E3BE65B00281364 /* App */,
 				91A5B68F2E3B0E9D00038DE9 /* Services */,
 				91A5B6862E3B086F00038DE9 /* Features */,
 				91A5B6832E3B078300038DE9 /* Routing */,
@@ -343,6 +354,7 @@
 			files = (
 				91A5B68A2E3B088F00038DE9 /* HomeView.swift in Sources */,
 				911B835D2E3BDA2A00281364 /* HomeViewModel.swift in Sources */,
+				911B83612E3BE67400281364 /* MainAppView.swift in Sources */,
 				91A5B65A2E3B058900038DE9 /* VeloiOSAppApp.swift in Sources */,
 				91A5B6922E3B0EBC00038DE9 /* MapsLocationService.swift in Sources */,
 				91A5B68E2E3B0A4400038DE9 /* LoginView.swift in Sources */,
