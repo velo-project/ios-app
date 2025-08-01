@@ -23,6 +23,7 @@ struct VeloiOSAppApp: App {
                     }
                 }
             }
+            .environment(\.font, .body)
             .environmentObject(router)
         }
     }

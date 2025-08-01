@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		911B835D2E3BDA2A00281364 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B835C2E3BDA2A00281364 /* HomeViewModel.swift */; };
 		911B83612E3BE67400281364 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B83602E3BE67400281364 /* MainAppView.swift */; };
+		911B83642E3BFBD700281364 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B83632E3BFBD700281364 /* LoginViewModel.swift */; };
+		91A50B212E3C603C0010E208 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A50B202E3C603C0010E208 /* Font.swift */; };
+		91A50B252E3C621A0010E208 /* Outfit-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91A50B242E3C621A0010E208 /* Outfit-VariableFont_wght.ttf */; };
 		91A5B65A2E3B058900038DE9 /* VeloiOSAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B6592E3B058900038DE9 /* VeloiOSAppApp.swift */; };
 		91A5B65E2E3B058D00038DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91A5B65D2E3B058D00038DE9 /* Assets.xcassets */; };
 		91A5B6612E3B058D00038DE9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91A5B6602E3B058D00038DE9 /* Preview Assets.xcassets */; };
@@ -41,7 +44,11 @@
 /* Begin PBXFileReference section */
 		911B835C2E3BDA2A00281364 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		911B83602E3BE67400281364 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
-		91A5B6562E3B058900038DE9 /* VeloiOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeloiOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		911B83632E3BFBD700281364 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		91A50B1F2E3C5F9C0010E208 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		91A50B202E3C603C0010E208 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		91A50B242E3C621A0010E208 /* Outfit-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Outfit-VariableFont_wght.ttf"; path = "VeloiOSApp/Shared/Fonts/Outfit-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		91A5B6562E3B058900038DE9 /* Velo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Velo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A5B6592E3B058900038DE9 /* VeloiOSAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloiOSAppApp.swift; sourceTree = "<group>"; };
 		91A5B65D2E3B058D00038DE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91A5B6602E3B058D00038DE9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -97,9 +104,34 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		911B83622E3BFBC300281364 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				911B83632E3BFBD700281364 /* LoginViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		91A50B1B2E3C5EC20010E208 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				91A50B1C2E3C5ED10010E208 /* Fonts */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		91A50B1C2E3C5ED10010E208 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				91A50B202E3C603C0010E208 /* Font.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		91A5B64D2E3B058900038DE9 = {
 			isa = PBXGroup;
 			children = (
+				91A50B242E3C621A0010E208 /* Outfit-VariableFont_wght.ttf */,
 				91A5B6582E3B058900038DE9 /* VeloiOSApp */,
 				91A5B6692E3B058E00038DE9 /* VeloiOSAppTests */,
 				91A5B6732E3B058E00038DE9 /* VeloiOSAppUITests */,
@@ -110,7 +142,7 @@
 		91A5B6572E3B058900038DE9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				91A5B6562E3B058900038DE9 /* VeloiOSApp.app */,
+				91A5B6562E3B058900038DE9 /* Velo.app */,
 				91A5B6662E3B058E00038DE9 /* VeloiOSAppTests.xctest */,
 				91A5B6702E3B058E00038DE9 /* VeloiOSAppUITests.xctest */,
 			);
@@ -120,6 +152,8 @@
 		91A5B6582E3B058900038DE9 /* VeloiOSApp */ = {
 			isa = PBXGroup;
 			children = (
+				91A50B1F2E3C5F9C0010E208 /* Info.plist */,
+				91A50B1B2E3C5EC20010E208 /* Shared */,
 				911B835E2E3BE65B00281364 /* App */,
 				91A5B68F2E3B0E9D00038DE9 /* Services */,
 				91A5B6862E3B086F00038DE9 /* Features */,
@@ -193,6 +227,7 @@
 		91A5B68B2E3B0A3300038DE9 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				911B83622E3BFBC300281364 /* ViewModels */,
 				91A5B68C2E3B0A3900038DE9 /* View */,
 			);
 			path = Login;
@@ -239,7 +274,7 @@
 			);
 			name = VeloiOSApp;
 			productName = VeloiOSApp;
-			productReference = 91A5B6562E3B058900038DE9 /* VeloiOSApp.app */;
+			productReference = 91A5B6562E3B058900038DE9 /* Velo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		91A5B6652E3B058E00038DE9 /* VeloiOSAppTests */ = {
@@ -326,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91A50B252E3C621A0010E208 /* Outfit-VariableFont_wght.ttf in Resources */,
 				91A5B6612E3B058D00038DE9 /* Preview Assets.xcassets in Resources */,
 				91A5B65E2E3B058D00038DE9 /* Assets.xcassets in Resources */,
 			);
@@ -356,6 +392,8 @@
 				911B835D2E3BDA2A00281364 /* HomeViewModel.swift in Sources */,
 				911B83612E3BE67400281364 /* MainAppView.swift in Sources */,
 				91A5B65A2E3B058900038DE9 /* VeloiOSAppApp.swift in Sources */,
+				911B83642E3BFBD700281364 /* LoginViewModel.swift in Sources */,
+				91A50B212E3C603C0010E208 /* Font.swift in Sources */,
 				91A5B6922E3B0EBC00038DE9 /* MapsLocationService.swift in Sources */,
 				91A5B68E2E3B0A4400038DE9 /* LoginView.swift in Sources */,
 				91A5B6852E3B07A700038DE9 /* NavigationRouter.swift in Sources */,
@@ -519,6 +557,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"VeloiOSApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VeloiOSApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -530,7 +569,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.velo.VeloiOSApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Velo;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -547,6 +586,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"VeloiOSApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VeloiOSApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -558,7 +598,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.velo.VeloiOSApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Velo;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
