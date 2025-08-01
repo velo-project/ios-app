@@ -11,13 +11,19 @@ struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
     
     var body: some View {
-        VStack {
+        ScrollView {
             Spacer()
             VStack(alignment: .leading, spacing: 50) {
+                Image("AppLogo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 80)
+                    .padding(.horizontal, .none)
+                    .padding(.vertical, 20)
                 VStack(alignment: .leading) {
                     Text("bem vindo.")
                         .font(.title2)
-                        .bold()
+                        .fontWeight(.bold)
                     Text("insira suas credenciais\npara entrar.")
                 }
                 VStack(spacing: 20) {
