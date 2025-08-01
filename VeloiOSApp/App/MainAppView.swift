@@ -56,15 +56,15 @@ struct MainAppView: View {
                 Image(systemName: icon)
                 if (selectedTab == tab) {
                     Text(label)
+                        .font(.caption)
                 }
             }
             .padding(.all, 7)
-            .padding(.horizontal, 2)
+            .padding(.horizontal, 10)
             .foregroundColor(.black)
-            .background(selectedTab == tab ? .green.opacity(0.2) : .clear)
+            .background(selectedTab == tab ? .green : .clear)
             .cornerRadius(25)
         }
-        
     }
 }
 
