@@ -11,7 +11,7 @@
 		911B83612E3BE67400281364 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B83602E3BE67400281364 /* MainAppView.swift */; };
 		911B83642E3BFBD700281364 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B83632E3BFBD700281364 /* LoginViewModel.swift */; };
 		91A50B212E3C603C0010E208 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A50B202E3C603C0010E208 /* Font.swift */; };
-		91A50B252E3C621A0010E208 /* Outfit-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91A50B242E3C621A0010E208 /* Outfit-VariableFont_wght.ttf */; };
+		91A50B272E3C63C60010E208 /* Outfit-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91A50B262E3C63C60010E208 /* Outfit-VariableFont_wght.ttf */; };
 		91A5B65A2E3B058900038DE9 /* VeloiOSAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B6592E3B058900038DE9 /* VeloiOSAppApp.swift */; };
 		91A5B65E2E3B058D00038DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91A5B65D2E3B058D00038DE9 /* Assets.xcassets */; };
 		91A5B6612E3B058D00038DE9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91A5B6602E3B058D00038DE9 /* Preview Assets.xcassets */; };
@@ -47,7 +47,7 @@
 		911B83632E3BFBD700281364 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		91A50B1F2E3C5F9C0010E208 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		91A50B202E3C603C0010E208 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		91A50B242E3C621A0010E208 /* Outfit-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Outfit-VariableFont_wght.ttf"; path = "VeloiOSApp/Shared/Fonts/Outfit-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		91A50B262E3C63C60010E208 /* Outfit-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Outfit-VariableFont_wght.ttf"; path = "VeloiOSApp/App/Fonts/Outfit-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		91A5B6562E3B058900038DE9 /* Velo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Velo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A5B6592E3B058900038DE9 /* VeloiOSAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloiOSAppApp.swift; sourceTree = "<group>"; };
 		91A5B65D2E3B058D00038DE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +99,7 @@
 		911B835E2E3BE65B00281364 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				91A50B1C2E3C5ED10010E208 /* Fonts */,
 				911B83602E3BE67400281364 /* MainAppView.swift */,
 			);
 			path = App;
@@ -115,7 +116,6 @@
 		91A50B1B2E3C5EC20010E208 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				91A50B1C2E3C5ED10010E208 /* Fonts */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -131,7 +131,7 @@
 		91A5B64D2E3B058900038DE9 = {
 			isa = PBXGroup;
 			children = (
-				91A50B242E3C621A0010E208 /* Outfit-VariableFont_wght.ttf */,
+				91A50B262E3C63C60010E208 /* Outfit-VariableFont_wght.ttf */,
 				91A5B6582E3B058900038DE9 /* VeloiOSApp */,
 				91A5B6692E3B058E00038DE9 /* VeloiOSAppTests */,
 				91A5B6732E3B058E00038DE9 /* VeloiOSAppUITests */,
@@ -361,7 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91A50B252E3C621A0010E208 /* Outfit-VariableFont_wght.ttf in Resources */,
+				91A50B272E3C63C60010E208 /* Outfit-VariableFont_wght.ttf in Resources */,
 				91A5B6612E3B058D00038DE9 /* Preview Assets.xcassets in Resources */,
 				91A5B65E2E3B058D00038DE9 /* Assets.xcassets in Resources */,
 			);
