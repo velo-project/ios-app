@@ -22,30 +22,16 @@ struct LoginView: View {
                 }
                 VStack(spacing: 20) {
                     VStack {
-                        HStack {
-                            TextField("email", text: $viewModel.email)
-                                .autocorrectionDisabled(true)
-                                .textInputAutocapitalization(.never)
-                            Image(systemName: "envelope")
-                        }
-                        .padding(.all, 13)
-                        .padding(.horizontal, 7)
-                        .background(.white)
-                        .cornerRadius(50)
-                        .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 4)
+                        VeloTextField(
+                            text: $viewModel.email,
+                            placeholder: "email",
+                            icon: "envelope")
                         
-                        HStack {
-                            SecureField("senha", text: $viewModel.password)
-                                .autocorrectionDisabled(true)
-                                .textInputAutocapitalization(.never)
-                            Image(systemName: "lock")
-                        }
-                        .padding(.all, 13)
-                        .padding(.horizontal, 7)
-                        .background(.white)
-                        .cornerRadius(50)
-                        .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 4)
-                        
+                        VeloTextField(
+                            text: $viewModel.password,
+                            placeholder: "senha",
+                            icon: "lock",
+                            isSecure: true)
                     }
                     
                     HStack {
