@@ -33,7 +33,10 @@ struct HomeView: View {
                     .cornerRadius(50)
                     
                     Button(action: {
-                        router.navigate(to: .login)
+                        if !viewModel.isAuthenticated() {
+                            router.navigate(to: .login)
+                            return
+                        }                        
                     }) {
                         Image(systemName: "person")
                             .foregroundColor(.black)
