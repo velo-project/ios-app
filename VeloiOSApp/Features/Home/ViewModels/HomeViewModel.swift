@@ -6,12 +6,27 @@
 //
 
 import Foundation
+import MapKit
 
 class HomeViewModel: ObservableObject {
     @Published var searchQuery: String = ""
-    @Published var selectedButton: Int = 1
+    @Published var region: MKCoordinateRegion?
     
-    func changeSelectedButton(button: Int) {
-        selectedButton = button
+    private var mapsLocationService = MapsLocationServiceImpl()
+    
+    init() {
+        observeLocation()
+    }
+    
+    private func observeLocation() {
+        mapsLocationService.$lastKnowLocation
+            .compactMap { $0 }
+            .map { coordinate in
+                MKCoordinateRegion(
+                    center: coordinate,
+                    span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                )
+            }
+            .assign(to: &$region)
     }
 }

@@ -20,8 +20,13 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            Map(coordinateRegion: $region)
-                .ignoresSafeArea()
+            if let region = viewModel.region {
+                Map(coordinateRegion: .constant(region))
+                    .ignoresSafeArea()
+            } else {
+                Text("carregando suas informações...")
+            }
+            
             VStack {
                 HStack(spacing: 4) {
                     TextField(
