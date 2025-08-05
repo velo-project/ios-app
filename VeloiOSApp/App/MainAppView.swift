@@ -12,59 +12,28 @@ enum Tab {
 }
 
 struct MainAppView: View {
-    @State private var selectedTab: Tab = .home
-    
     var body: some View {
-        ZStack(alignment: .bottom) {
+        TabView {
             Group {
-                switch selectedTab {
-                case .home:
-                    HomeView()
-                case .events:
-                    LoginView() // mock
-                case .routes:
-                    LoginView() // mock
-                case .friends:
-                    LoginView() // mock
+                HomeView().tabItem {
+                    Label("mapa", systemImage: "map")
+                }
+                
+                
+                LoginView().tabItem {
+                    Label("eventos", systemImage: "ticket")
+                }
+                LoginView().tabItem {
+                    Label("rotas", systemImage: "bookmark")
+                }
+                LoginView().tabItem {
+                    Label("amigos", systemImage: "person.2")
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .ignoresSafeArea()
-            
-            HStack {
-                tabButton(tab: .home, icon: "map", label: "mapa")
-                Spacer()
-                tabButton(tab: .events, icon: "ticket", label: "eventos")
-                Spacer()
-                tabButton(tab: .routes, icon: "bookmark", label: "rotas")
-                Spacer()
-                tabButton(tab: .friends, icon: "person.2", label: "amigos")
-            }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 15)
-            .background(.ultraThinMaterial)
-            .cornerRadius(50)
-            .padding()
+            .toolbarBackground(.ultraThinMaterial, for: .tabBar)
+            .toolbarBackground(.visible, for: .tabBar)
         }
-    }
-    
-    func tabButton(tab: Tab, icon: String, label: String) -> some View {
-        Button(action: {
-            selectedTab = tab
-        }){
-            HStack(spacing: 5) {
-                Image(systemName: icon)
-                if (selectedTab == tab) {
-                    Text(label)
-                        .font(.caption)
-                }
-            }
-            .padding(.all, 7)
-            .padding(.horizontal, 10)
-            .foregroundColor(.black)
-            .background(selectedTab == tab ? .green : .clear)
-            .cornerRadius(25)
-        }
+        .tint(.green)
     }
 }
 
