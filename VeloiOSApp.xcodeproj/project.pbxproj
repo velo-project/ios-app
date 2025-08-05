@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9119837C2E42C3460040C992 /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9119837B2E42C3460040C992 /* TokenService.swift */; };
+		9119837F2E42C3CC0040C992 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9119837E2E42C3CC0040C992 /* KeychainSwift */; };
+		911983822E42C5AD0040C992 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911983812E42C5AD0040C992 /* AuthService.swift */; };
 		911B835D2E3BDA2A00281364 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B835C2E3BDA2A00281364 /* HomeViewModel.swift */; };
 		911B83612E3BE67400281364 /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B83602E3BE67400281364 /* MainAppView.swift */; };
 		911B83642E3BFBD700281364 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911B83632E3BFBD700281364 /* LoginViewModel.swift */; };
@@ -43,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9119837B2E42C3460040C992 /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
+		911983812E42C5AD0040C992 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		911B835C2E3BDA2A00281364 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		911B83602E3BE67400281364 /* MainAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
 		911B83632E3BFBD700281364 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -70,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9119837F2E42C3CC0040C992 /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +96,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9119837A2E42C3350040C992 /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				9119837B2E42C3460040C992 /* TokenService.swift */,
+			);
+			path = Token;
+			sourceTree = "<group>";
+		};
+		911983802E42C59C0040C992 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				911983812E42C5AD0040C992 /* AuthService.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		911B835B2E3BDA0E00281364 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +277,8 @@
 		91A5B68F2E3B0E9D00038DE9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				911983802E42C59C0040C992 /* Auth */,
+				9119837A2E42C3350040C992 /* Token */,
 				91A5B6902E3B0EA700038DE9 /* Maps */,
 			);
 			path = Services;
@@ -284,6 +308,9 @@
 			dependencies = (
 			);
 			name = VeloiOSApp;
+			packageProductDependencies = (
+				9119837E2E42C3CC0040C992 /* KeychainSwift */,
+			);
 			productName = VeloiOSApp;
 			productReference = 91A5B6562E3B058900038DE9 /* Velo.app */;
 			productType = "com.apple.product-type.application";
@@ -356,6 +383,9 @@
 				Base,
 			);
 			mainGroup = 91A5B64D2E3B058900038DE9;
+			packageReferences = (
+				9119837D2E42C3CC0040C992 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+			);
 			productRefGroup = 91A5B6572E3B058900038DE9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -399,8 +429,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9119837C2E42C3460040C992 /* TokenService.swift in Sources */,
 				91A5B68A2E3B088F00038DE9 /* HomeView.swift in Sources */,
 				91A50B2A2E3C642C0010E208 /* VeloTextField.swift in Sources */,
+				911983822E42C5AD0040C992 /* AuthService.swift in Sources */,
 				911B835D2E3BDA2A00281364 /* HomeViewModel.swift in Sources */,
 				911B83612E3BE67400281364 /* MainAppView.swift in Sources */,
 				91A5B65A2E3B058900038DE9 /* VeloiOSAppApp.swift in Sources */,
@@ -729,6 +761,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9119837D2E42C3CC0040C992 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9119837E2E42C3CC0040C992 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9119837D2E42C3CC0040C992 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 91A5B64E2E3B058900038DE9 /* Project object */;
 }

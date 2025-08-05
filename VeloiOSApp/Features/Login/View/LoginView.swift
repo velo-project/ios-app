@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject var viewModel = LoginViewModel()
+    @EnvironmentObject var router: NavigationRouter
+    @StateObject private var viewModel: LoginViewModel
+    
+    init(router: NavigationRouter) {
+        _viewModel = StateObject(wrappedValue: LoginViewModel(router: router))
+    }
+    
     
     var body: some View {
         ScrollView {
@@ -46,7 +52,7 @@ struct LoginView: View {
                     }
                     .frame(maxWidth: .infinity)
                     
-                    Button(action: {}) {
+                    Button(action: { viewModel.login() }) {
                         Text("entrar")
                     }
                     .foregroundColor(.black)
@@ -63,8 +69,8 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
+//struct LoginView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView()
+//    }
+//}

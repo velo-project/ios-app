@@ -19,7 +19,7 @@ struct VeloiOSAppApp: App {
                     case .home:
                         MainAppView()
                     case .login:
-                        LoginView()
+                        LoginView(router: router)
                     }
                 }
             }

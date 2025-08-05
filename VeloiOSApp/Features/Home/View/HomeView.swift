@@ -10,13 +10,7 @@ import MapKit
 
 struct HomeView: View {    
     @EnvironmentObject var router: NavigationRouter
-    
     @StateObject var viewModel = HomeViewModel()
-    
-    @State var region = MKCoordinateRegion(
-        center: .init(latitude: 37.334_900,longitude: -122.009_020),
-        span: .init(latitudeDelta: 0.2, longitudeDelta: 0.2)
-    )
     
     var body: some View {
         ZStack {
