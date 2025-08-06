@@ -234,7 +234,7 @@
 		91A5B6862E3B086F00038DE9 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				91A5B68B2E3B0A3300038DE9 /* Login */,
+				91A5B68B2E3B0A3300038DE9 /* Auth */,
 				91A5B6872E3B087600038DE9 /* Home */,
 			);
 			path = Features;
@@ -257,13 +257,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		91A5B68B2E3B0A3300038DE9 /* Login */ = {
+		91A5B68B2E3B0A3300038DE9 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				911B83622E3BFBC300281364 /* ViewModels */,
 				91A5B68C2E3B0A3900038DE9 /* View */,
 			);
-			path = Login;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		91A5B68C2E3B0A3900038DE9 /* View */ = {
