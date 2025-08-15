@@ -47,7 +47,7 @@ struct MainAppView: View {
                     }
                     .tag(4)
                     
-                    LoginView(router: router).tabItem {
+                    SavedRoutesView().tabItem {
                         Label("rotas", systemImage: "bookmark")
                     }
                     .tag(5)
