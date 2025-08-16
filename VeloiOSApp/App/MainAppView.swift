@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-enum Tab {
-    case home, events, routes, friends
-}
-
 struct MainAppView: View {
     @EnvironmentObject var router: NavigationRouter
     
@@ -20,63 +16,49 @@ struct MainAppView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            Group {
-                HomeView().tabItem {
-                    Label("mapa", systemImage: "map")
+            Tab("mapa", systemImage: "map", value: 0) {
+                HomeView()
+            }
+            
+            if !tokenService.getJwtToken().isAuthenticated {
+                Tab("eventos", systemImage: "ticket", value: 1) {
+                    Text("faça login para continuar")
                 }
-                .tag(0)
                 
-                if !tokenService.getJwtToken().isAuthenticated {
-                    Text("faça login para continuar").tabItem {
-                        Label("eventos", systemImage: "ticket")
-                    }
-                    .tag(1)
-                    
-                    Text("faça login para continuar").tabItem {
-                        Label("rotas", systemImage: "bookmark")
-                    }
-                    .tag(2)
-                    Text("faça login para continuar").tabItem {
-                        Label("amigos", systemImage: "person.2")
-                    }
-                    .tag(3)
-                    
-                } else {
-                    LoginView(router: router).tabItem {
-                        Label("eventos", systemImage: "ticket")
-                    }
-                    .tag(4)
-                    
-                    SavedRoutesView().tabItem {
-                        Label("rotas", systemImage: "bookmark")
-                    }
-                    .tag(5)
-                    
-                    LoginView(router: router).tabItem {
-                        Label("amigos", systemImage: "person.2")
-                    }
-                    .tag(6)
+                Tab("rotas", systemImage: "bookmark", value: 2) {
+                    Text("faça login para continuar")
+                }
+                
+                Tab("amigos", systemImage: "person.2", value: 3) {
+                    Text("faça login para continuar")
+                }
+                
+            } else {
+                Tab("eventos", systemImage: "ticket", value: 4) {
+                    LoginView(router: router)
+                }
+                
+                Tab("rotas", systemImage: "bookmark", value: 5) {
+                    SavedRoutesView()
+                }
+                
+                Tab("amigos", systemImage: "person.2", value: 6) {
+                    LoginView(router: router) // TODO Create Friends/Community Feature
                 }
             }
-            .toolbarBackground(.ultraThinMaterial, for: .tabBar)
-            .toolbarBackground(.visible, for: .tabBar)
         }
         .tint(.green)
-        .onChange(of: selectedTab) { tab in
-            switch tab {
+        .onChange(of: selectedTab) { _, newTab in
+            switch newTab {
             case 1, 2, 3:
-                print("No Auth")
                 router.navigate(to: .login)
             default:
-                print("Auth")
                 break
             }
         }
     }
 }
 
-struct MainAppView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainAppView()
-    }
+#Preview {
+    MainAppView()
 }

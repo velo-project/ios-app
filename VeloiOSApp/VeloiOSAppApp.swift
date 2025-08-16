@@ -11,6 +11,10 @@ import SwiftUI
 struct VeloiOSAppApp: App {
     @StateObject var router = NavigationRouter()
     
+    init() {
+        TokenService().deleteToken()
+    }
+    
     var body: some Scene {
         WindowGroup {
             NavigationStack(path : $router.path) {
@@ -23,6 +27,7 @@ struct VeloiOSAppApp: App {
                     }
                 }
             }
+            .preferredColorScheme(.light)
             .environment(\.font, .body)
             .environmentObject(router)
         }
