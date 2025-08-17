@@ -13,7 +13,7 @@ class HomeViewModel: ObservableObject {
     @Published var region: MKCoordinateRegion?
     
     private var mapsLocationService = MapsLocationServiceImpl()
-    private var tokenService = TokenService()
+    private var tokenStore = TokenStore()
     
     init() {
         observeLocation()
@@ -32,6 +32,6 @@ class HomeViewModel: ObservableObject {
     }
     
     func isAuthenticated() -> Bool {
-        return tokenService.getJwtToken().isAuthenticated
+        return tokenStore.getJwtToken().isAuthenticated
     }
 }

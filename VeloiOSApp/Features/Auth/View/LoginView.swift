@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject var router: NavigationRouter
-    @StateObject private var viewModel: LoginViewModel
-    
-    init(router: NavigationRouter) {
-        _viewModel = StateObject(wrappedValue: LoginViewModel(router: router))
-    }
-    
+    @Environment(\.dismiss) var dimiss
+    @StateObject private var viewModel = LoginViewModel()
     
     var body: some View {
         ScrollView {
@@ -52,7 +47,12 @@ struct LoginView: View {
                     }
                     .frame(maxWidth: .infinity)
                     
-                    Button(action: { viewModel.login() }) {
+                    Button(action: {
+                        var token = viewModel.login()
+                        if (token.isAuthenticated) {
+                            dimiss()
+                        }
+                    }) {
                         Text("entrar")
                     }
                     .foregroundColor(.black)
@@ -74,3 +74,6 @@ struct LoginView: View {
 //        LoginView()
 //    }
 //}
+#Preview {
+    LoginView()
+}

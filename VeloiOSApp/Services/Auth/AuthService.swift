@@ -8,12 +8,12 @@
 import Foundation
 
 class AuthService {
-    private var tokenService = TokenService()
+    private var tokenStore = TokenStore()
     
     func login(email: String, password: String) -> JwtToken {
         // mock response
-        tokenService.saveJwtToken(token: "nice-token")
+        tokenStore.saveJwtToken(token: "nice-token")
         
-        return tokenService.getJwtToken()
+        return tokenStore.getJwtToken()
     }
 }

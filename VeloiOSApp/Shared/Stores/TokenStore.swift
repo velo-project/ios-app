@@ -8,7 +8,7 @@
 import Foundation
 import KeychainSwift
 
-class TokenService {
+class TokenStore {
     private var keychan = KeychainSwift()
     
     func saveJwtToken(token: String) {

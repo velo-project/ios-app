@@ -11,8 +11,10 @@ struct MainAppView: View {
     @EnvironmentObject var router: NavigationRouter
     
     @State private var selectedTab = 0
+    @State private var queryText = "" // TODO Refactor to Store
+    @State private var showLoginPage = false
     
-    private var tokenService = TokenService()
+    private var tokenStore = TokenStore()
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -20,7 +22,7 @@ struct MainAppView: View {
                 HomeView()
             }
             
-            if !tokenService.getJwtToken().isAuthenticated {
+            if !tokenStore.getJwtToken().isAuthenticated {
                 Tab("eventos", systemImage: "ticket", value: 1) {
                     Text("faça login para continuar")
                 }
@@ -35,7 +37,7 @@ struct MainAppView: View {
                 
             } else {
                 Tab("eventos", systemImage: "ticket", value: 4) {
-                    LoginView(router: router)
+                    LoginView()
                 }
                 
                 Tab("rotas", systemImage: "bookmark", value: 5) {
@@ -43,16 +45,27 @@ struct MainAppView: View {
                 }
                 
                 Tab("amigos", systemImage: "person.2", value: 6) {
-                    LoginView(router: router) // TODO Create Friends/Community Feature
+                    LoginView()
+                    
                 }
             }
+            
+            Tab(value: 7, role: .search) {
+                SearchView(queryText: $queryText)
+            }
         }
+        .sheet(isPresented: $showLoginPage) {
+            LoginView()
+        }
+        .searchable(text: $queryText)
         .tint(.green)
         .onChange(of: selectedTab) { _, newTab in
             switch newTab {
             case 1, 2, 3:
-                router.navigate(to: .login)
+                showLoginPage = true
+                break
             default:
+                showLoginPage = false
                 break
             }
         }

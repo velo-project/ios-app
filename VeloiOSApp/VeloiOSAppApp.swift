@@ -12,24 +12,29 @@ struct VeloiOSAppApp: App {
     @StateObject var router = NavigationRouter()
     
     init() {
-        TokenService().deleteToken()
+        TokenStore().deleteToken() // Temporarially
     }
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack(path : $router.path) {
-                MainAppView().navigationDestination(for: Route.self) { route in
-                    switch route {
-                    case .home:
-                        MainAppView()
-                    case .login:
-                        LoginView(router: router)
-                    }
-                }
-            }
-            .preferredColorScheme(.light)
-            .environment(\.font, .body)
-            .environmentObject(router)
+            MainAppView()
+                .preferredColorScheme(.light)
+                .environment(\.font, .body)
+                .environmentObject(router)
+//            NavigationStack(path: $router.path) {
+//                MainAppView().navigationDestination(for: Route.self) { route in
+//                    switch route {
+//                    case .home:
+//                        MainAppView()
+//                    case .login:
+//                        LoginView(router: router)
+//                    }
+//                }
+//                .preferredColorScheme(.light)
+//                .environment(\.font, .body)
+//                .environmentObject(router)
+//            }
+
         }
     }
 }

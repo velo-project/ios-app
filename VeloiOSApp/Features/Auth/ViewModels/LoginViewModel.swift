@@ -12,18 +12,10 @@ class LoginViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     
-    private var router: NavigationRouter
     private var authService = AuthService()
-    private var tokenService = TokenService()
     
-    init(router: NavigationRouter) {
-        self.router = router
-    }
-    
-    func login() {
+    func login() -> JwtToken {
         let token = authService.login(email: email, password: password)
-        if (token.isAuthenticated) {
-            router.reset()
-        }
+        return token
     }
 }
