@@ -37,7 +37,7 @@ struct MainAppView: View {
                 
             } else {
                 Tab("eventos", systemImage: "ticket", value: 4) {
-                    LoginView()
+                    LoginView(selectedTab: $selectedTab)
                 }
                 
                 Tab("rotas", systemImage: "bookmark", value: 5) {
@@ -45,7 +45,7 @@ struct MainAppView: View {
                 }
                 
                 Tab("amigos", systemImage: "person.2", value: 6) {
-                    LoginView()
+                    LoginView(selectedTab: $selectedTab)
                     
                 }
             }
@@ -55,9 +55,8 @@ struct MainAppView: View {
             }
         }
         .sheet(isPresented: $showLoginPage) {
-            LoginView()
+            LoginView(selectedTab: $selectedTab)
         }
-        .searchable(text: $queryText)
         .tint(.green)
         .onChange(of: selectedTab) { _, newTab in
             switch newTab {

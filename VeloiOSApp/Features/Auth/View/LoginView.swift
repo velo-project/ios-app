@@ -11,6 +11,8 @@ struct LoginView: View {
     @Environment(\.dismiss) var dimiss
     @StateObject private var viewModel = LoginViewModel()
     
+    @Binding var selectedTab: Int
+    
     var body: some View {
         ScrollView {
             Spacer()
@@ -48,8 +50,9 @@ struct LoginView: View {
                     .frame(maxWidth: .infinity)
                     
                     Button(action: {
-                        var token = viewModel.login()
+                        let token = viewModel.login()
                         if (token.isAuthenticated) {
+                            selectedTab = 1
                             dimiss()
                         }
                     }) {
@@ -69,11 +72,6 @@ struct LoginView: View {
     }
 }
 
-//struct LoginView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LoginView()
-//    }
+//#Preview {
+//    LoginView()
 //}
-#Preview {
-    LoginView()
-}

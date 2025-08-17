@@ -21,8 +21,6 @@ struct SearchView: View {
     }
 }
 
-//#Preview {
-////    @State var
-//    
+//#Preview {  
 //    SearchView()
 //}
