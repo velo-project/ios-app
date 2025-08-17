@@ -10,7 +10,7 @@ import SwiftUI
 struct SavedRoutesView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            Text("rotas salvas").font(.title2).bold()
+            Text("rotas salvas").font(.title2).bold().padding()
             ScrollView {
                 LazyVStack(spacing: 16) {
                     RouteCard(initialLocation: "alto da lapa", endLocation: "cidade universitária")
@@ -20,7 +20,6 @@ struct SavedRoutesView: View {
             }
             .frame(maxWidth: .infinity)
         }
-        .padding()
     }
     
     @ViewBuilder
@@ -31,6 +30,7 @@ struct SavedRoutesView: View {
                 Image(systemName: "arrow.down")
                 Text(endLocation)
             }
+            .padding(.vertical, 20)
             .bold()
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(.white)
