@@ -8,12 +8,19 @@
 import SwiftUI
 
 struct SavedRoutesView: View {
+    private var viewModel = SavedRoutesViewModel()
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("rotas salvas").font(.title2).bold().padding()
             ScrollView {
                 LazyVStack(spacing: 16) {
-                    RouteCard(initialLocation: "alto da lapa", endLocation: "cidade universitária")
+                    ForEach(viewModel.routes) { route in
+                        RouteCard(
+                            initialLocation: route.initialLocation,
+                            endLocation: route.finalLocation,
+                            lastTimeRun: route.lastTimeRun)
+                    }
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -23,7 +30,7 @@ struct SavedRoutesView: View {
     }
     
     @ViewBuilder
-    private func RouteCard(initialLocation: String, endLocation: String) -> some View {
+    private func RouteCard(initialLocation: String, endLocation: String, lastTimeRun: Date) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading) {
                 Text(initialLocation)
@@ -39,7 +46,7 @@ struct SavedRoutesView: View {
             VStack(alignment: .leading) {
                 Text("passou por aqui em")
                     .font(.caption2)
-                Text("12 de maio de 2025")
+                Text(lastTimeRun.formattedBrazilian())
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.all, 25)
