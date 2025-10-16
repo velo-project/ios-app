@@ -45,8 +45,7 @@ struct MainAppView: View {
                 }
                 
                 Tab("amigos", systemImage: "person.2", value: 6) {
-                    LoginView(selectedTab: $selectedTab)
-                    
+                    CommunitiesView()
                 }
             }
             
