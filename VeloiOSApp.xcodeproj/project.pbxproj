@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -90,6 +90,10 @@
 		E5B5F6182E8DA14E00A61167 /* PostResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E55209322EA133C200382679 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		91A5B6532E3B058900038DE9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -153,6 +157,7 @@
 		911BF2ED2E43C3B300CEEAB0 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				E55209322EA133C200382679 /* Components */,
 				E5AC973B2E71EC4900B27508 /* Models */,
 				E5AC97382E71EBD300B27508 /* ViewModels */,
 				911BF2EE2E43C3B900CEEAB0 /* View */,
@@ -440,6 +445,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E55209322EA133C200382679 /* Components */,
 			);
 			name = VeloiOSApp;
 			packageProductDependencies = (
