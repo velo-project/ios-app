@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,8 @@
 		91A5B68E2E3B0A4400038DE9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B68D2E3B0A4400038DE9 /* LoginView.swift */; };
 		91A5B6922E3B0EBC00038DE9 /* MapsLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B6912E3B0EBC00038DE9 /* MapsLocationService.swift */; };
 		E54008732E503FFF00AF4B34 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54008722E503FFF00AF4B34 /* SearchView.swift */; };
+		E55209352EA133D000382679 /* VeloRouteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55209332EA133CB00382679 /* VeloRouteCard.swift */; };
+		E589BD462EA13B9A003568E6 /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589BD452EA13B84003568E6 /* GoogleMapsView.swift */; };
 		E5AC973A2E71EBEA00B27508 /* SavedRoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC97392E71EBDD00B27508 /* SavedRoutesViewModel.swift */; };
 		E5AC973D2E71EC5C00B27508 /* SavedRoutesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC973C2E71EC5400B27508 /* SavedRoutesModel.swift */; };
 		E5AC973F2E71F03600B27508 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC973E2E71F02E00B27508 /* DateExtensions.swift */; };
@@ -81,6 +83,8 @@
 		91A5B68D2E3B0A4400038DE9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		91A5B6912E3B0EBC00038DE9 /* MapsLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsLocationService.swift; sourceTree = "<group>"; };
 		E54008722E503FFF00AF4B34 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		E55209332EA133CB00382679 /* VeloRouteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloRouteCard.swift; sourceTree = "<group>"; };
+		E589BD452EA13B84003568E6 /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
 		E5AC97392E71EBDD00B27508 /* SavedRoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRoutesViewModel.swift; sourceTree = "<group>"; };
 		E5AC973C2E71EC5400B27508 /* SavedRoutesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRoutesModel.swift; sourceTree = "<group>"; };
 		E5AC973E2E71F02E00B27508 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -89,10 +93,6 @@
 		E5B5F6142E8DA02700A61167 /* CommunitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesViewModel.swift; sourceTree = "<group>"; };
 		E5B5F6182E8DA14E00A61167 /* PostResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		E55209322EA133C200382679 /* Components */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Components; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		91A5B6532E3B058900038DE9 /* Frameworks */ = {
@@ -157,7 +157,7 @@
 		911BF2ED2E43C3B300CEEAB0 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				E55209322EA133C200382679 /* Components */,
+				E55209392EA1397600382679 /* Components */,
 				E5AC973B2E71EC4900B27508 /* Models */,
 				E5AC97382E71EBD300B27508 /* ViewModels */,
 				911BF2EE2E43C3B900CEEAB0 /* View */,
@@ -336,6 +336,7 @@
 		91A5B6902E3B0EA700038DE9 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				E589BD452EA13B84003568E6 /* GoogleMapsView.swift */,
 				91A5B6912E3B0EBC00038DE9 /* MapsLocationService.swift */,
 			);
 			path = Maps;
@@ -355,6 +356,14 @@
 				E54008722E503FFF00AF4B34 /* SearchView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E55209392EA1397600382679 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E55209332EA133CB00382679 /* VeloRouteCard.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		E560B4602E526BB30074C5CB /* Stores */ = {
@@ -446,9 +455,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				E55209322EA133C200382679 /* Components */,
-			);
 			name = VeloiOSApp;
 			packageProductDependencies = (
 				9119837E2E42C3CC0040C992 /* KeychainSwift */,
@@ -501,7 +507,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					91A5B6552E3B058900038DE9 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -527,6 +533,7 @@
 			mainGroup = 91A5B64D2E3B058900038DE9;
 			packageReferences = (
 				9119837D2E42C3CC0040C992 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				E55209382EA1376800382679 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
 			);
 			productRefGroup = 91A5B6572E3B058900038DE9 /* Products */;
 			projectDirPath = "";
@@ -571,12 +578,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E589BD462EA13B9A003568E6 /* GoogleMapsView.swift in Sources */,
 				9119837C2E42C3460040C992 /* TokenStore.swift in Sources */,
 				91A5B68A2E3B088F00038DE9 /* HomeView.swift in Sources */,
 				91A50B2A2E3C642C0010E208 /* VeloTextField.swift in Sources */,
 				E5B5F6132E8D9DE200A61167 /* PostComponent.swift in Sources */,
 				E5B5F6102E8D9D8100A61167 /* CommunitiesView.swift in Sources */,
 				911983822E42C5AD0040C992 /* AuthService.swift in Sources */,
+				E55209352EA133D000382679 /* VeloRouteCard.swift in Sources */,
 				911BF2F32E43CACB00CEEAB0 /* VeloRoundedCorner.swift in Sources */,
 				E5AC973F2E71F03600B27508 /* DateExtensions.swift in Sources */,
 				E5B5F6152E8DA02C00A61167 /* CommunitiesViewModel.swift in Sources */,
@@ -665,6 +674,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -684,6 +694,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -725,6 +736,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -737,6 +749,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -808,7 +821,6 @@
 		91A5B67E2E3B058E00038DE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -827,7 +839,6 @@
 		91A5B67F2E3B058E00038DE9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -846,7 +857,6 @@
 		91A5B6812E3B058E00038DE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -863,7 +873,6 @@
 		91A5B6822E3B058E00038DE9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -925,6 +934,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 24.0.0;
+			};
+		};
+		E55209382EA1376800382679 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-maps-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.4.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

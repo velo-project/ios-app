@@ -6,11 +6,11 @@
 //
 
 import Foundation
-import MapKit
+import CoreLocation
 
 class HomeViewModel: ObservableObject {
     @Published var searchQuery: String = ""
-    @Published var region: MKCoordinateRegion?
+    @Published var lastKnowLocation: CLLocationCoordinate2D?
     
     private var mapsLocationService = MapsLocationServiceImpl()
     private var tokenStore = TokenStore()
@@ -20,15 +20,7 @@ class HomeViewModel: ObservableObject {
     }
     
     private func observeLocation() {
-        mapsLocationService.$lastKnowLocation
-            .compactMap { $0 }
-            .map { coordinate in
-                MKCoordinateRegion(
-                    center: coordinate,
-                    span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                )
-            }
-            .assign(to: &$region)
+        mapsLocationService.$lastKnowLocation.assign(to: &$lastKnowLocation)
     }
     
     func isAuthenticated() -> Bool {

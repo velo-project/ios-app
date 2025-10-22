@@ -1,5 +1,15 @@
 {
+  "originHash" : "2df7bd89a59270d80582e5a2c09f7908e80740b119803dbf807d9a0c6e0d43dc",
   "pins" : [
+    {
+      "identity" : "ios-maps-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/googlemaps/ios-maps-sdk",
+      "state" : {
+        "revision" : "e4c8ab764c05a7e50501f8f7b35a1f8b45203da2",
+        "version" : "10.4.0"
+      }
+    },
     {
       "identity" : "keychain-swift",
       "kind" : "remoteSourceControl",
@@ -10,5 +20,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

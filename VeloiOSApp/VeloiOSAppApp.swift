@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import GoogleMaps
 
 @main
 struct VeloiOSAppApp: App {
     @StateObject var router = NavigationRouter()
     
     init() {
+        GMSServices.provideAPIKey("AIzaSyAai5EPkSARfPIkmvsDtd9AZY1dZW6UJOU")
         TokenStore().deleteToken() // Temporarially
     }
     

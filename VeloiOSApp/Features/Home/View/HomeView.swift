@@ -6,20 +6,14 @@
 //
 
 import SwiftUI
-import MapKit
 
 struct HomeView: View {
     @EnvironmentObject var router: NavigationRouter
     @StateObject var viewModel = HomeViewModel()
     
     var body: some View {
-        if let region = viewModel.region {
-            Map(coordinateRegion: .constant(region))
-                .ignoresSafeArea()
-        } else {
-            Text("carregando suas informações...")
-        }
-        
+        GoogleMapsView(lastKnowLocation: $viewModel.lastKnowLocation)
+            .ignoresSafeArea()
     }
 }
 
