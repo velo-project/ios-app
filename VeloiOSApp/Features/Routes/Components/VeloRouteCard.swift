@@ -8,7 +8,7 @@
 import SwiftUI
 
 @ViewBuilder
-private func VeloRouteCard(initialLocation: String, endLocation: String, lastTimeRun: Date) -> some View {
+public func VeloRouteCard(initialLocation: String, endLocation: String, lastTimeRun: Date) -> some View {
     VStack(alignment: .leading, spacing: 0) {
         VStack(alignment: .leading) {
             Text(initialLocation)
