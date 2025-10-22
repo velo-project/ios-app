@@ -39,6 +39,10 @@
 		E5B5F6152E8DA02C00A61167 /* CommunitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5F6142E8DA02700A61167 /* CommunitiesViewModel.swift */; };
 		E5B5F6192E8DA15600A61167 /* PostResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5F6182E8DA14E00A61167 /* PostResponseModel.swift */; };
 		E5D24FA12EA9471B00FEEEF5 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = E5D24FA02EA9471B00FEEEF5 /* GoogleMaps */; };
+		E5D24FA82EA94C6300FEEEF5 /* BrandEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D24FA72EA94C5B00FEEEF5 /* BrandEventsModel.swift */; };
+		E5D24FAB2EA94E1000FEEEF5 /* VeloEventComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D24FAA2EA94E0800FEEEF5 /* VeloEventComponent.swift */; };
+		E5D24FAD2EA9504100FEEEF5 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D24FAC2EA9503700FEEEF5 /* EventsViewModel.swift */; };
+		E5D24FAF2EA951AE00FEEEF5 /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D24FAE2EA951A900FEEEF5 /* EventsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +97,10 @@
 		E5B5F6122E8D9DD600A61167 /* PostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComponent.swift; sourceTree = "<group>"; };
 		E5B5F6142E8DA02700A61167 /* CommunitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesViewModel.swift; sourceTree = "<group>"; };
 		E5B5F6182E8DA14E00A61167 /* PostResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponseModel.swift; sourceTree = "<group>"; };
+		E5D24FA72EA94C5B00FEEEF5 /* BrandEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandEventsModel.swift; sourceTree = "<group>"; };
+		E5D24FAA2EA94E0800FEEEF5 /* VeloEventComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloEventComponent.swift; sourceTree = "<group>"; };
+		E5D24FAC2EA9503700FEEEF5 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		E5D24FAE2EA951A900FEEEF5 /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +290,7 @@
 		91A5B6862E3B086F00038DE9 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				E5D24FA22EA94C1D00FEEEF5 /* Events */,
 				E5B5F60B2E8D9D5200A61167 /* Communities */,
 				E54008702E503FE900AF4B34 /* Search */,
 				911BF2ED2E43C3B300CEEAB0 /* Routes */,
@@ -434,6 +443,49 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E5D24FA22EA94C1D00FEEEF5 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				E5D24FA92EA94DFA00FEEEF5 /* Components */,
+				E5D24FA62EA94C5500FEEEF5 /* Models */,
+				E5D24FA52EA94C3600FEEEF5 /* ViewModels */,
+				E5D24FA42EA94C2E00FEEEF5 /* View */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		E5D24FA42EA94C2E00FEEEF5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E5D24FAE2EA951A900FEEEF5 /* EventsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E5D24FA52EA94C3600FEEEF5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E5D24FAC2EA9503700FEEEF5 /* EventsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E5D24FA62EA94C5500FEEEF5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5D24FA72EA94C5B00FEEEF5 /* BrandEventsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E5D24FA92EA94DFA00FEEEF5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E5D24FAA2EA94E0800FEEEF5 /* VeloEventComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -581,20 +633,24 @@
 				E5B5F6102E8D9D8100A61167 /* CommunitiesView.swift in Sources */,
 				911983822E42C5AD0040C992 /* AuthService.swift in Sources */,
 				E55209352EA133D000382679 /* VeloRouteCard.swift in Sources */,
+				E5D24FA82EA94C6300FEEEF5 /* BrandEventsModel.swift in Sources */,
 				911BF2F32E43CACB00CEEAB0 /* VeloRoundedCorner.swift in Sources */,
 				E5AC973F2E71F03600B27508 /* DateExtensions.swift in Sources */,
 				E5B5F6152E8DA02C00A61167 /* CommunitiesViewModel.swift in Sources */,
 				911B835D2E3BDA2A00281364 /* HomeViewModel.swift in Sources */,
 				E5AC973A2E71EBEA00B27508 /* SavedRoutesViewModel.swift in Sources */,
 				911B83612E3BE67400281364 /* MainAppView.swift in Sources */,
+				E5D24FAF2EA951AE00FEEEF5 /* EventsView.swift in Sources */,
 				91A5B65A2E3B058900038DE9 /* VeloiOSAppApp.swift in Sources */,
 				911B83642E3BFBD700281364 /* LoginViewModel.swift in Sources */,
 				91A50B212E3C603C0010E208 /* Font.swift in Sources */,
 				E54008732E503FFF00AF4B34 /* SearchView.swift in Sources */,
 				E5B5F6192E8DA15600A61167 /* PostResponseModel.swift in Sources */,
+				E5D24FAB2EA94E1000FEEEF5 /* VeloEventComponent.swift in Sources */,
 				E5AC973D2E71EC5C00B27508 /* SavedRoutesModel.swift in Sources */,
 				91A5B6922E3B0EBC00038DE9 /* MapsLocationService.swift in Sources */,
 				91A5B68E2E3B0A4400038DE9 /* LoginView.swift in Sources */,
+				E5D24FAD2EA9504100FEEEF5 /* EventsViewModel.swift in Sources */,
 				911BF2F02E43C3E400CEEAB0 /* SavedRoutesView.swift in Sources */,
 				91A5B6852E3B07A700038DE9 /* NavigationRouter.swift in Sources */,
 			);

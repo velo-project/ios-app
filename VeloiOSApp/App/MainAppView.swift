@@ -37,7 +37,7 @@ struct MainAppView: View {
                 
             } else {
                 Tab("eventos", systemImage: "ticket", value: 4) {
-                    LoginView(selectedTab: $selectedTab)
+                    EventsView()
                 }
                 
                 Tab("rotas", systemImage: "bookmark", value: 5) {
