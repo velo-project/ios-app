@@ -38,6 +38,7 @@
 		E5B5F6132E8D9DE200A61167 /* PostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5F6122E8D9DD600A61167 /* PostComponent.swift */; };
 		E5B5F6152E8DA02C00A61167 /* CommunitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5F6142E8DA02700A61167 /* CommunitiesViewModel.swift */; };
 		E5B5F6192E8DA15600A61167 /* PostResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5F6182E8DA14E00A61167 /* PostResponseModel.swift */; };
+		E5D24FA12EA9471B00FEEEF5 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = E5D24FA02EA9471B00FEEEF5 /* GoogleMaps */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5D24FA12EA9471B00FEEEF5 /* GoogleMaps in Frameworks */,
 				9119837F2E42C3CC0040C992 /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,7 +328,6 @@
 		91A5B68F2E3B0E9D00038DE9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E5B5F6162E8DA0FC00A61167 /* Communities */,
 				911983802E42C59C0040C992 /* Auth */,
 				91A5B6902E3B0EA700038DE9 /* Maps */,
 			);
@@ -425,13 +426,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		E5B5F6162E8DA0FC00A61167 /* Communities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Communities;
-			sourceTree = "<group>";
-		};
 		E5B5F6172E8DA14900A61167 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +452,7 @@
 			name = VeloiOSApp;
 			packageProductDependencies = (
 				9119837E2E42C3CC0040C992 /* KeychainSwift */,
+				E5D24FA02EA9471B00FEEEF5 /* GoogleMaps */,
 			);
 			productName = VeloiOSApp;
 			productReference = 91A5B6562E3B058900038DE9 /* Velo.app */;
@@ -533,7 +528,7 @@
 			mainGroup = 91A5B64D2E3B058900038DE9;
 			packageReferences = (
 				9119837D2E42C3CC0040C992 /* XCRemoteSwiftPackageReference "keychain-swift" */,
-				E55209382EA1376800382679 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
+				E5D24F9F2EA9471B00FEEEF5 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
 			);
 			productRefGroup = 91A5B6572E3B058900038DE9 /* Products */;
 			projectDirPath = "";
@@ -936,7 +931,7 @@
 				minimumVersion = 24.0.0;
 			};
 		};
-		E55209382EA1376800382679 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
+		E5D24F9F2EA9471B00FEEEF5 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googlemaps/ios-maps-sdk";
 			requirement = {
@@ -951,6 +946,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9119837D2E42C3CC0040C992 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
+		};
+		E5D24FA02EA9471B00FEEEF5 /* GoogleMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5D24F9F2EA9471B00FEEEF5 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
+			productName = GoogleMaps;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
