@@ -49,21 +49,15 @@ struct LoginView: View {
                     }
                     .frame(maxWidth: .infinity)
                     
-                    Button(action: {
+                    VeloButton {
+                        Text("entrar")
+                    } action: {
                         let token = viewModel.login()
                         if (token.isAuthenticated) {
                             selectedTab = 1
                             dimiss()
                         }
-                    }) {
-                        Text("entrar")
                     }
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity)
-                    .padding(.all, 13)
-                    .background(.green)
-                    .cornerRadius(50)
-                    .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 4)
                 }
             }
             Spacer()
