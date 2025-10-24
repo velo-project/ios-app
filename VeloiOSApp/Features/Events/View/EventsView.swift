@@ -45,6 +45,9 @@ struct EventsView: View {
                         HStack(spacing: 16) {
                              ForEach(viewModel.trendingEvents) { event in
                                 VeloEventComponent(event: event)
+                                     .onTapGesture {
+                                         viewModel.selectedEvent = event
+                                     }
                             }
                         }
                         .padding(.horizontal)
@@ -61,6 +64,9 @@ struct EventsView: View {
                         HStack(spacing: 16) {
                             ForEach(viewModel.lastKnowEvents) { event in
                                 VeloEventComponent(event: event)
+                                    .onTapGesture {
+                                        viewModel.selectedEvent = event
+                                    }
                             }
                         }
                         .padding(.horizontal)
