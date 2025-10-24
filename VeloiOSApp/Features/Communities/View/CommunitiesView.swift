@@ -14,19 +14,24 @@ struct CommunitiesView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 VStack {
-                    Text("suas comunidades").bold()
+                    Text("suas comunidades")
+                        .bold()
+                        .font(.title2)
                     HStack {
                         // TODO
                     }
                 }
                 .padding()
                 
-                Text("atividades recentes").bold()
+                Text("atividades recentes")
+                    .bold()
+                    .font(.title2)
                     .padding()
-                
-                ForEach(viewModel.posts) { post in
-                    PostComponent(issuedBy: post.postedBy, issue: "publicou um post", text: post.content, profileImage: "")
-                        .padding()
+                VStack(spacing: 20) {
+                    ForEach(viewModel.posts) { post in
+                        VeloPostComponent(issuedBy: post.postedBy, issue: "publicou um post", text: post.content, profileImage: "")
+                            .padding(.horizontal)
+                    }
                 }
             }
         }

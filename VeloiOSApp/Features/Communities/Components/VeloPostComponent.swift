@@ -8,7 +8,7 @@
 import SwiftUI
 
 @ViewBuilder
-func PostComponent(issuedBy: String, issue: String, text: String, profileImage: String) -> some View {
+func VeloPostComponent(issuedBy: String, issue: String, text: String, profileImage: String) -> some View {
     VStack(alignment: .leading) {
         AsyncImage(url: URL(string: profileImage)) { phase in
             if let image = phase.image {
@@ -29,9 +29,9 @@ func PostComponent(issuedBy: String, issue: String, text: String, profileImage: 
             .font(.headline)
             .bold()
     }
-    .padding()
+    .padding(30)
     .frame(maxWidth: .infinity, alignment: .leading)
     .background(.white)
-    .clipShape(RoundedRectangle(cornerRadius: 10))
-    .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 4)
+    .clipShape(RoundedRectangle(cornerRadius: 30))
+    .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 3)
 }
