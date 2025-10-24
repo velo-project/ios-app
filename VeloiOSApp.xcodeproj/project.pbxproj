@@ -37,7 +37,7 @@
 		E5AC973F2E71F03600B27508 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC973E2E71F02E00B27508 /* DateExtensions.swift */; };
 		E5B5E0252EAAF045000D15D5 /* DetailedEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5E0242EAAF03D000D15D5 /* DetailedEventView.swift */; };
 		E5B5F6102E8D9D8100A61167 /* CommunitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5F60F2E8D9D7B00A61167 /* CommunitiesView.swift */; };
-		E5B5F6132E8D9DE200A61167 /* PostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5F6122E8D9DD600A61167 /* PostComponent.swift */; };
+		E5B5F6132E8D9DE200A61167 /* VeloPostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5F6122E8D9DD600A61167 /* VeloPostComponent.swift */; };
 		E5B5F6152E8DA02C00A61167 /* CommunitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5F6142E8DA02700A61167 /* CommunitiesViewModel.swift */; };
 		E5B5F6192E8DA15600A61167 /* PostResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5F6182E8DA14E00A61167 /* PostResponseModel.swift */; };
 		E5D24FA12EA9471B00FEEEF5 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = E5D24FA02EA9471B00FEEEF5 /* GoogleMaps */; };
@@ -98,7 +98,7 @@
 		E5AC973E2E71F02E00B27508 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		E5B5E0242EAAF03D000D15D5 /* DetailedEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedEventView.swift; sourceTree = "<group>"; };
 		E5B5F60F2E8D9D7B00A61167 /* CommunitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesView.swift; sourceTree = "<group>"; };
-		E5B5F6122E8D9DD600A61167 /* PostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComponent.swift; sourceTree = "<group>"; };
+		E5B5F6122E8D9DD600A61167 /* VeloPostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloPostComponent.swift; sourceTree = "<group>"; };
 		E5B5F6142E8DA02700A61167 /* CommunitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesViewModel.swift; sourceTree = "<group>"; };
 		E5B5F6182E8DA14E00A61167 /* PostResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostResponseModel.swift; sourceTree = "<group>"; };
 		E5D24FA72EA94C5B00FEEEF5 /* BrandEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandEventsModel.swift; sourceTree = "<group>"; };
@@ -435,7 +435,7 @@
 		E5B5F6112E8D9DC700A61167 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				E5B5F6122E8D9DD600A61167 /* PostComponent.swift */,
+				E5B5F6122E8D9DD600A61167 /* VeloPostComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -635,7 +635,7 @@
 				9119837C2E42C3460040C992 /* TokenStore.swift in Sources */,
 				91A5B68A2E3B088F00038DE9 /* HomeView.swift in Sources */,
 				91A50B2A2E3C642C0010E208 /* VeloTextField.swift in Sources */,
-				E5B5F6132E8D9DE200A61167 /* PostComponent.swift in Sources */,
+				E5B5F6132E8D9DE200A61167 /* VeloPostComponent.swift in Sources */,
 				E58D21752EABEE4700FF5EF5 /* VeloButton.swift in Sources */,
 				E5B5F6102E8D9D8100A61167 /* CommunitiesView.swift in Sources */,
 				911983822E42C5AD0040C992 /* AuthService.swift in Sources */,

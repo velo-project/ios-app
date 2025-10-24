@@ -13,7 +13,6 @@ struct EventsView: View {
      
     var body: some View {
         ScrollView {
-            Spacer()
             VStack(alignment: .leading, spacing: 24) {
                 
                 VStack(alignment: .leading, spacing: 8) {
