@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct DetailedEventView: View {
+    @Environment(\.dismiss) var dimiss
     var event: BrandEventsModel
     
     var body: some View {
@@ -54,7 +55,7 @@ struct DetailedEventView: View {
         VeloButton {
             Text("inscrever-se")
         } action: {
-            print("olar")
+            dimiss()
         }
         .padding()
     }
