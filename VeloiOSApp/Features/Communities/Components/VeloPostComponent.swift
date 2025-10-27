@@ -32,6 +32,6 @@ func VeloPostComponent(issuedBy: String, issue: String, text: String, profileIma
     .padding(30)
     .frame(maxWidth: .infinity, alignment: .leading)
     .background(.white)
-    .clipShape(RoundedRectangle(cornerRadius: 30))
+    .clipShape(RoundedRectangle(cornerRadius: 20))
     .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 3)
 }
