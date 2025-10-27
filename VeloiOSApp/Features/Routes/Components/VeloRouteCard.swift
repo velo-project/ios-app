@@ -40,5 +40,5 @@ public func VeloRouteCard(initialLocation: String, endLocation: String, lastTime
     .frame(maxWidth: .infinity)
     .background(.white)
     .clipShape(RoundedRectangle(cornerRadius: 20))
-    .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 4)
+    .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 3)
 }
