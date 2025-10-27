@@ -30,6 +30,7 @@
 		91A5B6922E3B0EBC00038DE9 /* MapsLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B6912E3B0EBC00038DE9 /* MapsLocationService.swift */; };
 		E54008732E503FFF00AF4B34 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54008722E503FFF00AF4B34 /* SearchView.swift */; };
 		E55209352EA133D000382679 /* VeloRouteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55209332EA133CB00382679 /* VeloRouteCard.swift */; };
+		E5591A7B2EAFE4000075A8DF /* VeloEventCodeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5591A7A2EAFE3E30075A8DF /* VeloEventCodeComponent.swift */; };
 		E589BD462EA13B9A003568E6 /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589BD452EA13B84003568E6 /* GoogleMapsView.swift */; };
 		E58D21752EABEE4700FF5EF5 /* VeloButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D21742EABEE3E00FF5EF5 /* VeloButton.swift */; };
 		E5AC973A2E71EBEA00B27508 /* SavedRoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC97392E71EBDD00B27508 /* SavedRoutesViewModel.swift */; };
@@ -91,6 +92,7 @@
 		91A5B6912E3B0EBC00038DE9 /* MapsLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsLocationService.swift; sourceTree = "<group>"; };
 		E54008722E503FFF00AF4B34 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		E55209332EA133CB00382679 /* VeloRouteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloRouteCard.swift; sourceTree = "<group>"; };
+		E5591A7A2EAFE3E30075A8DF /* VeloEventCodeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloEventCodeComponent.swift; sourceTree = "<group>"; };
 		E589BD452EA13B84003568E6 /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
 		E58D21742EABEE3E00FF5EF5 /* VeloButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloButton.swift; sourceTree = "<group>"; };
 		E5AC97392E71EBDD00B27508 /* SavedRoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRoutesViewModel.swift; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 		E5D24FA92EA94DFA00FEEEF5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E5591A7A2EAFE3E30075A8DF /* VeloEventCodeComponent.swift */,
 				E5D24FAA2EA94E0800FEEEF5 /* VeloEventComponent.swift */,
 			);
 			path = Components;
@@ -632,6 +635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E589BD462EA13B9A003568E6 /* GoogleMapsView.swift in Sources */,
+				E5591A7B2EAFE4000075A8DF /* VeloEventCodeComponent.swift in Sources */,
 				9119837C2E42C3460040C992 /* TokenStore.swift in Sources */,
 				91A5B68A2E3B088F00038DE9 /* HomeView.swift in Sources */,
 				91A50B2A2E3C642C0010E208 /* VeloTextField.swift in Sources */,
