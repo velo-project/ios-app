@@ -17,11 +17,12 @@ struct VeloButton<Content: View>: View {
             content()
                 .foregroundStyle(.black)
                 .bold()
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(.green)
+                .clipShape(RoundedRectangle(cornerRadius: 50))
+                .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 4)
         }
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background(.green)
-        .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 4)
-        .clipShape(RoundedRectangle(cornerRadius: 50))
+        .buttonStyle(.plain)
     }
 }
