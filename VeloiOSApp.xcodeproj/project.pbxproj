@@ -179,7 +179,6 @@
 		911983802E42C59C0040C992 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				911983812E42C5AD0040C992 /* AuthService.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -472,6 +471,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E5B583092EC14CC5000A6A1B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				911983812E42C5AD0040C992 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		E5B5F60B2E8D9D5200A61167 /* Communities */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +570,7 @@
 		E5F9B9FC2EBFFE0C0035244D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E5B583092EC14CC5000A6A1B /* Services */,
 				E5F9B9FD2EBFFE1B0035244D /* Network */,
 			);
 			path = Core;
