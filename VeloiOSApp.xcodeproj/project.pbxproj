@@ -46,6 +46,17 @@
 		E5D24FAB2EA94E1000FEEEF5 /* VeloEventComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D24FAA2EA94E0800FEEEF5 /* VeloEventComponent.swift */; };
 		E5D24FAD2EA9504100FEEEF5 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D24FAC2EA9503700FEEEF5 /* EventsViewModel.swift */; };
 		E5D24FAF2EA951AE00FEEEF5 /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D24FAE2EA951A900FEEEF5 /* EventsView.swift */; };
+		E5F9B9FF2EBFFE290035244D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9B9FE2EBFFE250035244D /* Endpoint.swift */; };
+		E5F9BA012EBFFF3F0035244D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9BA002EBFFF3D0035244D /* APIClient.swift */; };
+		E5F9BA062EC008C30035244D /* SocialMedia+APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9BA052EC008BD0035244D /* SocialMedia+APIClient.swift */; };
+		E5F9BA092EC00F040035244D /* SocialMedia+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9BA082EC00EFE0035244D /* SocialMedia+Endpoint.swift */; };
+		E5F9BA0C2EC00FCA0035244D /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9BA0B2EC00FC50035244D /* Feed.swift */; };
+		E5F9BA0E2EC010350035244D /* Hashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9BA0D2EC010310035244D /* Hashtag.swift */; };
+		E5F9BA102EC010510035244D /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9BA0F2EC0104B0035244D /* Community.swift */; };
+		E5F9BA122EC0115C0035244D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9BA112EC011590035244D /* Comment.swift */; };
+		E5F9BA142EC012130035244D /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9BA132EC012100035244D /* Member.swift */; };
+		E5F9BA162EC012810035244D /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9BA152EC0127E0035244D /* Follower.swift */; };
+		E5F9BA182EC014830035244D /* UsersLiked.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9BA172EC0147B0035244D /* UsersLiked.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +118,17 @@
 		E5D24FAA2EA94E0800FEEEF5 /* VeloEventComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloEventComponent.swift; sourceTree = "<group>"; };
 		E5D24FAC2EA9503700FEEEF5 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 		E5D24FAE2EA951A900FEEEF5 /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
+		E5F9B9FE2EBFFE250035244D /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		E5F9BA002EBFFF3D0035244D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		E5F9BA052EC008BD0035244D /* SocialMedia+APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SocialMedia+APIClient.swift"; sourceTree = "<group>"; };
+		E5F9BA082EC00EFE0035244D /* SocialMedia+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SocialMedia+Endpoint.swift"; sourceTree = "<group>"; };
+		E5F9BA0B2EC00FC50035244D /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		E5F9BA0D2EC010310035244D /* Hashtag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hashtag.swift; sourceTree = "<group>"; };
+		E5F9BA0F2EC0104B0035244D /* Community.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
+		E5F9BA112EC011590035244D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		E5F9BA132EC012100035244D /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		E5F9BA152EC0127E0035244D /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		E5F9BA172EC0147B0035244D /* UsersLiked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersLiked.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +270,7 @@
 		91A5B6582E3B058900038DE9 /* VeloiOSApp */ = {
 			isa = PBXGroup;
 			children = (
+				E5F9B9FC2EBFFE0C0035244D /* Core */,
 				91A50B1F2E3C5F9C0010E208 /* Info.plist */,
 				91A50B1B2E3C5EC20010E208 /* Shared */,
 				911B835E2E3BE65B00281364 /* App */,
@@ -495,6 +518,56 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		E5F9B9FC2EBFFE0C0035244D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E5F9B9FD2EBFFE1B0035244D /* Network */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E5F9B9FD2EBFFE1B0035244D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E5F9BA022EC008460035244D /* APIs */,
+				E5F9BA002EBFFF3D0035244D /* APIClient.swift */,
+				E5F9B9FE2EBFFE250035244D /* Endpoint.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E5F9BA022EC008460035244D /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				E5F9BA072EC00EEC0035244D /* SocialMedia */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		E5F9BA072EC00EEC0035244D /* SocialMedia */ = {
+			isa = PBXGroup;
+			children = (
+				E5F9BA0A2EC00FB50035244D /* Models */,
+				E5F9BA082EC00EFE0035244D /* SocialMedia+Endpoint.swift */,
+				E5F9BA052EC008BD0035244D /* SocialMedia+APIClient.swift */,
+			);
+			path = SocialMedia;
+			sourceTree = "<group>";
+		};
+		E5F9BA0A2EC00FB50035244D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5F9BA172EC0147B0035244D /* UsersLiked.swift */,
+				E5F9BA152EC0127E0035244D /* Follower.swift */,
+				E5F9BA132EC012100035244D /* Member.swift */,
+				E5F9BA112EC011590035244D /* Comment.swift */,
+				E5F9BA0F2EC0104B0035244D /* Community.swift */,
+				E5F9BA0D2EC010310035244D /* Hashtag.swift */,
+				E5F9BA0B2EC00FC50035244D /* Feed.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -639,17 +712,24 @@
 				9119837C2E42C3460040C992 /* TokenStore.swift in Sources */,
 				91A5B68A2E3B088F00038DE9 /* HomeView.swift in Sources */,
 				91A50B2A2E3C642C0010E208 /* VeloTextField.swift in Sources */,
+				E5F9BA012EBFFF3F0035244D /* APIClient.swift in Sources */,
 				E5B5F6132E8D9DE200A61167 /* VeloPostComponent.swift in Sources */,
 				E58D21752EABEE4700FF5EF5 /* VeloButton.swift in Sources */,
 				E5B5F6102E8D9D8100A61167 /* CommunitiesView.swift in Sources */,
+				E5F9BA062EC008C30035244D /* SocialMedia+APIClient.swift in Sources */,
 				911983822E42C5AD0040C992 /* AuthService.swift in Sources */,
 				E55209352EA133D000382679 /* VeloRouteCard.swift in Sources */,
+				E5F9B9FF2EBFFE290035244D /* Endpoint.swift in Sources */,
 				E5D24FA82EA94C6300FEEEF5 /* BrandEventsModel.swift in Sources */,
 				911BF2F32E43CACB00CEEAB0 /* VeloRoundedCorner.swift in Sources */,
+				E5F9BA092EC00F040035244D /* SocialMedia+Endpoint.swift in Sources */,
 				E5AC973F2E71F03600B27508 /* DateExtensions.swift in Sources */,
 				E5B5F6152E8DA02C00A61167 /* CommunitiesViewModel.swift in Sources */,
 				911B835D2E3BDA2A00281364 /* HomeViewModel.swift in Sources */,
+				E5F9BA0C2EC00FCA0035244D /* Feed.swift in Sources */,
+				E5F9BA182EC014830035244D /* UsersLiked.swift in Sources */,
 				E5AC973A2E71EBEA00B27508 /* SavedRoutesViewModel.swift in Sources */,
+				E5F9BA102EC010510035244D /* Community.swift in Sources */,
 				911B83612E3BE67400281364 /* MainAppView.swift in Sources */,
 				E5B5E0252EAAF045000D15D5 /* DetailedEventView.swift in Sources */,
 				E5D24FAF2EA951AE00FEEEF5 /* EventsView.swift in Sources */,
@@ -658,13 +738,17 @@
 				91A50B212E3C603C0010E208 /* Font.swift in Sources */,
 				E54008732E503FFF00AF4B34 /* SearchView.swift in Sources */,
 				E5B5F6192E8DA15600A61167 /* PostResponseModel.swift in Sources */,
+				E5F9BA0E2EC010350035244D /* Hashtag.swift in Sources */,
 				E5D24FAB2EA94E1000FEEEF5 /* VeloEventComponent.swift in Sources */,
 				E5AC973D2E71EC5C00B27508 /* SavedRoutesModel.swift in Sources */,
 				91A5B6922E3B0EBC00038DE9 /* MapsLocationService.swift in Sources */,
+				E5F9BA122EC0115C0035244D /* Comment.swift in Sources */,
 				91A5B68E2E3B0A4400038DE9 /* LoginView.swift in Sources */,
 				E5D24FAD2EA9504100FEEEF5 /* EventsViewModel.swift in Sources */,
 				911BF2F02E43C3E400CEEAB0 /* SavedRoutesView.swift in Sources */,
+				E5F9BA162EC012810035244D /* Follower.swift in Sources */,
 				91A5B6852E3B07A700038DE9 /* NavigationRouter.swift in Sources */,
+				E5F9BA142EC012130035244D /* Member.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
