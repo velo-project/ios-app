@@ -15,7 +15,6 @@ struct LoginView: View {
     
     var body: some View {
         ScrollView {
-            Spacer()
             VStack(alignment: .leading, spacing: 50) {
                 Image("AppLogo")
                     .resizable()
@@ -52,17 +51,17 @@ struct LoginView: View {
                     VeloButton {
                         Text("entrar")
                     } action: {
-                        let token = viewModel.login()
-                        if (token.isAuthenticated) {
-                            selectedTab = 1
-                            dimiss()
-                        }
+//                        let token = viewModel.login()
+//                        if (token.isAuthenticated) {
+//                            selectedTab = 1
+//                            dimiss()
+//                        }
                     }
                 }
             }
+            .padding()
             Spacer()
         }
-        .padding()
     }
 }
 

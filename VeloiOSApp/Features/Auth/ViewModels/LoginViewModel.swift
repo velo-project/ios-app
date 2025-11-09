@@ -14,8 +14,8 @@ class LoginViewModel: ObservableObject {
     
     private var authService = AuthService()
     
-    func login() -> JwtToken {
-        let token = authService.login(email: email, password: password)
-        return token
+    func login() -> Void {
+//        let token = authService.login(email: email, password: password)
+//        return token
     }
 }
