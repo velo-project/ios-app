@@ -7,14 +7,7 @@
 
 import Foundation
 
-protocol SocialMediaAPIClient {
-    func getFeed() async throws -> [Feed]
-    func publishComment(postId: Int, content: String) async throws
-    func deleteComment(id: Int) async throws
-    func createCommunity(name: String, description: String) async throws
-}
-
-final class SocialMediaAPIClientImpl: SocialMediaAPIClient {
+final class SocialMediaAPIClient {
     private let client = APIClient()
 
     // MARK: - Feed
