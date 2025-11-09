@@ -38,7 +38,6 @@ enum SocialMediaEndpoint: Endpoint {
     case getPostsByUser(userId: Int, page: Int)
 
     // MARK: - Base
-    var baseURL: URL { URL(string: "https://api.seuservidor.com")! }
 
     var path: String {
         switch self {

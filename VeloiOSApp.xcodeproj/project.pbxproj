@@ -36,6 +36,15 @@
 		E5AC973A2E71EBEA00B27508 /* SavedRoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC97392E71EBDD00B27508 /* SavedRoutesViewModel.swift */; };
 		E5AC973D2E71EC5C00B27508 /* SavedRoutesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC973C2E71EC5400B27508 /* SavedRoutesModel.swift */; };
 		E5AC973F2E71F03600B27508 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC973E2E71F02E00B27508 /* DateExtensions.swift */; };
+		E5B582F52EC145B5000A6A1B /* User+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B582F42EC145B0000A6A1B /* User+Endpoint.swift */; };
+		E5B582F82EC149E6000A6A1B /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B582F72EC149E0000A6A1B /* DataExtensions.swift */; };
+		E5B582FA2EC14A88000A6A1B /* User+APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B582F92EC14A80000A6A1B /* User+APIClient.swift */; };
+		E5B582FC2EC14AFF000A6A1B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B582FB2EC14AF9000A6A1B /* User.swift */; };
+		E5B582FE2EC14B18000A6A1B /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B582FD2EC14B16000A6A1B /* Role.swift */; };
+		E5B583022EC14B34000A6A1B /* LoginKeyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B583012EC14B34000A6A1B /* LoginKeyResponse.swift */; };
+		E5B583042EC14B3A000A6A1B /* LoginTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B583032EC14B3A000A6A1B /* LoginTokenResponse.swift */; };
+		E5B583062EC14B46000A6A1B /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B583052EC14B46000A6A1B /* RegisterResponse.swift */; };
+		E5B583082EC14B52000A6A1B /* StatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B583072EC14B52000A6A1B /* StatusResponse.swift */; };
 		E5B5E0252EAAF045000D15D5 /* DetailedEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5E0242EAAF03D000D15D5 /* DetailedEventView.swift */; };
 		E5B5F6102E8D9D8100A61167 /* CommunitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5F60F2E8D9D7B00A61167 /* CommunitiesView.swift */; };
 		E5B5F6132E8D9DE200A61167 /* VeloPostComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B5F6122E8D9DD600A61167 /* VeloPostComponent.swift */; };
@@ -109,6 +118,15 @@
 		E5AC97392E71EBDD00B27508 /* SavedRoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRoutesViewModel.swift; sourceTree = "<group>"; };
 		E5AC973C2E71EC5400B27508 /* SavedRoutesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRoutesModel.swift; sourceTree = "<group>"; };
 		E5AC973E2E71F02E00B27508 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		E5B582F42EC145B0000A6A1B /* User+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Endpoint.swift"; sourceTree = "<group>"; };
+		E5B582F72EC149E0000A6A1B /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
+		E5B582F92EC14A80000A6A1B /* User+APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+APIClient.swift"; sourceTree = "<group>"; };
+		E5B582FB2EC14AF9000A6A1B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E5B582FD2EC14B16000A6A1B /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		E5B583012EC14B34000A6A1B /* LoginKeyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginKeyResponse.swift; sourceTree = "<group>"; };
+		E5B583032EC14B3A000A6A1B /* LoginTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTokenResponse.swift; sourceTree = "<group>"; };
+		E5B583052EC14B46000A6A1B /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
+		E5B583072EC14B52000A6A1B /* StatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusResponse.swift; sourceTree = "<group>"; };
 		E5B5E0242EAAF03D000D15D5 /* DetailedEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedEventView.swift; sourceTree = "<group>"; };
 		E5B5F60F2E8D9D7B00A61167 /* CommunitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesView.swift; sourceTree = "<group>"; };
 		E5B5F6122E8D9DD600A61167 /* VeloPostComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloPostComponent.swift; sourceTree = "<group>"; };
@@ -177,6 +195,7 @@
 		911B835E2E3BE65B00281364 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				E5B582F72EC149E0000A6A1B /* DataExtensions.swift */,
 				E5AC973E2E71F02E00B27508 /* DateExtensions.swift */,
 				91A50B1C2E3C5ED10010E208 /* Fonts */,
 				911B83602E3BE67400281364 /* MainAppView.swift */,
@@ -430,6 +449,29 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E5B582F32EC144FB000A6A1B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				E5B582F62EC1466F000A6A1B /* Models */,
+				E5B582F42EC145B0000A6A1B /* User+Endpoint.swift */,
+				E5B582F92EC14A80000A6A1B /* User+APIClient.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		E5B582F62EC1466F000A6A1B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5B583072EC14B52000A6A1B /* StatusResponse.swift */,
+				E5B583052EC14B46000A6A1B /* RegisterResponse.swift */,
+				E5B583032EC14B3A000A6A1B /* LoginTokenResponse.swift */,
+				E5B583012EC14B34000A6A1B /* LoginKeyResponse.swift */,
+				E5B582FD2EC14B16000A6A1B /* Role.swift */,
+				E5B582FB2EC14AF9000A6A1B /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E5B5F60B2E8D9D5200A61167 /* Communities */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,6 +581,7 @@
 		E5F9BA022EC008460035244D /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				E5B582F32EC144FB000A6A1B /* User */,
 				E5F9BA072EC00EEC0035244D /* SocialMedia */,
 			);
 			path = APIs;
@@ -708,6 +751,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E589BD462EA13B9A003568E6 /* GoogleMapsView.swift in Sources */,
+				E5B582F82EC149E6000A6A1B /* DataExtensions.swift in Sources */,
 				E5591A7B2EAFE4000075A8DF /* VeloEventCodeComponent.swift in Sources */,
 				9119837C2E42C3460040C992 /* TokenStore.swift in Sources */,
 				91A5B68A2E3B088F00038DE9 /* HomeView.swift in Sources */,
@@ -719,14 +763,19 @@
 				E5F9BA062EC008C30035244D /* SocialMedia+APIClient.swift in Sources */,
 				911983822E42C5AD0040C992 /* AuthService.swift in Sources */,
 				E55209352EA133D000382679 /* VeloRouteCard.swift in Sources */,
+				E5B583062EC14B46000A6A1B /* RegisterResponse.swift in Sources */,
 				E5F9B9FF2EBFFE290035244D /* Endpoint.swift in Sources */,
+				E5B582FE2EC14B18000A6A1B /* Role.swift in Sources */,
 				E5D24FA82EA94C6300FEEEF5 /* BrandEventsModel.swift in Sources */,
 				911BF2F32E43CACB00CEEAB0 /* VeloRoundedCorner.swift in Sources */,
 				E5F9BA092EC00F040035244D /* SocialMedia+Endpoint.swift in Sources */,
+				E5B583022EC14B34000A6A1B /* LoginKeyResponse.swift in Sources */,
 				E5AC973F2E71F03600B27508 /* DateExtensions.swift in Sources */,
 				E5B5F6152E8DA02C00A61167 /* CommunitiesViewModel.swift in Sources */,
+				E5B582F52EC145B5000A6A1B /* User+Endpoint.swift in Sources */,
 				911B835D2E3BDA2A00281364 /* HomeViewModel.swift in Sources */,
 				E5F9BA0C2EC00FCA0035244D /* Feed.swift in Sources */,
+				E5B582FC2EC14AFF000A6A1B /* User.swift in Sources */,
 				E5F9BA182EC014830035244D /* UsersLiked.swift in Sources */,
 				E5AC973A2E71EBEA00B27508 /* SavedRoutesViewModel.swift in Sources */,
 				E5F9BA102EC010510035244D /* Community.swift in Sources */,
@@ -734,6 +783,7 @@
 				E5B5E0252EAAF045000D15D5 /* DetailedEventView.swift in Sources */,
 				E5D24FAF2EA951AE00FEEEF5 /* EventsView.swift in Sources */,
 				91A5B65A2E3B058900038DE9 /* VeloiOSAppApp.swift in Sources */,
+				E5B583082EC14B52000A6A1B /* StatusResponse.swift in Sources */,
 				911B83642E3BFBD700281364 /* LoginViewModel.swift in Sources */,
 				91A50B212E3C603C0010E208 /* Font.swift in Sources */,
 				E54008732E503FFF00AF4B34 /* SearchView.swift in Sources */,
@@ -744,8 +794,10 @@
 				91A5B6922E3B0EBC00038DE9 /* MapsLocationService.swift in Sources */,
 				E5F9BA122EC0115C0035244D /* Comment.swift in Sources */,
 				91A5B68E2E3B0A4400038DE9 /* LoginView.swift in Sources */,
+				E5B582FA2EC14A88000A6A1B /* User+APIClient.swift in Sources */,
 				E5D24FAD2EA9504100FEEEF5 /* EventsViewModel.swift in Sources */,
 				911BF2F02E43C3E400CEEAB0 /* SavedRoutesView.swift in Sources */,
+				E5B583042EC14B3A000A6A1B /* LoginTokenResponse.swift in Sources */,
 				E5F9BA162EC012810035244D /* Follower.swift in Sources */,
 				91A5B6852E3B07A700038DE9 /* NavigationRouter.swift in Sources */,
 				E5F9BA142EC012130035244D /* Member.swift in Sources */,
