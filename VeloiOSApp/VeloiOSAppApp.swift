@@ -23,20 +23,6 @@ struct VeloiOSAppApp: App {
                 .preferredColorScheme(.light)
                 .environment(\.font, .body)
                 .environmentObject(router)
-//            NavigationStack(path: $router.path) {
-//                MainAppView().navigationDestination(for: Route.self) { route in
-//                    switch route {
-//                    case .home:
-//                        MainAppView()
-//                    case .login:
-//                        LoginView(router: router)
-//                    }
-//                }
-//                .preferredColorScheme(.light)
-//                .environment(\.font, .body)
-//                .environmentObject(router)
-//            }
-
         }
     }
 }
