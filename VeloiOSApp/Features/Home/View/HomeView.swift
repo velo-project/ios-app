@@ -14,6 +14,7 @@ struct HomeView: View {
     var body: some View {
         GoogleMapsView(lastKnowLocation: $viewModel.lastKnowLocation)
             .ignoresSafeArea()
+            .veloCommonToolbar()
     }
 }
 

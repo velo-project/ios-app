@@ -33,12 +33,12 @@ struct MainAppView: View {
         ZStack {
             TabView(selection: $router.actualTab) {
                 Tab("mapa", systemImage: "map", value: .maps) {
-                    HomeView()
+                    NavigationStack { HomeView() }
                 }
                 
                 Tab("eventos", systemImage: "ticket", value: .events) {
                     if tokenStore.getJwtToken().isAuthenticated {
-                        EventsView()
+                        NavigationStack { EventsView() }
                     } else {
                         Text("Faça login para continuar")
                     }
@@ -46,7 +46,7 @@ struct MainAppView: View {
                 
                 Tab("rotas", systemImage: "bookmark", value: .routes) {
                     if tokenStore.getJwtToken().isAuthenticated {
-                        SavedRoutesView()
+                        NavigationStack { SavedRoutesView() }
                     } else {
                         Text("Faça login para continuar")
                     }
@@ -54,7 +54,7 @@ struct MainAppView: View {
                 
                 Tab("amigos", systemImage: "person.2", value: .communities) {
                     if tokenStore.getJwtToken().isAuthenticated {
-                        CommunitiesView()
+                        NavigationStack { CommunitiesView() }
                     } else {
                         Text("Faça login para continuar")
                     }

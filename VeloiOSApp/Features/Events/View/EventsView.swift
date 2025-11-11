@@ -13,7 +13,6 @@ struct EventsView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("eventos").font(.title2).bold().padding()
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     VStack(alignment: .leading, spacing: 8) {
@@ -95,5 +94,7 @@ struct EventsView: View {
                 DetailedEventView(event: event)
             }
         }
+        .navigationTitle("eventos")
+        .veloCommonToolbar()
     }
 }

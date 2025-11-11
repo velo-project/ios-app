@@ -12,7 +12,6 @@ struct SavedRoutesView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("rotas salvas").font(.title2).bold().padding()
             ScrollView {
                 LazyVStack(spacing: 16) {
                     ForEach(viewModel.routes) { route in
@@ -27,6 +26,8 @@ struct SavedRoutesView: View {
             }
             .frame(maxWidth: .infinity)
         }
+        .navigationTitle("rotas")
+        .veloCommonToolbar()
     }
 }
 

@@ -31,6 +31,7 @@
 		E54008732E503FFF00AF4B34 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54008722E503FFF00AF4B34 /* SearchView.swift */; };
 		E55209352EA133D000382679 /* VeloRouteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55209332EA133CB00382679 /* VeloRouteCard.swift */; };
 		E55662F92EC3B6E400290475 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E55662F82EC3B6E400290475 /* Kingfisher */; };
+		E55662FC2EC3C01200290475 /* VeloCommonToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55662FB2EC3C00A00290475 /* VeloCommonToolbar.swift */; };
 		E5591A7B2EAFE4000075A8DF /* VeloEventCodeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5591A7A2EAFE3E30075A8DF /* VeloEventCodeComponent.swift */; };
 		E589BD462EA13B9A003568E6 /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589BD452EA13B84003568E6 /* GoogleMapsView.swift */; };
 		E58D21752EABEE4700FF5EF5 /* VeloButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D21742EABEE3E00FF5EF5 /* VeloButton.swift */; };
@@ -115,6 +116,7 @@
 		91A5B6912E3B0EBC00038DE9 /* MapsLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsLocationService.swift; sourceTree = "<group>"; };
 		E54008722E503FFF00AF4B34 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		E55209332EA133CB00382679 /* VeloRouteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloRouteCard.swift; sourceTree = "<group>"; };
+		E55662FB2EC3C00A00290475 /* VeloCommonToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloCommonToolbar.swift; sourceTree = "<group>"; };
 		E5591A7A2EAFE3E30075A8DF /* VeloEventCodeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloEventCodeComponent.swift; sourceTree = "<group>"; };
 		E589BD452EA13B84003568E6 /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
 		E58D21742EABEE3E00FF5EF5 /* VeloButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloButton.swift; sourceTree = "<group>"; };
@@ -423,6 +425,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		E55662FA2EC3C00300290475 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E55662FB2EC3C00A00290475 /* VeloCommonToolbar.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		E560B4602E526BB30074C5CB /* Stores */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,6 +580,7 @@
 		E5F9B9FC2EBFFE0C0035244D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E55662FA2EC3C00300290475 /* UI */,
 				E5B583092EC14CC5000A6A1B /* Services */,
 				E5F9B9FD2EBFFE1B0035244D /* Network */,
 			);
@@ -802,6 +813,7 @@
 				E5B5830C2EC15332000A6A1B /* MFAView.swift in Sources */,
 				E5D24FAB2EA94E1000FEEEF5 /* VeloEventComponent.swift in Sources */,
 				E5AC973D2E71EC5C00B27508 /* SavedRoutesModel.swift in Sources */,
+				E55662FC2EC3C01200290475 /* VeloCommonToolbar.swift in Sources */,
 				91A5B6922E3B0EBC00038DE9 /* MapsLocationService.swift in Sources */,
 				E5F9BA122EC0115C0035244D /* Comment.swift in Sources */,
 				91A5B68E2E3B0A4400038DE9 /* LoginView.swift in Sources */,

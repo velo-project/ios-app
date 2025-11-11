@@ -35,5 +35,6 @@ struct CommunitiesView: View {
                 }
             }
         }
+        .veloCommonToolbar()
     }
 }
