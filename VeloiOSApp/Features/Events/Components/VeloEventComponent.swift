@@ -7,34 +7,23 @@
 
 import Foundation
 import SwiftUI
+import Kingfisher
 
-@ViewBuilder
+@MainActor @ViewBuilder
 public func VeloEventComponent(event: BrandEventsModel) -> some View {
-    AsyncImage(url: URL(string: event.imageUrl)) { phase in
-        switch phase {
-        case .success(let image):
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-
-        case .failure(_):
+    KFImage(URL(string: event.imageUrl))
+        .placeholder {
             ZStack {
                 Color.gray.opacity(0.3)
                 Image(systemName: "photo.on.rectangle.angled")
                     .font(.largeTitle)
                     .foregroundColor(.gray)
             }
-
-        case .empty:
-            ZStack {
-                Color.gray.opacity(0.3)
-                ProgressView()
-            }
-
-        @unknown default:
-            EmptyView()
         }
-    }
-    .frame(width: 240, height: 140)
-    .clipShape(RoundedRectangle(cornerRadius: 20))
+        .retry(maxCount: 3, interval: .seconds(2))
+        .fade(duration: 0.25)
+        .resizable()
+        .aspectRatio(contentMode: .fill)
+        .frame(width: 240, height: 140)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
 }

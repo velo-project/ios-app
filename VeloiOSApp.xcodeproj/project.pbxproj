@@ -30,6 +30,7 @@
 		91A5B6922E3B0EBC00038DE9 /* MapsLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B6912E3B0EBC00038DE9 /* MapsLocationService.swift */; };
 		E54008732E503FFF00AF4B34 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54008722E503FFF00AF4B34 /* SearchView.swift */; };
 		E55209352EA133D000382679 /* VeloRouteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55209332EA133CB00382679 /* VeloRouteCard.swift */; };
+		E55662F92EC3B6E400290475 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E55662F82EC3B6E400290475 /* Kingfisher */; };
 		E5591A7B2EAFE4000075A8DF /* VeloEventCodeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5591A7A2EAFE3E30075A8DF /* VeloEventCodeComponent.swift */; };
 		E589BD462EA13B9A003568E6 /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589BD452EA13B84003568E6 /* GoogleMapsView.swift */; };
 		E58D21752EABEE4700FF5EF5 /* VeloButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D21742EABEE3E00FF5EF5 /* VeloButton.swift */; };
@@ -158,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55662F92EC3B6E400290475 /* Kingfisher in Frameworks */,
 				E5D24FA12EA9471B00FEEEF5 /* GoogleMaps in Frameworks */,
 				9119837F2E42C3CC0040C992 /* KeychainSwift in Frameworks */,
 			);
@@ -636,6 +638,7 @@
 			packageProductDependencies = (
 				9119837E2E42C3CC0040C992 /* KeychainSwift */,
 				E5D24FA02EA9471B00FEEEF5 /* GoogleMaps */,
+				E55662F82EC3B6E400290475 /* Kingfisher */,
 			);
 			productName = VeloiOSApp;
 			productReference = 91A5B6562E3B058900038DE9 /* Velo.app */;
@@ -712,6 +715,7 @@
 			packageReferences = (
 				9119837D2E42C3CC0040C992 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				E5D24F9F2EA9471B00FEEEF5 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
+				E55662F72EC3B6E400290475 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 91A5B6572E3B058900038DE9 /* Products */;
 			projectDirPath = "";
@@ -1143,6 +1147,14 @@
 				minimumVersion = 24.0.0;
 			};
 		};
+		E55662F72EC3B6E400290475 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.6.1;
+			};
+		};
 		E5D24F9F2EA9471B00FEEEF5 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googlemaps/ios-maps-sdk";
@@ -1158,6 +1170,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9119837D2E42C3CC0040C992 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
+		};
+		E55662F82EC3B6E400290475 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E55662F72EC3B6E400290475 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		E5D24FA02EA9471B00FEEEF5 /* GoogleMaps */ = {
 			isa = XCSwiftPackageProductDependency;
