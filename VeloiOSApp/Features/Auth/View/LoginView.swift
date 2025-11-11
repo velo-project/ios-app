@@ -62,5 +62,8 @@ struct LoginView: View {
             .padding()
             Spacer()
         }
+        .onAppear {
+            isLoading = false
+        }
     }
 }

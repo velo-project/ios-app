@@ -31,38 +31,36 @@ struct MainAppView: View {
     
     var body: some View {
         ZStack {
-            TabView(selection: $selectedTab) {
-                Tab("mapa", systemImage: "map", value: 0) {
+            TabView(selection: $router.actualTab) {
+                Tab("mapa", systemImage: "map", value: .maps) {
                     HomeView()
                 }
                 
-                if !tokenStore.getJwtToken().isAuthenticated {
-                    Tab("eventos", systemImage: "ticket", value: 1) {
-                        Text("faça login para continuar")
-                    }
-                    
-                    Tab("rotas", systemImage: "bookmark", value: 2) {
-                        Text("faça login para continuar")
-                    }
-                    
-                    Tab("amigos", systemImage: "person.2", value: 3) {
-                        Text("faça login para continuar")
-                    }
-                } else {
-                    Tab("eventos", systemImage: "ticket", value: 4) {
+                Tab("eventos", systemImage: "ticket", value: .events) {
+                    if tokenStore.getJwtToken().isAuthenticated {
                         EventsView()
-                    }
-                    
-                    Tab("rotas", systemImage: "bookmark", value: 5) {
-                        SavedRoutesView()
-                    }
-                    
-                    Tab("amigos", systemImage: "person.2", value: 6) {
-                        CommunitiesView()
+                    } else {
+                        Text("Faça login para continuar")
                     }
                 }
                 
-                Tab(value: 7, role: .search) {
+                Tab("rotas", systemImage: "bookmark", value: .routes) {
+                    if tokenStore.getJwtToken().isAuthenticated {
+                        SavedRoutesView()
+                    } else {
+                        Text("Faça login para continuar")
+                    }
+                }
+                
+                Tab("amigos", systemImage: "person.2", value: .communities) {
+                    if tokenStore.getJwtToken().isAuthenticated {
+                        CommunitiesView()
+                    } else {
+                        Text("Faça login para continuar")
+                    }
+                }
+                
+                Tab(value: .search, role: .search) {
                     SearchView(queryText: $queryText)
                 }
             }
@@ -71,15 +69,19 @@ struct MainAppView: View {
                 case .login:
                     LoginView(activePage: $activePage, isLoading: $isLoading)
                 case .mfa:
-                    MFAView(selectedTab: $selectedTab, code: $code, isLoading: $isLoading)
+                    MFAView(code: $code, isLoading: $isLoading)
                 }
             }
             .tint(.green)
-            .onChange(of: selectedTab) { _, newTab in
-                switch newTab {
-                case 1, 2, 3:
-                    activePage = .login
-                default:
+            .onChange(of: router.actualTab) { _, newTab in
+                if !tokenStore.getJwtToken().isAuthenticated {
+                    switch newTab {
+                    case .events, .routes, .communities:
+                        activePage = .login
+                    default:
+                        activePage = nil
+                    }
+                } else {
                     activePage = nil
                 }
             }
@@ -93,7 +95,6 @@ struct MainAppView: View {
             }
         }
     }
-
 }
 
 #Preview {

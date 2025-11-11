@@ -10,8 +10,8 @@ import SwiftUI
 
 struct MFAView: View {
     @Environment(\.dismiss) var dimiss
+    @EnvironmentObject var router: NavigationRouter
     
-    @Binding var selectedTab: Int
     @Binding var code: String
     @Binding var isLoading: Bool
     
@@ -45,13 +45,15 @@ struct MFAView: View {
                     } action: {
                         if !code.isEmpty {
                             do {
+                                isLoading = true
                                 let success = try await authService.verifyCode(code: code)
                                 if success {
-                                    selectedTab = 1
+                                    router.actualTab = .maps
                                     dimiss()
                                 }
+                                isLoading = false
                             } catch {
-                                print("erro 1")
+                                router.actualTab = .login
                             }
                         }
                     }

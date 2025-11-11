@@ -13,8 +13,18 @@ enum Route: Hashable {
     case login
 }
 
+enum Tabs: Hashable {
+    case login
+    case maps
+    case events
+    case routes
+    case communities
+    case search
+}
+
 final class NavigationRouter: ObservableObject {
     @Published var path = NavigationPath()
+    @Published var actualTab: Tabs = .maps
     
     func navigate(to route: Route) {
         path.append(route)
