@@ -53,11 +53,8 @@ struct LoginView: View {
                     } action: {
                         if viewModel.email != "" && viewModel.password != "" {
                             isLoading = true
-                            
-                            // mock trying to fetch api data
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                                activePage = .mfa
-                            }
+                            await viewModel.login()
+                            activePage = .mfa
                         }
                     }
                 }

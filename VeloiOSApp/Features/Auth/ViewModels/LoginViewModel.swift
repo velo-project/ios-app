@@ -14,8 +14,13 @@ class LoginViewModel: ObservableObject {
     
     private var authService = AuthService()
     
-    func login() -> Void {
-//        let token = authService.login(email: email, password: password)
-//        return token
+    func login() async -> Void {
+        do {
+            try await authService.login(email: email, password: password)
+        } catch {
+            print("erro ocorreu")
+        }
+        
+        
     }
 }

@@ -60,7 +60,8 @@ enum UserEndpoint: Endpoint {
     var headers: [String: String]? {
         let token = TokenStore().getJwtToken().token ?? ""
         var baseHeaders: [String: String] = [
-            "Accept": "application/json"
+            "Accept": "application/json",
+            "Content-Type": "application/json"
         ]
         
         switch self {

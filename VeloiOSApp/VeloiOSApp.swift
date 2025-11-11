@@ -14,7 +14,6 @@ struct VeloiOSAppApp: App {
     
     init() {
         GMSServices.provideAPIKey("AIzaSyAai5EPkSARfPIkmvsDtd9AZY1dZW6UJOU")
-        TokenStore().deleteToken() // Temporarially
     }
     
     var body: some Scene {

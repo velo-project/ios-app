@@ -15,6 +15,8 @@ struct MFAView: View {
     @Binding var code: String
     @Binding var isLoading: Bool
     
+    private let authService = AuthService()
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 50) {
@@ -41,8 +43,17 @@ struct MFAView: View {
                     VeloButton {
                         Text("entrar")
                     } action: {
-                        selectedTab = 1
-                        dimiss()
+                        if !code.isEmpty {
+                            do {
+                                let success = try await authService.verifyCode(code: code)
+                                if success {
+                                    selectedTab = 1
+                                    dimiss()
+                                }
+                            } catch {
+                                print("erro 1")
+                            }
+                        }
                     }
                 }
             }

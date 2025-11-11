@@ -10,10 +10,24 @@ import SwiftUI
 
 struct VeloButton<Content: View>: View {
     var content: () -> Content
-    var action: () -> Void
+    var action: () async -> Void
+    
+    init(@ViewBuilder content: @escaping () -> Content, action: @escaping () async -> Void) {
+        self.content = content
+        self.action = action
+    }
+    
+    init(@ViewBuilder content: @escaping () -> Content, action: @escaping () -> Void) {
+        self.content = content
+        self.action = { action() }
+    }
     
     var body: some View {
-        Button(action: action) {
+        Button(action: {
+            Task {
+                await action()
+            }
+        }) {
             content()
                 .foregroundStyle(.black)
                 .bold()
