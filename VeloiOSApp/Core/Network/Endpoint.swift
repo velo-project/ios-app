@@ -17,7 +17,7 @@ protocol Endpoint {
 
 extension Endpoint {
     #warning("Trocar a URL antes do build")
-    var baseUrl: URL { URL(string: "http://192.168.0.16")! }
+    var baseUrl: URL { URL(string: "http://gabriel-precision-workstation-t5400.tailca716f.ts.net")! }
     
     var request: URLRequest {
         var components = URLComponents(url: baseUrl.appendingPathComponent(path), resolvingAgainstBaseURL: false)!
