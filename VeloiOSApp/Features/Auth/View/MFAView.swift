@@ -53,6 +53,7 @@ struct MFAView: View {
                                 }
                                 isLoading = false
                             } catch {
+                                isLoading = false
                                 router.actualTab = .login
                             }
                         }
