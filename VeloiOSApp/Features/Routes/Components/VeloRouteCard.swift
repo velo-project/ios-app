@@ -8,12 +8,12 @@
 import SwiftUI
 
 @ViewBuilder
-public func VeloRouteCard(initialLocation: String, endLocation: String, lastTimeRun: Date) -> some View {
+func VeloRouteCard(route: Route) -> some View {
     VStack(alignment: .leading, spacing: 0) {
         VStack(alignment: .leading) {
-            Text(initialLocation)
+            Text(route.initialLocation)
             Image(systemName: "arrow.down")
-            Text(endLocation)
+            Text(route.finalLocation)
         }
         .padding(.vertical, 20)
         .bold()
@@ -24,7 +24,7 @@ public func VeloRouteCard(initialLocation: String, endLocation: String, lastTime
         VStack(alignment: .leading) {
             Text("passou por aqui em")
                 .font(.caption2)
-            Text(lastTimeRun.formattedBrazilian())
+            Text(route.visitedAt.formattedBrazilian())
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.all, 25)

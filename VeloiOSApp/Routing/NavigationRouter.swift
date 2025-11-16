@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum Route: Hashable {
+enum AppRoute: Hashable {
     case home
     case login
 }
@@ -26,7 +26,7 @@ final class NavigationRouter: ObservableObject {
     @Published var path = NavigationPath()
     @Published var actualTab: Tabs = .maps
     
-    func navigate(to route: Route) {
+    func navigate(to route: AppRoute) {
         path.append(route)
     }
     

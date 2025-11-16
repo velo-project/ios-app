@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct SavedRoutesView: View {
-    private var viewModel = SavedRoutesViewModel()
+    @StateObject private var viewModel: SavedRoutesViewModel
+    
+    init(viewModel: SavedRoutesViewModel = SavedRoutesViewModel()) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView {
                 LazyVStack(spacing: 16) {
                     ForEach(viewModel.routes) { route in
-                        VeloRouteCard(
-                            initialLocation: route.initialLocation,
-                            endLocation: route.finalLocation,
-                            lastTimeRun: route.lastTimeRun)
+                        VeloRouteCard(route: route)
                     }
                 }
                 .padding()
@@ -28,6 +29,9 @@ struct SavedRoutesView: View {
         }
         .navigationTitle("rotas")
         .veloCommonToolbar()
+        .task {
+            await viewModel.loadRoutesIfNeed()
+        }
     }
 }
 

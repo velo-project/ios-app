@@ -20,7 +20,5 @@ class LoginViewModel: ObservableObject {
         } catch {
             print("erro ocorreu")
         }
-        
-        
     }
 }
