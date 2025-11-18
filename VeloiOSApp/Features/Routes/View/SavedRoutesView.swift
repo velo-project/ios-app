@@ -16,16 +16,26 @@ struct SavedRoutesView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            ScrollView {
-                LazyVStack(spacing: 16) {
-                    ForEach(viewModel.routes) { route in
-                        VeloRouteCard(route: route)
+            if !$viewModel.routes.isEmpty {
+                ScrollView {
+                    LazyVStack(spacing: 16) {
+                        ForEach(viewModel.routes) { route in
+                            VeloRouteCard(route: route)
+                        }
                     }
+                    .padding()
+                    .frame(maxWidth: .infinity)
                 }
-                .padding()
                 .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: .infinity)
+            else {
+                VStack(alignment: .center, spacing: 8) {
+                    Text("você não tem rotas salvas").bold()
+                    Text("salve suas rotas preferidas, todas elas apareceram aqui!")
+                        .multilineTextAlignment(.center)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
         }
         .navigationTitle("rotas")
         .veloCommonToolbar()
