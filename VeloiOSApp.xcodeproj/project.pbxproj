@@ -207,8 +207,6 @@
 		911B835E2E3BE65B00281364 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				E5B582F72EC149E0000A6A1B /* DataExtensions.swift */,
-				E5AC973E2E71F02E00B27508 /* DateExtensions.swift */,
 				91A50B1C2E3C5ED10010E208 /* Fonts */,
 				911B83602E3BE67400281364 /* MainAppView.swift */,
 			);
@@ -303,13 +301,13 @@
 				E5F9B9FC2EBFFE0C0035244D /* Core */,
 				91A50B1F2E3C5F9C0010E208 /* Info.plist */,
 				91A50B1B2E3C5EC20010E208 /* Shared */,
-				911B835E2E3BE65B00281364 /* App */,
 				91A5B68F2E3B0E9D00038DE9 /* Services */,
 				91A5B6862E3B086F00038DE9 /* Features */,
 				91A5B6832E3B078300038DE9 /* Routing */,
 				91A5B6592E3B058900038DE9 /* VeloiOSApp.swift */,
 				91A5B65D2E3B058D00038DE9 /* Assets.xcassets */,
 				91A5B65F2E3B058D00038DE9 /* Preview Content */,
+				911B835E2E3BE65B00281364 /* App */,
 			);
 			path = VeloiOSApp;
 			sourceTree = "<group>";
@@ -439,6 +437,8 @@
 		E54483C52ECCED7D00E34870 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E5B582F72EC149E0000A6A1B /* DataExtensions.swift */,
+				E5AC973E2E71F02E00B27508 /* DateExtensions.swift */,
 				E54483C62ECCED8600E34870 /* ViewExtensions.swift */,
 			);
 			path = Extensions;
