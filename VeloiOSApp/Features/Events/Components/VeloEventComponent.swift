@@ -26,4 +26,5 @@ public func VeloEventComponent(event: BrandEventsModel) -> some View {
         .aspectRatio(contentMode: .fill)
         .frame(width: 240, height: 140)
         .clipShape(RoundedRectangle(cornerRadius: 20))
+        .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 3)
 }
