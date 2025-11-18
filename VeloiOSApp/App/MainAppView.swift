@@ -22,10 +22,15 @@ struct MainAppView: View {
     @EnvironmentObject var router: NavigationRouter
     
     @State private var selectedTab = 0
-    @State private var queryText = "" // TODO Refactor to Store
+    @State private var queryText = ""
     @State private var code = ""
     @State private var activePage: SheetStep? = nil
     @State private var isLoading = false
+    
+    @State private var eventsPath: [ViewDestination] = []
+    @State private var homePath: [ViewDestination] = []
+    @State private var routesPath: [ViewDestination] = []
+    @State private var socialPath: [ViewDestination] = []
     
     private var tokenStore = TokenStore()
     
@@ -33,12 +38,28 @@ struct MainAppView: View {
         ZStack {
             TabView(selection: $router.actualTab) {
                 Tab("mapa", systemImage: "map", value: .maps) {
-                    NavigationStack { HomeView() }
+                    NavigationStack(path: $homePath) {
+                        HomeView()
+                            .veloCommonToolbar {
+                                if tokenStore.getJwtToken().isAuthenticated {
+                                    homePath.append(.userProfile)
+                                } else {
+                                    activePage = .login
+                                }
+                            }
+                            .veloUserProfileNavigation()
+                    }
                 }
                 
                 Tab("eventos", systemImage: "ticket", value: .events) {
                     if tokenStore.getJwtToken().isAuthenticated {
-                        NavigationStack { EventsView() }
+                        NavigationStack(path: $eventsPath) {
+                            EventsView()
+                                .veloCommonToolbar {
+                                    eventsPath.append(.userProfile)
+                                }
+                                .veloUserProfileNavigation()
+                        }
                     } else {
                         Text("Faça login para continuar")
                     }
@@ -46,7 +67,13 @@ struct MainAppView: View {
                 
                 Tab("rotas", systemImage: "bookmark", value: .routes) {
                     if tokenStore.getJwtToken().isAuthenticated {
-                        NavigationStack { SavedRoutesView() }
+                        NavigationStack(path: $routesPath) {
+                            SavedRoutesView()
+                                .veloCommonToolbar {
+                                    routesPath.append(.userProfile)
+                                }
+                                .veloUserProfileNavigation()
+                        }
                     } else {
                         Text("Faça login para continuar")
                     }
@@ -54,7 +81,13 @@ struct MainAppView: View {
                 
                 Tab("amigos", systemImage: "person.2", value: .communities) {
                     if tokenStore.getJwtToken().isAuthenticated {
-                        NavigationStack { CommunitiesView() }
+                        NavigationStack(path: $socialPath) {
+                            CommunitiesView()
+                                .veloCommonToolbar {
+                                    socialPath.append(.userProfile)
+                                }
+                                .veloUserProfileNavigation()
+                        }
                     } else {
                         Text("Faça login para continuar")
                     }

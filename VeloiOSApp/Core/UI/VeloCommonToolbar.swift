@@ -9,24 +9,23 @@ import Foundation
 import SwiftUI
 
 struct VeloCommonToolbar: ViewModifier {
+    let action: () -> Void
     
     func body(content: Content) -> some View {
-        content
-            .toolbar {
+        content.toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        print("hi")
+                        action()
                     } label: {
                         Image(systemName: "person")
                     }
                 }
             }
     }
-    
 }
 
 extension View {
-    func veloCommonToolbar() -> some View {
-        self.modifier(VeloCommonToolbar())
+    func veloCommonToolbar(action: @escaping () -> Void) -> some View {
+        self.modifier(VeloCommonToolbar(action: action))
     }
 }

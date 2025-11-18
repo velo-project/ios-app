@@ -95,6 +95,5 @@ struct EventsView: View {
             }
         }
         .navigationTitle("eventos")
-        .veloCommonToolbar()
     }
 }

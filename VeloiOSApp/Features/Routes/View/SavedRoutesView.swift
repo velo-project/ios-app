@@ -38,7 +38,6 @@ struct SavedRoutesView: View {
             }
         }
         .navigationTitle("rotas")
-        .veloCommonToolbar()
         .task {
             await viewModel.loadRoutesIfNeed()
         }
