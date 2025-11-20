@@ -7,24 +7,29 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 enum AppRoute: Hashable {
     case home
     case login
 }
 
-enum Tabs: Hashable {
-    case login
-    case maps
-    case events
-    case routes
-    case communities
-    case search
-}
-
 final class NavigationRouter: ObservableObject {
+    private let tabStore = TabStore.shared
+    private var cancellables = Set<AnyCancellable>()
+    
     @Published var path = NavigationPath()
-    @Published var actualTab: Tabs = .maps
+    @Published var actualTab: Tabs
+    
+    init() {
+        self.actualTab = tabStore.tab
+        tabStore.$tab
+            .sink { [weak self] newTab in
+                self?.actualTab = newTab
+            }
+            .store(in: &cancellables)
+        
+    }
     
     func navigate(to route: AppRoute) {
         path.append(route)

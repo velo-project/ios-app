@@ -21,7 +21,6 @@ enum SheetStep: Identifiable {
 struct MainAppView: View {
     @EnvironmentObject var router: NavigationRouter
     
-    @State private var selectedTab = 0
     @State private var queryText = ""
     @State private var code = ""
     @State private var activePage: SheetStep? = nil

@@ -10,12 +10,12 @@ import SwiftUI
 
 struct MFAView: View {
     @Environment(\.dismiss) var dimiss
-    @EnvironmentObject var router: NavigationRouter
     
     @Binding var code: String
     @Binding var isLoading: Bool
     
     private let authService = AuthService()
+    private let tabStore = TabStore.shared
     
     var body: some View {
         ScrollView {
@@ -48,13 +48,13 @@ struct MFAView: View {
                                 isLoading = true
                                 let success = try await authService.verifyCode(code: code)
                                 if success {
-                                    router.actualTab = .maps
+                                    tabStore.tab = .maps
                                     dimiss()
                                 }
                                 isLoading = false
                             } catch {
                                 isLoading = false
-                                router.actualTab = .login
+                                tabStore.tab = .maps
                             }
                         }
                     }
