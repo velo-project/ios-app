@@ -314,7 +314,6 @@
 				E5F9B9FC2EBFFE0C0035244D /* Core */,
 				91A50B1F2E3C5F9C0010E208 /* Info.plist */,
 				91A50B1B2E3C5EC20010E208 /* Shared */,
-				91A5B68F2E3B0E9D00038DE9 /* Services */,
 				91A5B6862E3B086F00038DE9 /* Features */,
 				91A5B6832E3B078300038DE9 /* Routing */,
 				91A5B6592E3B058900038DE9 /* VeloiOSApp.swift */,
@@ -383,6 +382,7 @@
 		91A5B6882E3B087F00038DE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E589BD452EA13B84003568E6 /* GoogleMapsView.swift */,
 				91A5B6892E3B088F00038DE9 /* HomeView.swift */,
 			);
 			path = View;
@@ -404,23 +404,6 @@
 				91A5B68D2E3B0A4400038DE9 /* LoginView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		91A5B68F2E3B0E9D00038DE9 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				91A5B6902E3B0EA700038DE9 /* Maps */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		91A5B6902E3B0EA700038DE9 /* Maps */ = {
-			isa = PBXGroup;
-			children = (
-				E589BD452EA13B84003568E6 /* GoogleMapsView.swift */,
-				91A5B6912E3B0EBC00038DE9 /* MapsLocationService.swift */,
-			);
-			path = Maps;
 			sourceTree = "<group>";
 		};
 		E50795342ECEAB6300C3F641 /* Models */ = {
@@ -527,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				911983812E42C5AD0040C992 /* AuthService.swift */,
+				91A5B6912E3B0EBC00038DE9 /* MapsLocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
