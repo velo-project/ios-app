@@ -82,6 +82,7 @@
 		E5F9BA142EC012130035244D /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9BA132EC012100035244D /* Member.swift */; };
 		E5F9BA162EC012810035244D /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9BA152EC0127E0035244D /* Follower.swift */; };
 		E5F9BA182EC014830035244D /* UsersLiked.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9BA172EC0147B0035244D /* UsersLiked.swift */; };
+		FA4282DB96994AE6A693A788 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 1367FB6B34374FD7AE81F823 /* Sentry */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +189,7 @@
 				E5D5E48E2ECE33B100C4FFC4 /* GooglePlaces in Frameworks */,
 				E5D24FA12EA9471B00FEEEF5 /* GoogleMaps in Frameworks */,
 				9119837F2E42C3CC0040C992 /* KeychainSwift in Frameworks */,
+				FA4282DB96994AE6A693A788 /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4282DB96994AE6A693A788 /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4282DB96994AE6A693A788 /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,6 +710,7 @@
 				91A5B6522E3B058900038DE9 /* Sources */,
 				91A5B6532E3B058900038DE9 /* Frameworks */,
 				91A5B6542E3B058900038DE9 /* Resources */,
+				EDCCE815B8144DD5991588A3 /* Upload Debug Symbols to Sentry */,
 			);
 			buildRules = (
 			);
@@ -718,6 +723,7 @@
 				E55662F82EC3B6E400290475 /* Kingfisher */,
 				E5D5E48D2ECE33B100C4FFC4 /* GooglePlaces */,
 				E5D5E48F2ECE33B100C4FFC4 /* GooglePlacesSwift */,
+				1367FB6B34374FD7AE81F823 /* Sentry */,
 			);
 			productName = VeloiOSApp;
 			productReference = 91A5B6562E3B058900038DE9 /* Velo.app */;
@@ -796,6 +802,7 @@
 				E5D24F9F2EA9471B00FEEEF5 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
 				E55662F72EC3B6E400290475 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				E5D5E48C2ECE33B100C4FFC4 /* XCRemoteSwiftPackageReference "ios-places-sdk" */,
+				0667550EE05A480EBD479324 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			productRefGroup = 91A5B6572E3B058900038DE9 /* Products */;
 			projectDirPath = "";
@@ -1086,6 +1093,8 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_USER_SCRIPT_SANDBOXING = "NO";
 			};
 			name = Debug;
 		};
@@ -1117,6 +1126,8 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_USER_SCRIPT_SANDBOXING = "NO";
 			};
 			name = Release;
 		};
@@ -1262,6 +1273,14 @@
 				minimumVersion = 10.4.0;
 			};
 		};
+		0667550EE05A480EBD479324 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1290,7 +1309,41 @@
 			package = E5D5E48C2ECE33B100C4FFC4 /* XCRemoteSwiftPackageReference "ios-places-sdk" */;
 			productName = GooglePlacesSwift;
 		};
+		1367FB6B34374FD7AE81F823 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0667550EE05A480EBD479324 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
+		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EDCCE815B8144DD5991588A3 /* Upload Debug Symbols to Sentry */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script is responsible for uploading debug symbols and source context for Sentry.
+if which sentry-cli >/dev/null; then
+  export SENTRY_ORG=velo-93
+  export SENTRY_PROJECT=velo-apple-ios
+  ERROR=$(sentry-cli debug-files upload --include-sources \"$DWARF_DSYM_FOLDER_PATH\" 2>&1 >/dev/null)
+  if [ ! $? -eq 0 ]; then
+    echo \"warning: sentry-cli - $ERROR\"
+  fi
+else
+  echo \"warning: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases\"
+fi
+";
+			name = "Upload Debug Symbols to Sentry";
+		};
+/* End PBXShellScriptBuildPhase section */
 	};
 	rootObject = 91A5B64E2E3B058900038DE9 /* Project object */;
 }

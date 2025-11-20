@@ -1,5 +1,5 @@
 {
-  "originHash" : "444c2a906f13e4660faefbcec0e6b28c996ddbd83b0166e81aa7107728d726ca",
+  "originHash" : "e1530ac815bf198f73603f724f3fa77b83cca437e2dc1ae723d72b2b7d7af7a4",
   "pins" : [
     {
       "identity" : "ios-maps-sdk",
@@ -35,6 +35,15 @@
       "state" : {
         "revision" : "4d75de347da985a70c63af4d799ed482021f6733",
         "version" : "8.6.1"
+      }
+    },
+    {
+      "identity" : "sentry-cocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/getsentry/sentry-cocoa/",
+      "state" : {
+        "revision" : "8627bbc0e663238d516b541d8fc7edd62a627fde",
+        "version" : "8.57.3"
       }
     }
   ],
