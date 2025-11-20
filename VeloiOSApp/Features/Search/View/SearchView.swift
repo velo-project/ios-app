@@ -6,21 +6,61 @@
 //
 
 import SwiftUI
+import GooglePlaces
 
 struct SearchView: View {
-    @Binding var queryText: String
+    @StateObject private var viewModel = SearchViewModel()
+    
+    @Environment(\.dismiss) var dimiss
+    
+    var onPlaceSelected: ((GMSAutocompleteSuggestion) -> Void)?
     
     var body: some View {
         NavigationStack {
             List {
-                Text("Lorem Ipsum")
+                if let errorMessage = viewModel.errorMessage {
+                    Section {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .font(.caption)
+                    }
+                }
+                
+                ForEach(viewModel.suggestions, id: \.self) { suggestion in
+                    
+                    if let place = suggestion.placeSuggestion {
+                        Button {
+                            viewModel.didSelectPlace(suggestion)
+                            onPlaceSelected?(suggestion)
+                            dimiss()
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text(place.attributedPrimaryText.string)
+                                    .font(.headline)
+                                    .foregroundColor(.primary)
+                                
+                                Text(place.attributedSecondaryText?.string ?? "")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(.vertical, 4)
+                        }
+                    }
+                }
             }
-            .navigationTitle("buscar")
-            .searchable(text: $queryText)
+            .listStyle(.plain)
+            .navigationTitle("Buscar")
+            .navigationBarTitleDisplayMode(.inline)
+            .searchable(text: $viewModel.query, placement: .navigationBarDrawer(displayMode: .always), prompt: "buscar endereço")
+            .overlay {
+                if viewModel.suggestions.isEmpty && !viewModel.query.isEmpty {
+                    ContentUnavailableView.search(text: viewModel.query)
+                }
+            }
         }
     }
 }
 
-//#Preview {  
-//    SearchView()
-//}
+#Preview {
+    SearchView()
+}

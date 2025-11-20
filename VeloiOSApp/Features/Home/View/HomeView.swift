@@ -10,9 +10,11 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var router: NavigationRouter
     @StateObject var viewModel = HomeViewModel()
+    @StateObject var locationStore = LocationStore.shared
     
     var body: some View {
-        GoogleMapsView(lastKnowLocation: $viewModel.lastKnowLocation)
+        GoogleMapsView(targetLocation: locationStore.selectedLocation,
+                       lastKnowLocation: $viewModel.lastKnowLocation)
             .ignoresSafeArea()
     }
 }

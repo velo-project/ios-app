@@ -28,6 +28,8 @@
 		91A5B68A2E3B088F00038DE9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B6892E3B088F00038DE9 /* HomeView.swift */; };
 		91A5B68E2E3B0A4400038DE9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B68D2E3B0A4400038DE9 /* LoginView.swift */; };
 		91A5B6922E3B0EBC00038DE9 /* MapsLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A5B6912E3B0EBC00038DE9 /* MapsLocationService.swift */; };
+		E50795332ECEAA6500C3F641 /* LocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50795322ECEAA5B00C3F641 /* LocationStore.swift */; };
+		E50795362ECEAB6500C3F641 /* TargetLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50795352ECEAB6500C3F641 /* TargetLocation.swift */; };
 		E54008732E503FFF00AF4B34 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54008722E503FFF00AF4B34 /* SearchView.swift */; };
 		E54483C42ECCE92900E34870 /* ViewDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54483C32ECCE91E00E34870 /* ViewDestination.swift */; };
 		E54483C72ECCED8A00E34870 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54483C62ECCED8600E34870 /* ViewExtensions.swift */; };
@@ -61,6 +63,10 @@
 		E5D24FAB2EA94E1000FEEEF5 /* VeloEventComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D24FAA2EA94E0800FEEEF5 /* VeloEventComponent.swift */; };
 		E5D24FAD2EA9504100FEEEF5 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D24FAC2EA9503700FEEEF5 /* EventsViewModel.swift */; };
 		E5D24FAF2EA951AE00FEEEF5 /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D24FAE2EA951A900FEEEF5 /* EventsView.swift */; };
+		E5D5E48B2ECE329B00C4FFC4 /* GoogleMaps+PlaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5E48A2ECE328E00C4FFC4 /* GoogleMaps+PlaceManager.swift */; };
+		E5D5E48E2ECE33B100C4FFC4 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = E5D5E48D2ECE33B100C4FFC4 /* GooglePlaces */; };
+		E5D5E4902ECE33B100C4FFC4 /* GooglePlacesSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E5D5E48F2ECE33B100C4FFC4 /* GooglePlacesSwift */; };
+		E5D5E4942ECE35D900C4FFC4 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5E4922ECE35D500C4FFC4 /* SearchViewModel.swift */; };
 		E5DA7F092EC2E0AB0052D0F1 /* MFAKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DA7F082EC2E0A00052D0F1 /* MFAKeyStore.swift */; };
 		E5E07EAE2EC6582D0021A887 /* Routes+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E07EAD2EC658270021A887 /* Routes+Endpoint.swift */; };
 		E5E07EB02EC658360021A887 /* Routes+APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E07EAF2EC658310021A887 /* Routes+APIClient.swift */; };
@@ -120,6 +126,8 @@
 		91A5B6892E3B088F00038DE9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		91A5B68D2E3B0A4400038DE9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		91A5B6912E3B0EBC00038DE9 /* MapsLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsLocationService.swift; sourceTree = "<group>"; };
+		E50795322ECEAA5B00C3F641 /* LocationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStore.swift; sourceTree = "<group>"; };
+		E50795352ECEAB6500C3F641 /* TargetLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetLocation.swift; sourceTree = "<group>"; };
 		E54008722E503FFF00AF4B34 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		E54483C32ECCE91E00E34870 /* ViewDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDestination.swift; sourceTree = "<group>"; };
 		E54483C62ECCED8600E34870 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
@@ -151,6 +159,8 @@
 		E5D24FAA2EA94E0800FEEEF5 /* VeloEventComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloEventComponent.swift; sourceTree = "<group>"; };
 		E5D24FAC2EA9503700FEEEF5 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 		E5D24FAE2EA951A900FEEEF5 /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
+		E5D5E48A2ECE328E00C4FFC4 /* GoogleMaps+PlaceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoogleMaps+PlaceManager.swift"; sourceTree = "<group>"; };
+		E5D5E4922ECE35D500C4FFC4 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		E5DA7F082EC2E0A00052D0F1 /* MFAKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFAKeyStore.swift; sourceTree = "<group>"; };
 		E5E07EAD2EC658270021A887 /* Routes+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+Endpoint.swift"; sourceTree = "<group>"; };
 		E5E07EAF2EC658310021A887 /* Routes+APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+APIClient.swift"; sourceTree = "<group>"; };
@@ -174,6 +184,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E55662F92EC3B6E400290475 /* Kingfisher in Frameworks */,
+				E5D5E4902ECE33B100C4FFC4 /* GooglePlacesSwift in Frameworks */,
+				E5D5E48E2ECE33B100C4FFC4 /* GooglePlaces in Frameworks */,
 				E5D24FA12EA9471B00FEEEF5 /* GoogleMaps in Frameworks */,
 				9119837F2E42C3CC0040C992 /* KeychainSwift in Frameworks */,
 			);
@@ -250,6 +262,7 @@
 		91A50B1B2E3C5EC20010E208 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E5D5E4892ECE326D00C4FFC4 /* Services */,
 				E560B4602E526BB30074C5CB /* Stores */,
 				911BF2F12E43CAB500CEEAB0 /* Shapes */,
 				91A50B282E3C64100010E208 /* Components */,
@@ -410,9 +423,18 @@
 			path = Maps;
 			sourceTree = "<group>";
 		};
+		E50795342ECEAB6300C3F641 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E50795352ECEAB6500C3F641 /* TargetLocation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E54008702E503FE900AF4B34 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				E5D5E4952ECE36AA00C4FFC4 /* ViewModels */,
 				E54008712E503FEF00AF4B34 /* View */,
 			);
 			path = Search;
@@ -463,6 +485,8 @@
 		E560B4602E526BB30074C5CB /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				E50795342ECEAB6300C3F641 /* Models */,
+				E50795322ECEAA5B00C3F641 /* LocationStore.swift */,
 				E5DA7F082EC2E0A00052D0F1 /* MFAKeyStore.swift */,
 				9119837B2E42C3460040C992 /* TokenStore.swift */,
 			);
@@ -595,6 +619,22 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		E5D5E4892ECE326D00C4FFC4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E5D5E48A2ECE328E00C4FFC4 /* GoogleMaps+PlaceManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E5D5E4952ECE36AA00C4FFC4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E5D5E4922ECE35D500C4FFC4 /* SearchViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		E5E07EAC2EC6581B0021A887 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +732,8 @@
 				9119837E2E42C3CC0040C992 /* KeychainSwift */,
 				E5D24FA02EA9471B00FEEEF5 /* GoogleMaps */,
 				E55662F82EC3B6E400290475 /* Kingfisher */,
+				E5D5E48D2ECE33B100C4FFC4 /* GooglePlaces */,
+				E5D5E48F2ECE33B100C4FFC4 /* GooglePlacesSwift */,
 			);
 			productName = VeloiOSApp;
 			productReference = 91A5B6562E3B058900038DE9 /* Velo.app */;
@@ -769,6 +811,7 @@
 				9119837D2E42C3CC0040C992 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				E5D24F9F2EA9471B00FEEEF5 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
 				E55662F72EC3B6E400290475 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				E5D5E48C2ECE33B100C4FFC4 /* XCRemoteSwiftPackageReference "ios-places-sdk" */,
 			);
 			productRefGroup = 91A5B6572E3B058900038DE9 /* Products */;
 			projectDirPath = "";
@@ -828,8 +871,10 @@
 				E5F9BA062EC008C30035244D /* SocialMedia+APIClient.swift in Sources */,
 				911983822E42C5AD0040C992 /* AuthService.swift in Sources */,
 				E55209352EA133D000382679 /* VeloRouteCard.swift in Sources */,
+				E50795362ECEAB6500C3F641 /* TargetLocation.swift in Sources */,
 				E5B583062EC14B46000A6A1B /* RegisterResponse.swift in Sources */,
 				E5F9B9FF2EBFFE290035244D /* Endpoint.swift in Sources */,
+				E50795332ECEAA6500C3F641 /* LocationStore.swift in Sources */,
 				E5B582FE2EC14B18000A6A1B /* Role.swift in Sources */,
 				E5D24FA82EA94C6300FEEEF5 /* BrandEventsModel.swift in Sources */,
 				911BF2F32E43CACB00CEEAB0 /* VeloRoundedCorner.swift in Sources */,
@@ -837,6 +882,7 @@
 				E5B583022EC14B34000A6A1B /* LoginKeyResponse.swift in Sources */,
 				E5AC973F2E71F03600B27508 /* DateExtensions.swift in Sources */,
 				E5E07EAE2EC6582D0021A887 /* Routes+Endpoint.swift in Sources */,
+				E5D5E4942ECE35D900C4FFC4 /* SearchViewModel.swift in Sources */,
 				E5E07EB32EC65A290021A887 /* Track.swift in Sources */,
 				E5B5F6152E8DA02C00A61167 /* CommunitiesViewModel.swift in Sources */,
 				E5B582F52EC145B5000A6A1B /* User+Endpoint.swift in Sources */,
@@ -844,6 +890,7 @@
 				911B835D2E3BDA2A00281364 /* HomeViewModel.swift in Sources */,
 				E5F9BA0C2EC00FCA0035244D /* Feed.swift in Sources */,
 				E5B582FC2EC14AFF000A6A1B /* User.swift in Sources */,
+				E5D5E48B2ECE329B00C4FFC4 /* GoogleMaps+PlaceManager.swift in Sources */,
 				E5F9BA182EC014830035244D /* UsersLiked.swift in Sources */,
 				E5AC973A2E71EBEA00B27508 /* SavedRoutesViewModel.swift in Sources */,
 				E5F9BA102EC010510035244D /* Community.swift in Sources */,
@@ -1223,6 +1270,14 @@
 				minimumVersion = 10.4.0;
 			};
 		};
+		E5D5E48C2ECE33B100C4FFC4 /* XCRemoteSwiftPackageReference "ios-places-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-places-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1240,6 +1295,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E5D24F9F2EA9471B00FEEEF5 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
 			productName = GoogleMaps;
+		};
+		E5D5E48D2ECE33B100C4FFC4 /* GooglePlaces */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5D5E48C2ECE33B100C4FFC4 /* XCRemoteSwiftPackageReference "ios-places-sdk" */;
+			productName = GooglePlaces;
+		};
+		E5D5E48F2ECE33B100C4FFC4 /* GooglePlacesSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5D5E48C2ECE33B100C4FFC4 /* XCRemoteSwiftPackageReference "ios-places-sdk" */;
+			productName = GooglePlacesSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

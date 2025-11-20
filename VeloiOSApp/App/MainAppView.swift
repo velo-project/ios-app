@@ -94,7 +94,7 @@ struct MainAppView: View {
                 }
                 
                 Tab(value: .search, role: .search) {
-                    SearchView(queryText: $queryText)
+                    SearchView()
                 }
             }
             .sheet(item: $activePage) { page in

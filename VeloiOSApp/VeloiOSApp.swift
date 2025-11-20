@@ -7,6 +7,7 @@
 
 import SwiftUI
 import GoogleMaps
+import GooglePlaces
 
 @main
 struct VeloiOSAppApp: App {
@@ -14,6 +15,7 @@ struct VeloiOSAppApp: App {
     
     init() {
         GMSServices.provideAPIKey("AIzaSyAai5EPkSARfPIkmvsDtd9AZY1dZW6UJOU")
+        GMSPlacesClient.provideAPIKey("AIzaSyAai5EPkSARfPIkmvsDtd9AZY1dZW6UJOU")
         //TokenStore().deleteToken()
     }
     
