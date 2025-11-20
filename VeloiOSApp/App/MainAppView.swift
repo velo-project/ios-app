@@ -7,23 +7,11 @@
 
 import SwiftUI
 
-enum SheetStep: Identifiable {
-    case login, mfa
-    
-    var id: Int {
-        switch self {
-        case .login: return 0
-        case .mfa: return 1
-        }
-    }
-}
-
 struct MainAppView: View {
     @EnvironmentObject var router: NavigationRouter
     
     @State private var queryText = ""
     @State private var code = ""
-    @State private var activePage: SheetStep? = nil
     @State private var isLoading = false
     
     @State private var eventsPath: [ViewDestination] = []
@@ -31,11 +19,15 @@ struct MainAppView: View {
     @State private var routesPath: [ViewDestination] = []
     @State private var socialPath: [ViewDestination] = []
     
-    private var tokenStore = TokenStore()
+    private let tokenStore = TokenStore()
+    
+    @ObservedObject private var sheetStore = SheetStore.shared
+    @ObservedObject private var tabStore = TabStore.shared
+    @ObservedObject private var locationStore = LocationStore.shared
     
     var body: some View {
         ZStack {
-            TabView(selection: $router.actualTab) {
+            TabView(selection: $tabStore.tab) {
                 Tab("mapa", systemImage: "map", value: .maps) {
                     NavigationStack(path: $homePath) {
                         HomeView()
@@ -43,7 +35,7 @@ struct MainAppView: View {
                                 if tokenStore.getJwtToken().isAuthenticated {
                                     homePath.append(.userProfile)
                                 } else {
-                                    activePage = .login
+                                    sheetStore.sheet = .login
                                 }
                             }
                             .veloUserProfileNavigation()
@@ -96,25 +88,29 @@ struct MainAppView: View {
                     SearchView()
                 }
             }
-            .sheet(item: $activePage) { page in
-                switch page {
+            .sheet(item: $sheetStore.sheet) { sheet in
+                switch sheet {
                 case .login:
-                    LoginView(activePage: $activePage, isLoading: $isLoading)
+                    LoginView(isLoading: $isLoading)
+                        .presentationDragIndicator(.visible)
                 case .mfa:
                     MFAView(code: $code, isLoading: $isLoading)
+                        .presentationDragIndicator(.visible)
+                case .startRoute:
+                    StartRouteView(initialLocation: locationStore.currentLocation ?? "Minha localização", finalLocation: locationStore.selectedLocation?.name ?? "Destino Desconhecido")
+                        .presentationDetents([.fraction(0.3)])
+                        .interactiveDismissDisabled()
                 }
             }
             .tint(.green)
-            .onChange(of: router.actualTab) { _, newTab in
+            .onChange(of: tabStore.tab) { _, newTab in
                 if !tokenStore.getJwtToken().isAuthenticated {
                     switch newTab {
                     case .events, .routes, .communities:
-                        activePage = .login
+                        sheetStore.sheet = .login
                     default:
-                        activePage = nil
+                        sheetStore.sheet = nil
                     }
-                } else {
-                    activePage = nil
                 }
             }
             

@@ -12,10 +12,12 @@ class LocationStore: ObservableObject {
     static let shared = LocationStore()
     
     @Published var selectedLocation: TargetLocation?
+    @Published var currentLocation: String?
     
     private init() { }
     
-    func setLocation(name: String, coordinate: CLLocationCoordinate2D) {
+    func setLocation(name: String, coordinate: CLLocationCoordinate2D, currentLocation: String) {
         self.selectedLocation = TargetLocation(name: name, coordinate: coordinate)
+        self.currentLocation = currentLocation
     }
 }

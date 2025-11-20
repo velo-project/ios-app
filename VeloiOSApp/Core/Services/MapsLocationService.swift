@@ -7,11 +7,17 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 class MapsLocationServiceImpl: NSObject, CLLocationManagerDelegate, ObservableObject {
+    
+    // Singleton para acesso fácil
+    static let shared = MapsLocationServiceImpl()
+    
     @Published var lastKnowLocation: CLLocationCoordinate2D?
     
     private var manager = CLLocationManager()
+    private let geocoder = CLGeocoder()
     
     override init() {
         super.init()
@@ -25,15 +31,13 @@ class MapsLocationServiceImpl: NSObject, CLLocationManagerDelegate, ObservableOb
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
         case .restricted:
-            print("restricted")
+            print("Location restricted")
         case .denied:
-            print("denied")
-        case .authorizedAlways:
-            print("tres bien monsieur")
-        case .authorizedWhenInUse:
+            print("Location denied")
+        case .authorizedAlways, .authorizedWhenInUse:
             lastKnowLocation = manager.location?.coordinate
         @unknown default:
-            print("jsais pas")
+            print("Unknown authorization status")
         }
     }
     
@@ -42,5 +46,28 @@ class MapsLocationServiceImpl: NSObject, CLLocationManagerDelegate, ObservableOb
         DispatchQueue.main.async {
             self.lastKnowLocation = location.coordinate
         }
+    }
+    
+    func getCurrentAddress() async throws -> String? {
+        guard let location = manager.location else {
+            return nil
+        }
+    
+        let placemarks = try await geocoder.reverseGeocodeLocation(location)
+        
+        if let place = placemarks.first {
+            let street = place.thoroughfare ?? ""
+            let number = place.subThoroughfare ?? ""
+            let neighborhood = place.subLocality ?? ""
+            let city = place.locality ?? ""
+            
+            if !street.isEmpty {
+                return "\(street), \(number) - \(neighborhood)"
+            } else {
+                return neighborhood.isEmpty ? city : neighborhood
+            }
+        }
+        
+        return nil
     }
 }

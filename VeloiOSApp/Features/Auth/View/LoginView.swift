@@ -9,8 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject private var viewModel = LoginViewModel()
+    @StateObject private var sheetStore = SheetStore.shared
     
-    @Binding var activePage: SheetStep?
     @Binding var isLoading: Bool
     
     var body: some View {
@@ -54,7 +54,7 @@ struct LoginView: View {
                         if viewModel.email != "" && viewModel.password != "" {
                             isLoading = true
                             await viewModel.login()
-                            activePage = .mfa
+                            sheetStore.sheet = .mfa
                         }
                     }
                 }

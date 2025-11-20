@@ -5,7 +5,7 @@ import CoreLocation
 
 struct GoogleMapsView: UIViewRepresentable {
     
-    private let zoom: Float = 17.0
+    private let zoom: Float = 14.0
     
     var targetLocation: TargetLocation?
     @Binding var lastKnowLocation: CLLocationCoordinate2D?
@@ -22,7 +22,7 @@ struct GoogleMapsView: UIViewRepresentable {
         let camera = GMSCameraPosition.camera(
             withLatitude: lastKnowLocation?.latitude ?? -23.5505,
             longitude: lastKnowLocation?.longitude ?? -46.6333,
-            zoom: 15.0
+            zoom: zoom
         )
         let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         mapView.isMyLocationEnabled = true
@@ -44,7 +44,7 @@ struct GoogleMapsView: UIViewRepresentable {
                 fetchRoute(from: origin, to: destination.coordinate, mapView: mapView)
                 
                 let bounds = GMSCoordinateBounds(coordinate: origin, coordinate: destination.coordinate)
-                let update = GMSCameraUpdate.fit(bounds, withPadding: 50.0)
+                let update = GMSCameraUpdate.fit(bounds, withPadding: 50.0, )
                 mapView.animate(with: update)
                 
                 return
@@ -57,7 +57,7 @@ struct GoogleMapsView: UIViewRepresentable {
         }
         
         if let userLocation = lastKnowLocation, !hasAnimatedToUserLocation {
-            let camera = GMSCameraPosition.camera(withTarget: userLocation, zoom: 15.0)
+            let camera = GMSCameraPosition.camera(withTarget: userLocation, zoom: zoom)
             mapView.animate(to: camera)
             
             DispatchQueue.main.async {

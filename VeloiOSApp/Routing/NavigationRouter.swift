@@ -19,7 +19,7 @@ final class NavigationRouter: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     @Published var path = NavigationPath()
-    @Published var actualTab: Tabs
+    @Published var actualTab: Tabs?
     
     init() {
         self.actualTab = tabStore.tab

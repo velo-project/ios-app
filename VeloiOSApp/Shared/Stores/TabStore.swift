@@ -12,5 +12,5 @@ class TabStore: ObservableObject {
     
     private init() { }
     
-    @Published var tab: Tabs = .maps
+    @Published var tab: Tabs? = .maps
 }

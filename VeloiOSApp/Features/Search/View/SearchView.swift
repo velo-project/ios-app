@@ -11,8 +11,6 @@ import GooglePlaces
 struct SearchView: View {
     @StateObject private var viewModel = SearchViewModel()
     
-    @Environment(\.dismiss) var dimiss
-    
     var onPlaceSelected: ((GMSAutocompleteSuggestion) -> Void)?
     
     var body: some View {
@@ -32,7 +30,6 @@ struct SearchView: View {
                         Button {
                             viewModel.didSelectPlace(suggestion)
                             onPlaceSelected?(suggestion)
-                            dimiss()
                         } label: {
                             VStack(alignment: .leading) {
                                 Text(place.attributedPrimaryText.string)
