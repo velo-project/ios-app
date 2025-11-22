@@ -7,8 +7,8 @@
 
 struct Tracks: Codable {
     let message: String
-    let statusCode: Int
     let tracks: [Route]
+    let statusCode: Int
     
     enum CodingKeys: String, CodingKey {
         case message

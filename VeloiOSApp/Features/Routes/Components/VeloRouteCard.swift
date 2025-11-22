@@ -21,10 +21,13 @@ func VeloRouteCard(route: Route) -> some View {
         .background(.white)
         .padding(.all, 25)
         
+        
         VStack(alignment: .leading) {
-            Text("passou por aqui em")
-                .font(.caption2)
-            Text(route.visitedAt.formattedBrazilian())
+            if let visitedAt = route.visitedAt {
+                Text("passou por aqui em")
+                    .font(.caption2)
+                Text(visitedAt.formattedBrazilian())
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.all, 25)

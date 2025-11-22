@@ -8,7 +8,12 @@
 import Foundation
 
 struct Track: Identifiable, Codable {
-    let id: Int
-    let lat: Float
-    let lng: Float
+    var id = UUID()
+    let lat: Double
+    let lng: Double
+    
+    enum CodingKeys: String, CodingKey {
+        case lat
+        case lng
+    }
 }

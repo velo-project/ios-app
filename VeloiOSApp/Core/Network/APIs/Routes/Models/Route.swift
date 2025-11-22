@@ -12,7 +12,7 @@ struct Route: Identifiable, Codable {
     let userId: Int
     let initialLocation: String
     let finalLocation: String
-    let visitedAt: Date
+    let visitedAt: Date?
     let track: [Track]
     
     enum CodingKeys: String, CodingKey {

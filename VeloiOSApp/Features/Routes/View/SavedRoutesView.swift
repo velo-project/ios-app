@@ -8,18 +8,15 @@
 import SwiftUI
 
 struct SavedRoutesView: View {
-    @StateObject private var viewModel: SavedRoutesViewModel
-    
-    init(viewModel: SavedRoutesViewModel = SavedRoutesViewModel()) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
+    @StateObject private var viewModel = SavedRoutesViewModel()
+    @StateObject private var routesStore = RoutesStore.shared
     
     var body: some View {
         VStack(alignment: .leading) {
-            if !$viewModel.routes.isEmpty {
+            if !$routesStore.routes.isEmpty {
                 ScrollView {
                     LazyVStack(spacing: 16) {
-                        ForEach(viewModel.routes) { route in
+                        ForEach(routesStore.routes) { route in
                             VeloRouteCard(route: route)
                         }
                     }
@@ -40,6 +37,11 @@ struct SavedRoutesView: View {
         .navigationTitle("rotas")
         .task {
             await viewModel.loadRoutesIfNeed()
+        }
+        .alert("Ops!", isPresented: $viewModel.showError) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(viewModel.errorMessage)
         }
     }
 }

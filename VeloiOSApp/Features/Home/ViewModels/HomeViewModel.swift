@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import GoogleMaps
 
 class HomeViewModel: ObservableObject {
     @Published var searchQuery: String = ""
@@ -14,6 +15,8 @@ class HomeViewModel: ObservableObject {
     
     private var mapsLocationService = MapsLocationServiceImpl()
     private var tokenStore = TokenStore()
+    private var routesAPIClient = RoutesAPIClient()
+    private var routesStore = RoutesStore.shared
     
     init() {
         observeLocation()
@@ -25,5 +28,28 @@ class HomeViewModel: ObservableObject {
     
     func isAuthenticated() -> Bool {
         return tokenStore.getJwtToken().isAuthenticated
+    }
+    
+    func saveRoute(initialLocation: String, finalLocation: String, polyline: String?) {
+        guard let polyline = polyline, let path = GMSPath(fromEncodedPath: polyline) else {
+            return
+        }
+        
+        var tracks: [Track] = []
+        for i in 0..<path.count() {
+            let coordinate = path.coordinate(at: i)
+            tracks.append(Track(id: UUID(), lat: Double(coordinate.latitude), lng: Double(coordinate.longitude)))
+        }
+        
+        Task {
+            do {
+                try await routesAPIClient.newTrack(initialLocation: initialLocation, finalLocation: finalLocation, track: tracks)
+                
+                let route = try await routesAPIClient.getRoutes()
+                routesStore.routes = route.tracks
+            } catch {
+                print("Error saving route: \(error)")
+            }
+        }
     }
 }

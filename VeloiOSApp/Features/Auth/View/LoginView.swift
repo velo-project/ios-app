@@ -13,6 +13,8 @@ struct LoginView: View {
     
     @Binding var isLoading: Bool
     
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 50) {
@@ -53,6 +55,7 @@ struct LoginView: View {
                     } action: {
                         if viewModel.email != "" && viewModel.password != "" {
                             isLoading = true
+                            dismiss()
                             await viewModel.login()
                             sheetStore.sheet = .mfa
                         }

@@ -42,7 +42,7 @@ enum RoutesEndpoint: Endpoint {
             "Content-Type": "application/json"
         ]
         
-        baseHeaders["Authorization"] = token
+        baseHeaders["Authorization"] = "Bearer \(token)"
         return baseHeaders
     }
     

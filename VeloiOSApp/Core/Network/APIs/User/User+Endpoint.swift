@@ -68,7 +68,7 @@ enum UserEndpoint: Endpoint {
         case .search, .login, .verificationCode, .register:
             return baseHeaders
         default:
-            baseHeaders["Authorization"] = token
+            baseHeaders["Authorization"] = "Bearer \(token)"
             return baseHeaders
         }
     }

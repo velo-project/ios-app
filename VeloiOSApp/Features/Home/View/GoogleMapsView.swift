@@ -31,10 +31,9 @@ struct GoogleMapsView: UIViewRepresentable {
     }
     
     func updateUIView(_ mapView: GMSMapView, context: Context) {
+        mapView.clear()
+        
         if let destination = targetLocation {
-            
-            mapView.clear()
-            
             let marker = GMSMarker()
             marker.position = destination.coordinate
             marker.title = destination.name
@@ -44,7 +43,7 @@ struct GoogleMapsView: UIViewRepresentable {
                 fetchRoute(from: origin, to: destination.coordinate, mapView: mapView)
                 
                 let bounds = GMSCoordinateBounds(coordinate: origin, coordinate: destination.coordinate)
-                let update = GMSCameraUpdate.fit(bounds, withPadding: 50.0, )
+                let update = GMSCameraUpdate.fit(bounds, withPadding: 50.0)
                 mapView.animate(with: update)
                 
                 return
@@ -84,6 +83,7 @@ struct GoogleMapsView: UIViewRepresentable {
                    let points = overviewPolyline["points"] as? String {
                     
                     DispatchQueue.main.async {
+                        LocationStore.shared.routePolyline = points
                         drawPath(from: points, mapView: mapView)
                     }
                 }

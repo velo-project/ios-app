@@ -95,7 +95,7 @@ enum SocialMediaEndpoint: Endpoint {
         let token = TokenStore().getJwtToken().token ?? ""
         return [
             "Accept": "application/json",
-            "Authorization": token
+            "Authorization": "Bearer \(token)"
         ]
     }
 

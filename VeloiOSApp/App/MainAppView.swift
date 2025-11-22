@@ -97,7 +97,7 @@ struct MainAppView: View {
                     MFAView(code: $code, isLoading: $isLoading)
                         .presentationDragIndicator(.visible)
                 case .startRoute:
-                    StartRouteView(initialLocation: locationStore.currentLocation ?? "Minha localização", finalLocation: locationStore.selectedLocation?.name ?? "Destino Desconhecido")
+                    StartRouteView(initialLocation: locationStore.currentLocation ?? "Minha localização", finalLocation: locationStore.selectedLocation?.name ?? "Destino Desconhecido", routePolyline: locationStore.routePolyline)
                         .presentationDetents([.fraction(0.3)])
                         .interactiveDismissDisabled()
                 }

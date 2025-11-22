@@ -13,6 +13,7 @@ class LocationStore: ObservableObject {
     
     @Published var selectedLocation: TargetLocation?
     @Published var currentLocation: String?
+    @Published var routePolyline: String?
     
     private init() { }
     

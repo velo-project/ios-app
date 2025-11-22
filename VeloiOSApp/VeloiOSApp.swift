@@ -17,7 +17,7 @@ struct VeloiOSAppApp: App {
     init() {
         GMSServices.provideAPIKey("AIzaSyAai5EPkSARfPIkmvsDtd9AZY1dZW6UJOU")
         GMSPlacesClient.provideAPIKey("AIzaSyAai5EPkSARfPIkmvsDtd9AZY1dZW6UJOU")
-        TokenStore().deleteToken()
+        //TokenStore().deleteToken()
         SentrySDK.start { options in
             options.dsn = "https://88123cd172b9c6817dffa767f53df322@o4510060605538304.ingest.us.sentry.io/4510395115044864"
             
@@ -43,7 +43,7 @@ struct VeloiOSAppApp: App {
             options.experimental.enableLogs = true
         }
         // Remove the next line after confirming that your Sentry integration is working.
-        SentrySDK.capture(message: "This app uses Sentry! :)")
+        
     }
     
     var body: some Scene {

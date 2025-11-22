@@ -48,6 +48,8 @@ class SearchViewModel: ObservableObject {
     func didSelectPlace(_ place: GMSAutocompleteSuggestion) {
         guard let placeID = place.placeSuggestion?.placeID else { return }
         
+        LocationStore.shared.routePolyline = nil
+        
         print("Iniciando busca de detalhes para ID: \(placeID)")
         
         placesManager.fetchCoordinates(for: placeID) { [weak self] coordinate, destinationName, error in
@@ -63,9 +65,12 @@ class SearchViewModel: ObservableObject {
                         
                         self.tabStore.tab = .maps
                         
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                            self.sheetStore.sheet = .startRoute
-                        }
+                        LocationStore.shared.$routePolyline
+                            .first(where: { $0 != nil })
+                            .sink { [weak self] _ in
+                                self?.sheetStore.sheet = .startRoute
+                            }
+                            .store(in: &self.cancellables)
                         
                     } else {
                         self.errorMessage = "Não foi possível carregar os detalhes do local."
