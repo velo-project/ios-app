@@ -51,6 +51,7 @@
 		E59F59322EC6691A0037A8A4 /* Tracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F59312EC669150037A8A4 /* Tracks.swift */; };
 		E5AC973A2E71EBEA00B27508 /* SavedRoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC97392E71EBDD00B27508 /* SavedRoutesViewModel.swift */; };
 		E5AC973F2E71F03600B27508 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC973E2E71F02E00B27508 /* DateExtensions.swift */; };
+		E5B24BE82ED22B74002EFB56 /* RefreshTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B24BE72ED22B6F002EFB56 /* RefreshTokenResponse.swift */; };
 		E5B582F52EC145B5000A6A1B /* User+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B582F42EC145B0000A6A1B /* User+Endpoint.swift */; };
 		E5B582F82EC149E6000A6A1B /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B582F72EC149E0000A6A1B /* DataExtensions.swift */; };
 		E5B582FA2EC14A88000A6A1B /* User+APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B582F92EC14A80000A6A1B /* User+APIClient.swift */; };
@@ -155,6 +156,7 @@
 		E59F59312EC669150037A8A4 /* Tracks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracks.swift; sourceTree = "<group>"; };
 		E5AC97392E71EBDD00B27508 /* SavedRoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRoutesViewModel.swift; sourceTree = "<group>"; };
 		E5AC973E2E71F02E00B27508 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		E5B24BE72ED22B6F002EFB56 /* RefreshTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenResponse.swift; sourceTree = "<group>"; };
 		E5B582F42EC145B0000A6A1B /* User+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Endpoint.swift"; sourceTree = "<group>"; };
 		E5B582F72EC149E0000A6A1B /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		E5B582F92EC14A80000A6A1B /* User+APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+APIClient.swift"; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 		E5B582F62EC1466F000A6A1B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E5B24BE72ED22B6F002EFB56 /* RefreshTokenResponse.swift */,
 				E5B583052EC14B46000A6A1B /* RegisterResponse.swift */,
 				E5B583032EC14B3A000A6A1B /* LoginTokenResponse.swift */,
 				E5B583012EC14B34000A6A1B /* LoginKeyResponse.swift */,
@@ -949,6 +952,7 @@
 				911BF2F02E43C3E400CEEAB0 /* SavedRoutesView.swift in Sources */,
 				E56C8FF92ECF7735002312D3 /* Tabs.swift in Sources */,
 				E5B583042EC14B3A000A6A1B /* LoginTokenResponse.swift in Sources */,
+				E5B24BE82ED22B74002EFB56 /* RefreshTokenResponse.swift in Sources */,
 				E5DA7F092EC2E0AB0052D0F1 /* MFAKeyStore.swift in Sources */,
 				E5F9BA162EC012810035244D /* Follower.swift in Sources */,
 				91A5B6852E3B07A700038DE9 /* NavigationRouter.swift in Sources */,

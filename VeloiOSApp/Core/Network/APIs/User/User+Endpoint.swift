@@ -15,6 +15,7 @@ enum UserEndpoint: Endpoint {
     case login(email: String, password: String)
     case verificationCode(key: String, code: String)
     case register(name: String, nickname: String, email: String, password: String)
+    case refreshToken(token: String)
     
     // MARK: - Edit User Profile
     case editBanner(imageData: Data)
@@ -32,6 +33,7 @@ enum UserEndpoint: Endpoint {
         case .search: return "/api/user/v1/search"
         case .login: return "/api/user/v1/login"
         case .verificationCode: return "/api/user/v1/login/2fa"
+        case .refreshToken: return "/api/user/v1/refresh"
         case .register: return "/api/user/v1/register"
         case .editBanner: return "/api/user/v1/edit_banner"
         case .editProfile: return "/api/user/v1/edit_profile"
@@ -47,7 +49,7 @@ enum UserEndpoint: Endpoint {
         switch self {
         case .search:
             return "GET"
-        case .login, .verificationCode, .register:
+        case .login, .verificationCode, .register, .refreshToken:
             return "POST"
         case .editBanner, .editProfile, .editPhoto, .blockUser, .unblockUser:
             return "PATCH"
@@ -94,6 +96,10 @@ enum UserEndpoint: Endpoint {
             return try? JSONSerialization.data(withJSONObject: [
                 "email": email,
                 "password": password
+            ])
+        case .refreshToken(let token):
+            return try? JSONSerialization.data(withJSONObject: [
+                "refreshToken": token
             ])
         case .verificationCode(let key, let code):
             return try? JSONSerialization.data(withJSONObject: [

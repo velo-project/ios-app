@@ -28,6 +28,10 @@ final class UserAPIClient {
         try await client.request(UserEndpoint.register(name: name, nickname: nickname, email: email, password: password))
     }
     
+    func refreshToken(token: String) async throws -> RefreshTokenResponse {
+        try await client.request(UserEndpoint.refreshToken(token: token))
+    }
+    
     // MARK: - Edit User Profile
     func editProfile(field: String, fieldValue: String) async throws -> StatusResponse {
         try await client.request(UserEndpoint.editProfile(field: field, fieldValue: fieldValue))
