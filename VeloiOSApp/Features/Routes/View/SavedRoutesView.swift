@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import GoogleMaps
 
 struct SavedRoutesView: View {
     @StateObject private var viewModel = SavedRoutesViewModel()
     @StateObject private var routesStore = RoutesStore.shared
     @ObservedObject private var sheetStore = SheetStore.shared
     @ObservedObject private var tabStore = TabStore.shared
+    @ObservedObject private var locationStore = LocationStore.shared
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -21,6 +23,18 @@ struct SavedRoutesView: View {
                         ForEach(routesStore.routes) { route in
                             VeloRouteCard(route: route)
                                 .onTapGesture {
+                                    
+                                    let path = GMSMutablePath()
+                                    route.track.forEach { track in
+                                        path.add(CLLocationCoordinate2D(latitude: track.lat, longitude: track.lng))
+                                    }
+                                    locationStore.routePolyline = path.encodedPath()
+                                    
+                                    if let lastTrack = route.track.last {
+                                        let endCoordinate = CLLocationCoordinate2D(latitude: lastTrack.lat, longitude: lastTrack.lng)
+                                        locationStore.setLocation(name: route.finalLocation, coordinate: endCoordinate, currentLocation: route.initialLocation)
+                                    }
+                                    
                                     tabStore.tab = .maps
                                     sheetStore.sheet = .startRoute(route: route)
                                 }

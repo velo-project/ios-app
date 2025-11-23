@@ -56,6 +56,8 @@ struct StartRouteView: View {
             HStack(spacing: 8) {
                 Spacer()
                 Button(action: {
+                    LocationStore.shared.selectedLocation = nil
+                    LocationStore.shared.routePolyline = nil
                     dismiss()
                 }) {
                     Image(systemName: "xmark")

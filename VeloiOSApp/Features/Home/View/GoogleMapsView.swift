@@ -10,6 +10,7 @@ struct GoogleMapsView: UIViewRepresentable {
     var targetLocation: TargetLocation?
     @Binding var lastKnowLocation: CLLocationCoordinate2D?
     
+    @ObservedObject private var sheetStore = SheetStore.shared
     @State private var hasAnimatedToUserLocation = false
     
     private let apiKey = "AIzaSyAai5EPkSARfPIkmvsDtd9AZY1dZW6UJOU"
@@ -33,34 +34,41 @@ struct GoogleMapsView: UIViewRepresentable {
     func updateUIView(_ mapView: GMSMapView, context: Context) {
         mapView.clear()
         
+        var bottomPadding: CGFloat = 0
+        if case .startRoute = sheetStore.sheet {
+            bottomPadding = UIScreen.main.bounds.height * 0.4
+        }
+        mapView.padding.bottom = bottomPadding
+        
         if let destination = targetLocation {
             let marker = GMSMarker()
             marker.position = destination.coordinate
             marker.title = destination.name
             marker.map = mapView
             
-            if let origin = lastKnowLocation {
+            if let polyline = LocationStore.shared.routePolyline, let path = GMSPath(fromEncodedPath: polyline) {
+                drawPath(from: polyline, mapView: mapView)
+                let bounds = GMSCoordinateBounds(path: path)
+                let update = GMSCameraUpdate.fit(bounds, withPadding: 50.0)
+                mapView.animate(with: update)
+            } else if let origin = lastKnowLocation {
                 fetchRoute(from: origin, to: destination.coordinate, mapView: mapView)
                 
                 let bounds = GMSCoordinateBounds(coordinate: origin, coordinate: destination.coordinate)
                 let update = GMSCameraUpdate.fit(bounds, withPadding: 50.0)
                 mapView.animate(with: update)
-                
-                return
+            } else {
+                let camera = GMSCameraPosition.camera(withTarget: destination.coordinate, zoom: zoom)
+                mapView.animate(to: camera)
             }
-            
-            let camera = GMSCameraPosition.camera(withTarget: destination.coordinate, zoom: zoom)
-            mapView.animate(to: camera)
-            
-            return
-        }
-        
-        if let userLocation = lastKnowLocation, !hasAnimatedToUserLocation {
-            let camera = GMSCameraPosition.camera(withTarget: userLocation, zoom: zoom)
-            mapView.animate(to: camera)
-            
-            DispatchQueue.main.async {
-                hasAnimatedToUserLocation = true
+        } else {
+            if let userLocation = lastKnowLocation, !hasAnimatedToUserLocation {
+                let camera = GMSCameraPosition.camera(withTarget: userLocation, zoom: zoom)
+                mapView.animate(to: camera)
+                
+                DispatchQueue.main.async {
+                    hasAnimatedToUserLocation = true
+                }
             }
         }
     }
