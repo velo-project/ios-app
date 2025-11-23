@@ -52,4 +52,15 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
+    
+    func deleteRoute(route: Route) async -> Bool {
+        do {
+            try await routesAPIClient.deleteRoute(id: route.id)
+            routesStore.routes.removeAll { $0.id == route.id }
+            return true
+        } catch {
+            print("Error deleting route: \(error)")
+            return false
+        }
+    }
 }

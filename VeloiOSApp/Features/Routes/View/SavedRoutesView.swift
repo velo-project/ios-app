@@ -10,6 +10,8 @@ import SwiftUI
 struct SavedRoutesView: View {
     @StateObject private var viewModel = SavedRoutesViewModel()
     @StateObject private var routesStore = RoutesStore.shared
+    @ObservedObject private var sheetStore = SheetStore.shared
+    @ObservedObject private var tabStore = TabStore.shared
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -18,6 +20,10 @@ struct SavedRoutesView: View {
                     LazyVStack(spacing: 16) {
                         ForEach(routesStore.routes) { route in
                             VeloRouteCard(route: route)
+                                .onTapGesture {
+                                    tabStore.tab = .maps
+                                    sheetStore.sheet = .startRoute(route: route)
+                                }
                         }
                     }
                     .padding()

@@ -68,7 +68,7 @@ class SearchViewModel: ObservableObject {
                         LocationStore.shared.$routePolyline
                             .first(where: { $0 != nil })
                             .sink { [weak self] _ in
-                                self?.sheetStore.sheet = .startRoute
+                                self?.sheetStore.sheet = .startRoute(route: nil)
                             }
                             .store(in: &self.cancellables)
                         

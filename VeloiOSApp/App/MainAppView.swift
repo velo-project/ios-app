@@ -97,10 +97,16 @@ struct MainAppView: View {
                 case .mfa:
                     MFAView(code: $code, isLoading: $isLoading)
                         .presentationDragIndicator(.visible)
-                case .startRoute:
-                    StartRouteView(initialLocation: locationStore.currentLocation ?? "Minha localização", finalLocation: locationStore.selectedLocation?.name ?? "Destino Desconhecido", routePolyline: locationStore.routePolyline)
-                        .presentationDetents([.fraction(0.3)])
-                        .interactiveDismissDisabled()
+                case .startRoute(let route):
+                    if let route = route {
+                        StartRouteView(route: route)
+                            .presentationDetents([.fraction(0.4)])
+                            .interactiveDismissDisabled()
+                    } else {
+                        StartRouteView(initialLocation: locationStore.currentLocation ?? "Minha localização", finalLocation: locationStore.selectedLocation?.name ?? "Destino Desconhecido", routePolyline: locationStore.routePolyline)
+                            .presentationDetents([.fraction(0.4)])
+                            .interactiveDismissDisabled()
+                    }
                 }
             }
             .tint(.green)

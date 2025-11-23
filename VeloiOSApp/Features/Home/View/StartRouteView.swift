@@ -15,11 +15,41 @@ struct StartRouteView: View {
     @StateObject var viewModel = HomeViewModel()
     @StateObject var placesManager = GoogleMapsPlacesManager()
     
+    var route: Route?
     var initialLocation: String
     var finalLocation: String
     var routePolyline: String?
     
     @State private var bookmarkStyle = "bookmark"
+    
+    init(route: Route) {
+        self.route = route
+        self.initialLocation = route.initialLocation
+        self.finalLocation = route.finalLocation
+        
+        let path = GMSMutablePath()
+        route.track.forEach { track in
+            path.add(CLLocationCoordinate2D(latitude: track.lat, longitude: track.lng))
+        }
+        self.routePolyline = path.encodedPath()
+    }
+    
+    init(initialLocation: String, finalLocation: String, routePolyline: String?) {
+        self.route = nil
+        self.initialLocation = initialLocation
+        self.finalLocation = finalLocation
+        self.routePolyline = routePolyline
+    }
+    
+    
+    private func deleteRoute(route: Route, viewModel: HomeViewModel) {
+        Task {
+            let deleted = await viewModel.deleteRoute(route: route)
+            if deleted {
+                dismiss()
+            }
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -36,23 +66,38 @@ struct StartRouteView: View {
                 }
                 .foregroundStyle(.black)
                 
-                Button(action: {
-                    if viewModel.isAuthenticated() {
-                        if bookmarkStyle == "bookmark" {
-                            bookmarkStyle = "bookmark.fill"
-                            viewModel.saveRoute(initialLocation: initialLocation, finalLocation: finalLocation, polyline: routePolyline)
-                        } else {
-                            bookmarkStyle = "bookmark"
-                        }
+                if let routeToDelete = route {
+                    Button(action: {
+                        deleteRoute(route: routeToDelete, viewModel: viewModel)
+                    }) {
+                        Image(systemName: "trash")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                            .bold()
                     }
-                }) {
-                    Image(systemName: bookmarkStyle)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-                        .bold()
+                    .foregroundStyle(.red)
+                } else {
+                    Button(action: {
+                        if viewModel.isAuthenticated() {
+                            if bookmarkStyle == "bookmark" {
+                                bookmarkStyle = "bookmark.fill"
+                                viewModel.saveRoute(initialLocation: initialLocation, finalLocation: finalLocation, polyline: routePolyline)
+                            } else {
+                                if route == nil {
+                                    bookmarkStyle = "bookmark"
+                                }
+                            }
+                        }
+                    }) {
+                        Image(systemName: bookmarkStyle)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                            .bold()
+                    }
+                    .foregroundStyle(.black)
                 }
-                .foregroundStyle(.black)
             }
             .padding()
             Spacer()
@@ -99,6 +144,10 @@ struct StartRouteView: View {
         }
         .padding()
         .onAppear {
+            if route != nil {
+                bookmarkStyle = "bookmark.fill"
+            }
+            
             if let polyline = routePolyline, let path = GMSPath(fromEncodedPath: polyline) {
                 if path.count() >= 2 {
                     let startCoordinate = path.coordinate(at: 0)
