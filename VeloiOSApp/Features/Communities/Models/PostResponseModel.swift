@@ -14,4 +14,5 @@ struct PostResponseModel: Identifiable {
     var postedBy: String
     var postedAt: Date
     var postedIn: String
+    var profileImage: String?
 }

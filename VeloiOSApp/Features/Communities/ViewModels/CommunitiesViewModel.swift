@@ -6,40 +6,46 @@
 //
 
 import Foundation
+import Combine
 
+@MainActor
 class CommunitiesViewModel: ObservableObject {
     @Published var posts: [PostResponseModel] = []
-    
-    init() {
-        self.posts = [
-            PostResponseModel(
-                content: "Estou adorando aprender SwiftUI! É muito mais declarativo que o UIKit.",
-                hashtags: "#swiftui #iosdev #apple",
-                postedBy: "Ana Silva",
-                postedAt: Date().addingTimeInterval(-3600), // 1 hora atrás
-                postedIn: "Comunidade iOS Brasil"
-            ),
-            PostResponseModel(
-                content: "Qual a melhor forma de gerenciar estado em um app complexo? 🤔",
-                hashtags: "#swift #statemanagement #arquitetura",
-                postedBy: "Carlos Mendes",
-                postedAt: Date().addingTimeInterval(-18000), // 5 horas atrás
-                postedIn: "Arquitetura de Software"
-            ),
-            PostResponseModel(
-                content: "Acabei de publicar meu primeiro aplicativo na App Store! 🚀 Foi um grande desafio, mas valeu a pena.",
-                hashtags: "#appstore #indiedev #sucesso",
-                postedBy: "Maria Souza",
-                postedAt: Date().addingTimeInterval(-86400), // 1 dia atrás
-                postedIn: "Comunidade iOS Brasil"
-            ),
-            PostResponseModel(
-                content: "Dica do dia: usem o novo componente Observation para simplificar suas views no iOS 17.",
-                hashtags: "#ios17 #observation #dica",
-                postedBy: "Pedro Lima",
-                postedAt: Date().addingTimeInterval(-172800), // 2 dias atrás
-                postedIn: "Novidades do Swift"
-            )
-        ]
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String?
+
+    private let socialMediaAPIClient: SocialMediaAPIClient
+
+    init(socialMediaAPIClient: SocialMediaAPIClient = SocialMediaAPIClient()) {
+        self.socialMediaAPIClient = socialMediaAPIClient
+    }
+
+    func fetchPosts() async {
+        isLoading = true
+        errorMessage = nil
+        
+        do {
+            let feed = try await socialMediaAPIClient.getFeed()
+            
+            // FIXME: The API only returns a user ID (`postedBy`).
+            // We need an endpoint like `getUser(byId: Int)` to fetch user details.
+            // For now, we are using placeholder data.
+            self.posts = feed.map { post in
+                PostResponseModel(
+                    content: post.content,
+                    hashtags: post.hashtags.map { "#\($0)" }.joined(separator: " "),
+                    postedBy: "Usuário \(post.postedBy)", // Placeholder
+                    postedAt: post.postedAt,
+                    postedIn: post.postedIn.name,
+                    profileImage: "https://i.pravatar.cc/50?u=\(post.postedBy)" // Placeholder
+                )
+            }
+        } catch {
+            errorMessage = "Erro ao carregar o feed. Tente novamente mais tarde."
+            // TODO: Log the actual error for debugging
+            print(error.localizedDescription)
+        }
+        
+        isLoading = false
     }
 }

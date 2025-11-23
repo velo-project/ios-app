@@ -8,32 +8,47 @@
 import SwiftUI
 
 struct CommunitiesView: View {
-    private let viewModel = CommunitiesViewModel()
+    @StateObject private var viewModel = CommunitiesViewModel()
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
+        ZStack {
+            if viewModel.isLoading && viewModel.posts.isEmpty {
+                ProgressView("Carregando...")
+            } else if let errorMessage = viewModel.errorMessage {
                 VStack {
-                    Text("suas comunidades")
-                        .bold()
-                        .font(.title2)
-                    HStack {
-                        // TODO
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                    Button("Tentar Novamente") {
+                        Task {
+                            await viewModel.fetchPosts()
+                        }
                     }
                 }
-                .padding()
-                
-                Text("atividades recentes")
-                    .bold()
-                    .font(.title2)
-                    .padding()
-                VStack(spacing: 20) {
-                    ForEach(viewModel.posts) { post in
-                        VeloPostComponent(issuedBy: post.postedBy, issue: "publicou um post", text: post.content, profileImage: "")
+            } else {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 20) {
+                        // TODO: Implementar a seção "Suas Comunidades"
+                        Text("atividades Recentes")
+                            .bold()
+                            .font(.title2)
                             .padding(.horizontal)
-                    }
+                        
+                                            ForEach(viewModel.posts) { post in
+                                                VeloPostComponent(post: post)
+                                                    .padding(.horizontal)
+                                            }                    }
+                    .padding(.vertical)
+                }
+                .refreshable {
+                    await viewModel.fetchPosts()
                 }
             }
         }
+        .task {
+            if viewModel.posts.isEmpty {
+                await viewModel.fetchPosts()
+            }
+        }
+        .navigationTitle("comunidades")
     }
 }
