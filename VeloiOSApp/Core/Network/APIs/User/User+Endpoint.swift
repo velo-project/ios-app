@@ -67,7 +67,7 @@ enum UserEndpoint: Endpoint {
         ]
         
         switch self {
-        case .search, .login, .verificationCode, .register:
+        case .search, .login, .verificationCode, .register, .refreshToken:
             return baseHeaders
         default:
             baseHeaders["Authorization"] = "Bearer \(token)"

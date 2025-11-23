@@ -34,4 +34,8 @@ actor AuthService {
         tokenStore.saveJwtToken(token: token.accessToken)
         return true
     }
+
+    func logout() {
+        tokenStore.deleteToken()
+    }
 }

@@ -20,6 +20,7 @@ struct MainAppView: View {
     @State private var socialPath: [ViewDestination] = []
     
     private let tokenStore = TokenStore()
+    private let authService = AuthService()
     
     @ObservedObject private var sheetStore = SheetStore.shared
     @ObservedObject private var tabStore = TabStore.shared
@@ -112,6 +113,11 @@ struct MainAppView: View {
                         sheetStore.sheet = nil
                     }
                 }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: AppNotifications.userDidBecomeUnauthorized)) { _ in
+                authService.logout()
+                tabStore.tab = .maps
+                isLoading = false
             }
             
             if isLoading {
