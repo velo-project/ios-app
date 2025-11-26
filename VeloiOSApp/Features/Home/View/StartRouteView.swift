@@ -49,6 +49,8 @@ struct StartRouteView: View {
                 dismiss()
             }
         }
+        LocationStore.shared.selectedLocation = nil
+        LocationStore.shared.routePolyline = nil
     }
     
     var body: some View {

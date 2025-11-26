@@ -9,13 +9,14 @@ import Foundation
 import SwiftUI
 
 struct VeloEventCodeComponent: View {
-    var code: String
-    var eventName: String
-    
+    var event: Event
+    @StateObject private var viewModel = EventsViewModel()
+    @State private var confirmationCode: String?
+
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading) {
-                Text(eventName)
+                Text(event.name)
                     .bold()
             }
             .padding(.vertical, 20)
@@ -25,10 +26,14 @@ struct VeloEventCodeComponent: View {
             .padding(.all, 25)
             
             VStack(alignment: .leading) {
-                Text(code)
-                    .font(.title2)
-                    .foregroundStyle(.white)
-                    .bold()
+                if let confirmationCode = confirmationCode {
+                    Text(confirmationCode)
+                        .font(.title2)
+                        .foregroundStyle(.white)
+                        .bold()
+                } else {
+                    ProgressView()
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.all, 25)
@@ -45,6 +50,11 @@ struct VeloEventCodeComponent: View {
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 3)
+        .onAppear {
+            Task {
+                confirmationCode = await viewModel.getConfirmationCode(event: event)
+            }
+        }
     }
 }
 

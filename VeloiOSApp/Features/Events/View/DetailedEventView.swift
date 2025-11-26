@@ -10,8 +10,9 @@ import SwiftUI
 import Kingfisher
 
 struct DetailedEventView: View {
-    @Environment(\.dismiss) var dimiss
-    var event: BrandEventsModel
+    @Environment(\.dismiss) var dismiss
+    var event: Event
+    @ObservedObject var viewModel: EventsViewModel
     
     var body: some View {
         VStack(spacing: 0) {
@@ -34,9 +35,19 @@ struct DetailedEventView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 4)
                     
-                    Text(event.title)
+                    Text(event.name)
                         .font(.title).bold()
                     Text(event.description)
+                    
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text(event.date)
+                    }
+                    
+                    HStack {
+                        Image(systemName: "location")
+                        Text(event.location)
+                    }
                 }
                 .padding()
             }
@@ -45,9 +56,12 @@ struct DetailedEventView: View {
         Spacer()
         
         VeloButton {
-            Text("inscrever-se")
+            Text(viewModel.isSubscribed(to: event) ? "cancelar inscrição" : "inscrever-se")
         } action: {
-            dimiss()
+            Task {
+                await viewModel.subscribe(event: event)
+                dismiss()
+            }
         }
         .padding()
     }

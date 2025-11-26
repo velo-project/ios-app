@@ -12,88 +12,120 @@ struct EventsView: View {
     @StateObject private var viewModel = EventsViewModel()
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
-                    VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 32) {
+                    VStack(alignment: .leading, spacing: 16) {
                         Text("eventos inscritos")
                             .font(.title2)
                             .fontWeight(.bold)
                             .padding(.horizontal)
                         
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 16) {
-                                VeloEventCodeComponent(code: "111111", eventName: "off-road")
-                                    .frame(minWidth: 240)
-                                VeloEventCodeComponent(code: "111111", eventName: "off-road")
-                                    .frame(minWidth: 240)
+                        if !viewModel.subscribedEvents.isEmpty {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 16) {
+                                    ForEach(viewModel.subscribedEvents) { event in
+                                        VeloEventCodeComponent(event: event)
+                                    }
+                                }
+                                .padding(.horizontal)
                             }
-                            .padding(.horizontal)
+                        } else {
+                            Text("nenhum evento encontrado!")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal)
                         }
                     }
                     
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 16) {
                         Text("para você")
                             .font(.title2)
                             .fontWeight(.bold)
                             .padding(.horizontal)
                         
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 16) {
-                                ForEach(viewModel.forYouEvents) { event in
-                                    VeloEventComponent(event: event)
-                                        .onTapGesture {
-                                            viewModel.selectedEvent = event
-                                        }
+                        if !viewModel.recommendedEvents.isEmpty {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 16) {
+                                    ForEach(viewModel.recommendedEvents) { event in
+                                        VeloEventComponent(event: event)
+                                            .frame(width: 280)
+                                            .onTapGesture {
+                                                viewModel.selectedEvent = event
+                                            }
+                                    }
                                 }
+                                .padding(.horizontal)
                             }
-                            .padding(.horizontal)
+                        } else {
+                            Text("nenhum evento encontrado!")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal)
                         }
                     }
                     
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 16) {
                         Text("em alta")
                             .font(.title2)
                             .fontWeight(.bold)
                             .padding(.horizontal)
                         
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 16) {
-                                ForEach(viewModel.trendingEvents) { event in
-                                    VeloEventComponent(event: event)
-                                        .onTapGesture {
-                                            viewModel.selectedEvent = event
-                                        }
+                        if !viewModel.trendingEvents.isEmpty {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 16) {
+                                    ForEach(viewModel.trendingEvents) { event in
+                                        VeloEventComponent(event: event)
+                                            .frame(width: 280)
+                                            .onTapGesture {
+                                                viewModel.selectedEvent = event
+                                            }
+                                    }
                                 }
+                                .padding(.horizontal)
                             }
-                            .padding(.horizontal)
+                        } else {
+                            Text("nenhum evento encontrado!")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal)
                         }
                     }
                     
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 16) {
                         Text("últimos participados")
                             .font(.title2)
                             .fontWeight(.bold)
                             .padding(.horizontal)
                         
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 16) {
-                                ForEach(viewModel.lastKnowEvents) { event in
-                                    VeloEventComponent(event: event)
-                                        .onTapGesture {
-                                            viewModel.selectedEvent = event
-                                        }
+                        if !viewModel.lastParticipatedEvents.isEmpty {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 16) {
+                                    ForEach(viewModel.lastParticipatedEvents) { event in
+                                        VeloEventComponent(event: event)
+                                            .frame(width: 280)
+                                            .onTapGesture {
+                                                viewModel.selectedEvent = event
+                                            }
+                                    }
                                 }
+                                .padding(.horizontal)
                             }
-                            .padding(.horizontal)
+                        } else {
+                            Text("nenhum evento encontrado!")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal)
                         }
                     }
                 }
+                .padding(.vertical, 8)
             }
             .sheet(item: $viewModel.selectedEvent) { event in
-                DetailedEventView(event: event)
+                DetailedEventView(event: event, viewModel: viewModel)
             }
         }
         .navigationTitle("eventos")
+        .onAppear {
+            Task {
+                await viewModel.loadEvents()
+            }
+        }
     }
 }
