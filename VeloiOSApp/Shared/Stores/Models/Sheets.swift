@@ -7,13 +7,14 @@
 
 
 enum Sheets: Identifiable {
-    case login, mfa, startRoute(route: Route?)
+    case login, mfa, register, startRoute(route: Route?)
     
     var id: Int {
         switch self {
         case .login: return 0
         case .mfa: return 1
-        case .startRoute: return 2
+        case .register: return 2
+        case .startRoute: return 3
         }
     }
 }

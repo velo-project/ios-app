@@ -35,6 +35,11 @@ actor AuthService {
         return true
     }
 
+    func register(name: String, nickname: String, email: String, password: String) async throws {
+        _ = try await apiClient.register(name: name, nickname: nickname, email: email, password: password)
+        try await login(email: email, password: password)
+    }
+
     func logout() {
         tokenStore.deleteToken()
     }

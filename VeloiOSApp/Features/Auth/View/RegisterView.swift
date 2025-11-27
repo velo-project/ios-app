@@ -1,14 +1,14 @@
 //
-//  LoginView.swift
+//  RegisterView.swift
 //  VeloiOSApp
 //
-//  Created by Gabriel Araújo Lima on 30/07/25.
+//  Created by Gabriel Araújo Lima on 26/11/25.
 //
 
 import SwiftUI
 
-struct LoginView: View {
-    @StateObject private var viewModel = LoginViewModel()
+struct RegisterView: View {
+    @StateObject private var viewModel = RegisterViewModel()
     @StateObject private var sheetStore = SheetStore.shared
     
     @Binding var isLoading: Bool
@@ -25,13 +25,23 @@ struct LoginView: View {
                     .padding(.horizontal, .none)
                     .padding(.top, 50)
                 VStack(alignment: .leading) {
-                    Text("bem vindo.")
+                    Text("crie sua conta.")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("insira suas credenciais\npara entrar.")
+                    Text("insira seus dados\npara se cadastrar.")
                 }
                 VStack(spacing: 20) {
                     VStack {
+                        VeloTextField(
+                            text: $viewModel.name,
+                            placeholder: "nome",
+                            icon: "person")
+                        
+                        VeloTextField(
+                            text: $viewModel.nickname,
+                            placeholder: "nickname",
+                            icon: "person.text.rectangle")
+                        
                         VeloTextField(
                             text: $viewModel.email,
                             placeholder: "email",
@@ -44,28 +54,17 @@ struct LoginView: View {
                             isSecure: true)
                     }
                     
-                    HStack {
-                        Spacer()
-                        Text("esqueci a senha")
-                    }
-                    .frame(maxWidth: .infinity)
-                    
                     VeloButton {
-                        Text("entrar")
+                        Text("cadastrar")
                     } action: {
                         if viewModel.email != "" && viewModel.password != "" {
                             isLoading = true
                             dismiss()
-                            await viewModel.login()
-                            sheetStore.sheet = .mfa
+                            Task {
+                                await viewModel.register()
+                                sheetStore.sheet = .mfa
+                            }
                         }
-                    }
-                    
-                    Button(action: {
-                        dismiss()
-                        sheetStore.sheet = .register
-                    }) {
-                        Text("Não possui conta? Cadastre-se")
                     }
                 }
             }

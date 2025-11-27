@@ -94,6 +94,9 @@ struct MainAppView: View {
                 case .login:
                     LoginView(isLoading: $isLoading)
                         .presentationDragIndicator(.visible)
+                case .register:
+                    RegisterView(isLoading: $isLoading)
+                        .presentationDragIndicator(.visible)
                 case .mfa:
                     MFAView(code: $code, isLoading: $isLoading)
                         .presentationDragIndicator(.visible)
