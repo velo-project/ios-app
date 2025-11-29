@@ -16,7 +16,9 @@ struct UserProfileView: View {
     var body: some View {
         ScrollView {
             VStack {
-                if let user = viewModel.user {
+                if viewModel.isLoading {
+                    ProgressView()
+                } else if let user = viewModel.user {
                     ZStack(alignment: .bottomLeading) {
                         AsyncImage(url: URL(string: user.bannerPhotoUrl ?? "")) { image in
                             image.resizable()
@@ -80,7 +82,8 @@ struct UserProfileView: View {
 
                     Spacer()
                 } else {
-                    ProgressView()
+                    // Fallback or error message if not loading and user is nil
+                    Text("No user data available.")
                 }
             }
         }

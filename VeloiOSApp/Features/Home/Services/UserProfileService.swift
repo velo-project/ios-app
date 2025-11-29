@@ -14,7 +14,7 @@ actor UserProfileService {
         self.apiClient = apiClient
     }
     
-    func fetchUser(nickname: String) async throws -> User {
+    func fetchUser(nickname: String) async throws -> FetchUserResponse {
         try await apiClient.searchUser(by: nickname)
     }
     

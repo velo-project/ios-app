@@ -11,7 +11,7 @@ final class UserAPIClient {
     private let client = APIClient()
     
     // MARK: - User
-    func searchUser(by nickname: String) async throws -> User {
+    func searchUser(by nickname: String) async throws -> FetchUserResponse {
         try await client.request(UserEndpoint.search(nickname: nickname))
     }
     
