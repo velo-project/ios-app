@@ -20,7 +20,7 @@ struct SavedRoutesView: View {
             if !$routesStore.routes.isEmpty {
                 ScrollView {
                     LazyVStack(spacing: 16) {
-                        ForEach(routesStore.routes) { route in
+                        ForEach(routesStore.routes.reversed()) { route in
                             VeloRouteCard(route: route)
                                 .onTapGesture {
                                     
