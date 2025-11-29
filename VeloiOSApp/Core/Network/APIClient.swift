@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum APIError: Error {
     case badServerResponse
@@ -13,9 +14,9 @@ enum APIError: Error {
 }
 
 final class APIClient {
-    private let tokenStore: TokenStore
+    @ObservedObject private var tokenStore: TokenStore
 
-    init(tokenStore: TokenStore = TokenStore()) {
+    init(tokenStore: TokenStore = TokenStore.shared) {
         self.tokenStore = tokenStore
     }
 

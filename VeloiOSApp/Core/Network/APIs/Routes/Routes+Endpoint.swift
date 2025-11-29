@@ -36,7 +36,7 @@ enum RoutesEndpoint: Endpoint {
     }
     
     var headers: [String: String]? {
-        let token = TokenStore().getJwtToken().token ?? ""
+        let token = TokenStore.shared.getJwtToken().token ?? ""
         var baseHeaders: [String: String] = [
             "Accept": "application/json",
             "Content-Type": "application/json"

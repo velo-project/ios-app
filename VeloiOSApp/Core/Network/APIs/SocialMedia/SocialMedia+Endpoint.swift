@@ -92,7 +92,7 @@ enum SocialMediaEndpoint: Endpoint {
     }
 
     var headers: [String: String]? {
-        let token = TokenStore().getJwtToken().token ?? ""
+        let token = TokenStore.shared.getJwtToken().token ?? ""
         return [
             "Accept": "application/json",
             "Authorization": "Bearer \(token)"
