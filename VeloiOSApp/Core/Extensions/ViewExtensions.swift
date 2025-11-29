@@ -15,9 +15,7 @@ extension View {
             .navigationDestination(for: ViewDestination.self) { destination in
                 switch destination {
                 case .userProfile:
-                    VStack {
-                        Text("Oiii da tela de usuário")
-                    }
+                    UserProfileView()
                 }
             }
     }

@@ -8,13 +8,15 @@
 import Foundation
 import CoreLocation
 import GoogleMaps
+import SwiftUI
 
 class HomeViewModel: ObservableObject {
     @Published var searchQuery: String = ""
     @Published var lastKnowLocation: CLLocationCoordinate2D?
     
+    @ObservedObject private var tokenStore = TokenStore.shared
+    
     private var mapsLocationService = MapsLocationServiceImpl()
-    private var tokenStore = TokenStore()
     private var routesAPIClient = RoutesAPIClient()
     private var routesStore = RoutesStore.shared
     

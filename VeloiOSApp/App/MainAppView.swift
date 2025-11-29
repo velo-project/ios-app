@@ -19,7 +19,7 @@ struct MainAppView: View {
     @State private var routesPath: [ViewDestination] = []
     @State private var socialPath: [ViewDestination] = []
     
-    private let tokenStore = TokenStore()
+    @ObservedObject private var tokenStore = TokenStore.shared
     private let authService = AuthService()
     
     @ObservedObject private var sheetStore = SheetStore.shared
@@ -33,7 +33,7 @@ struct MainAppView: View {
                     NavigationStack(path: $homePath) {
                         HomeView()
                             .veloCommonToolbar {
-                                if tokenStore.getJwtToken().isAuthenticated {
+                                if tokenStore.isAuthenticated {
                                     homePath.append(.userProfile)
                                 } else {
                                     sheetStore.sheet = .login
@@ -44,7 +44,7 @@ struct MainAppView: View {
                 }
                 
                 Tab("eventos", systemImage: "ticket", value: .events) {
-                    if tokenStore.getJwtToken().isAuthenticated {
+                    if tokenStore.isAuthenticated {
                         NavigationStack(path: $eventsPath) {
                             EventsView()
                                 .veloCommonToolbar {
@@ -58,7 +58,7 @@ struct MainAppView: View {
                 }
                 
                 Tab("rotas", systemImage: "bookmark", value: .routes) {
-                    if tokenStore.getJwtToken().isAuthenticated {
+                    if tokenStore.isAuthenticated {
                         NavigationStack(path: $routesPath) {
                             SavedRoutesView()
                                 .veloCommonToolbar {
@@ -72,7 +72,7 @@ struct MainAppView: View {
                 }
                 
                 Tab("amigos", systemImage: "person.2", value: .communities) {
-                    if tokenStore.getJwtToken().isAuthenticated {
+                    if tokenStore.isAuthenticated {
                         NavigationStack(path: $socialPath) {
                             CommunitiesView()
                                 .veloCommonToolbar {
@@ -114,7 +114,7 @@ struct MainAppView: View {
             }
             .tint(.green)
             .onChange(of: tabStore.tab) { _, newTab in
-                if !tokenStore.getJwtToken().isAuthenticated {
+                if !tokenStore.isAuthenticated {
                     switch newTab {
                     case .events, .routes, .communities:
                         sheetStore.sheet = .login
@@ -124,7 +124,7 @@ struct MainAppView: View {
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: AppNotifications.userDidBecomeUnauthorized)) { _ in
-                authService.logout()
+                tokenStore.deleteToken()
                 tabStore.tab = .maps
                 isLoading = false
             }
