@@ -8,12 +8,22 @@
 import Foundation
 import KeychainSwift
 
-class TokenStore {
+class TokenStore: ObservableObject {
+    static let shared = TokenStore()
     private var keychan = KeychainSwift()
+    
+    @Published var isAuthenticated: Bool = false
+    
+    private init() {
+        self.isAuthenticated = getJwtToken().isAuthenticated
+    }
     
     func saveJwtToken(token: String) {
         deleteToken()
         keychan.set(token, forKey: "com.velo.jwt.token")
+        DispatchQueue.main.async {
+            self.isAuthenticated = true
+        }
     }
     
     func getJwtToken() -> JwtToken {
@@ -26,6 +36,9 @@ class TokenStore {
     
     func deleteToken() {
         keychan.delete("com.velo.jwt.token")
+        DispatchQueue.main.async {
+            self.isAuthenticated = false
+        }
     }
 }
 

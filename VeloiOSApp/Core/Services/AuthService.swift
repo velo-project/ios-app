@@ -12,7 +12,7 @@ actor AuthService {
     private let apiClient: UserAPIClient
     private let keyStore: MFAKeyStore
     
-    init(apiClient: UserAPIClient = UserAPIClient(), tokenStore: TokenStore = TokenStore(), keyStore: MFAKeyStore = MFAKeyStore()) {
+    init(apiClient: UserAPIClient = UserAPIClient(), tokenStore: TokenStore = TokenStore.shared, keyStore: MFAKeyStore = MFAKeyStore()) {
         self.tokenStore = tokenStore
         self.apiClient = apiClient
         self.keyStore = keyStore
@@ -38,9 +38,5 @@ actor AuthService {
     func register(name: String, nickname: String, email: String, password: String) async throws {
         _ = try await apiClient.register(name: name, nickname: nickname, email: email, password: password)
         try await login(email: email, password: password)
-    }
-
-    func logout() {
-        tokenStore.deleteToken()
     }
 }
