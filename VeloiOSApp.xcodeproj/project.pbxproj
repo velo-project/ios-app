@@ -50,6 +50,11 @@
 		E56C8FFB2ECF96D8002312D3 /* SheetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C8FFA2ECF96CA002312D3 /* SheetStore.swift */; };
 		E56C8FFD2ECF96E9002312D3 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C8FFC2ECF96E9002312D3 /* Sheets.swift */; };
 		E56C8FFF2ECF9946002312D3 /* StartRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C8FFE2ECF993A002312D3 /* StartRouteView.swift */; };
+		E5733F962ED7E1DE00284FB1 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5733F952ED7E1DE00284FB1 /* RegisterView.swift */; };
+		E5733F982ED7E1FD00284FB1 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5733F972ED7E1FD00284FB1 /* RegisterViewModel.swift */; };
+		E581D0232ED7F3C700F65B27 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581D0212ED7F3C700F65B27 /* UserProfileService.swift */; };
+		E581D0292ED7F3D800F65B27 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581D0242ED7F3D800F65B27 /* UserProfileView.swift */; };
+		E581D02A2ED7F3D800F65B27 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581D0262ED7F3D800F65B27 /* UserProfileViewModel.swift */; };
 		E589BD462EA13B9A003568E6 /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589BD452EA13B84003568E6 /* GoogleMapsView.swift */; };
 		E58D21752EABEE4700FF5EF5 /* VeloButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D21742EABEE3E00FF5EF5 /* VeloButton.swift */; };
 		E59F59302EC667720037A8A4 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F592F2EC6676A0037A8A4 /* Route.swift */; };
@@ -159,6 +164,11 @@
 		E56C8FFA2ECF96CA002312D3 /* SheetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetStore.swift; sourceTree = "<group>"; };
 		E56C8FFC2ECF96E9002312D3 /* Sheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheets.swift; sourceTree = "<group>"; };
 		E56C8FFE2ECF993A002312D3 /* StartRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRouteView.swift; sourceTree = "<group>"; };
+		E5733F952ED7E1DE00284FB1 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		E5733F972ED7E1FD00284FB1 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		E581D0212ED7F3C700F65B27 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
+		E581D0242ED7F3D800F65B27 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		E581D0262ED7F3D800F65B27 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		E589BD452EA13B84003568E6 /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
 		E58D21742EABEE3E00FF5EF5 /* VeloButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloButton.swift; sourceTree = "<group>"; };
 		E59F592F2EC6676A0037A8A4 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -257,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				911B83632E3BFBD700281364 /* LoginViewModel.swift */,
+				E5733F972ED7E1FD00284FB1 /* RegisterViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -388,6 +399,7 @@
 		91A5B6862E3B086F00038DE9 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				E581D0282ED7F3D800F65B27 /* Profile */,
 				E5D24FA22EA94C1D00FEEEF5 /* Events */,
 				E5B5F60B2E8D9D5200A61167 /* Communities */,
 				E54008702E503FE900AF4B34 /* Search */,
@@ -403,6 +415,7 @@
 			children = (
 				911B835B2E3BDA0E00281364 /* ViewModels */,
 				91A5B6882E3B087F00038DE9 /* View */,
+				E581D0222ED7F3C700F65B27 /* Services */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -429,6 +442,7 @@
 		91A5B68C2E3B0A3900038DE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E5733F952ED7E1DE00284FB1 /* RegisterView.swift */,
 				E5B5830B2EC15327000A6A1B /* MFAView.swift */,
 				91A5B68D2E3B0A4400038DE9 /* LoginView.swift */,
 			);
@@ -528,6 +542,39 @@
 				9119837B2E42C3460040C992 /* TokenStore.swift */,
 			);
 			path = Stores;
+			sourceTree = "<group>";
+		};
+		E581D0222ED7F3C700F65B27 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E581D0212ED7F3C700F65B27 /* UserProfileService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E581D0252ED7F3D800F65B27 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E581D0242ED7F3D800F65B27 /* UserProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E581D0272ED7F3D800F65B27 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E581D0262ED7F3D800F65B27 /* UserProfileViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E581D0282ED7F3D800F65B27 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E581D0252ED7F3D800F65B27 /* View */,
+				E581D0272ED7F3D800F65B27 /* ViewModels */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		E5AC97382E71EBD300B27508 /* ViewModels */ = {
@@ -945,12 +992,16 @@
 				E5F9BA0C2EC00FCA0035244D /* Feed.swift in Sources */,
 				E5B582FC2EC14AFF000A6A1B /* User.swift in Sources */,
 				E5D5E48B2ECE329B00C4FFC4 /* GoogleMaps+PlaceManager.swift in Sources */,
+				E5733F982ED7E1FD00284FB1 /* RegisterViewModel.swift in Sources */,
 				E5F9BA182EC014830035244D /* UsersLiked.swift in Sources */,
 				E5AC973A2E71EBEA00B27508 /* SavedRoutesViewModel.swift in Sources */,
 				E5F9BA102EC010510035244D /* Community.swift in Sources */,
+				E581D0292ED7F3D800F65B27 /* UserProfileView.swift in Sources */,
+				E581D02A2ED7F3D800F65B27 /* UserProfileViewModel.swift in Sources */,
 				911B83612E3BE67400281364 /* MainAppView.swift in Sources */,
 				E5B5E0252EAAF045000D15D5 /* DetailedEventView.swift in Sources */,
 				E5D24FAF2EA951AE00FEEEF5 /* EventsView.swift in Sources */,
+				E581D0232ED7F3C700F65B27 /* UserProfileService.swift in Sources */,
 				E59F59302EC667720037A8A4 /* Route.swift in Sources */,
 				91A5B65A2E3B058900038DE9 /* VeloiOSApp.swift in Sources */,
 				E5B583082EC14B52000A6A1B /* StatusResponse.swift in Sources */,
@@ -973,6 +1024,7 @@
 				E56C8FF92ECF7735002312D3 /* Tabs.swift in Sources */,
 				E5B583042EC14B3A000A6A1B /* LoginTokenResponse.swift in Sources */,
 				E5B24BE82ED22B74002EFB56 /* RefreshTokenResponse.swift in Sources */,
+				E5733F962ED7E1DE00284FB1 /* RegisterView.swift in Sources */,
 				E5DA7F092EC2E0AB0052D0F1 /* MFAKeyStore.swift in Sources */,
 				E5F9BA162EC012810035244D /* Follower.swift in Sources */,
 				91A5B6852E3B07A700038DE9 /* NavigationRouter.swift in Sources */,

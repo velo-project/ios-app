@@ -1,3 +1,4 @@
 .DS_Store
 
 .sentryclirc
+\n# User-specific files\nVeloiOSApp.xcodeproj/project.xcworkspace/xcuserdata/\nVeloiOSApp.xcodeproj/xcuserdata/
