@@ -30,12 +30,13 @@ class EditUserProfileViewModel: ObservableObject {
         self.description = user.description ?? ""
     }
 
-    func uploadProfilePhoto(imageData: Data) async {
+    func uploadProfilePhoto(image: UIImage) async {
         isLoading = true
         do {
-            try await userProfileService.uploadProfilePhoto(imageData: imageData)
+            try await userProfileService.uploadProfilePhoto(image: image)
             // Should we refresh the user data here?
         } catch {
+            print(error)
             errorMessage = error.localizedDescription
             showErrorAlert = true
             SentrySDK.capture(error: error)
@@ -43,10 +44,10 @@ class EditUserProfileViewModel: ObservableObject {
         isLoading = false
     }
 
-    func uploadBanner(imageData: Data) async {
+    func uploadBanner(image: UIImage) async {
         isLoading = true
         do {
-            try await userProfileService.uploadBanner(imageData: imageData)
+            try await userProfileService.uploadBanner(image: image)
             // Should we refresh the user data here?
         } catch {
             errorMessage = "Erro ao enviar o banner. Tente novamente."

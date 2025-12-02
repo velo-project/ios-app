@@ -33,6 +33,7 @@
 		E51914AF2ED0D2F100D9BD83 /* RoutesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51914AE2ED0D2ED00D9BD83 /* RoutesStore.swift */; };
 		E51944C32EDE81BA00151609 /* EditUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51944C22EDE81BA00151609 /* EditUserProfileView.swift */; };
 		E51944C52EDE81D100151609 /* EditUserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51944C42EDE81D100151609 /* EditUserProfileViewModel.swift */; };
+		E51944C82EDEAB3E00151609 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E51944C72EDEAB3E00151609 /* Alamofire */; };
 		E51FDF5A2ED6186F00E2842B /* Events+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51FDF582ED6186F00E2842B /* Events+Endpoint.swift */; };
 		E51FDF5B2ED6186F00E2842B /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51FDF552ED6186F00E2842B /* Subscription.swift */; };
 		E51FDF5C2ED6186F00E2842B /* Events+APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51FDF572ED6186F00E2842B /* Events+APIClient.swift */; };
@@ -229,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E55662F92EC3B6E400290475 /* Kingfisher in Frameworks */,
+				E51944C82EDEAB3E00151609 /* Alamofire in Frameworks */,
 				E5D5E4902ECE33B100C4FFC4 /* GooglePlacesSwift in Frameworks */,
 				E5D5E48E2ECE33B100C4FFC4 /* GooglePlaces in Frameworks */,
 				E5D24FA12EA9471B00FEEEF5 /* GoogleMaps in Frameworks */,
@@ -828,6 +830,7 @@
 				E5D5E48D2ECE33B100C4FFC4 /* GooglePlaces */,
 				E5D5E48F2ECE33B100C4FFC4 /* GooglePlacesSwift */,
 				1367FB6B34374FD7AE81F823 /* Sentry */,
+				E51944C72EDEAB3E00151609 /* Alamofire */,
 			);
 			productName = VeloiOSApp;
 			productReference = 91A5B6562E3B058900038DE9 /* Velo.app */;
@@ -907,6 +910,7 @@
 				E55662F72EC3B6E400290475 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				E5D5E48C2ECE33B100C4FFC4 /* XCRemoteSwiftPackageReference "ios-places-sdk" */,
 				0667550EE05A480EBD479324 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
+				E51944C62EDEAB3E00151609 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 91A5B6572E3B058900038DE9 /* Products */;
 			projectDirPath = "";
@@ -1401,6 +1405,14 @@
 				minimumVersion = 24.0.0;
 			};
 		};
+		E51944C62EDEAB3E00151609 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
 		E55662F72EC3B6E400290475 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -1437,6 +1449,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9119837D2E42C3CC0040C992 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
+		};
+		E51944C72EDEAB3E00151609 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E51944C62EDEAB3E00151609 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		E55662F82EC3B6E400290475 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 actor UserProfileService {
     private let apiClient: UserAPIClient
@@ -18,12 +19,12 @@ actor UserProfileService {
         try await apiClient.searchUser(by: nickname)
     }
     
-    func uploadProfilePhoto(imageData: Data) async throws {
-        _ = try await apiClient.editPhoto(imageData: imageData)
+    func uploadProfilePhoto(image: UIImage) async throws {
+        _ = try await apiClient.editPhoto(image: image)
     }
     
-    func uploadBanner(imageData: Data) async throws {
-        _ = try await apiClient.editBanner(imageData: imageData)
+    func uploadBanner(image: UIImage) async throws {
+        _ = try await apiClient.editBanner(image: image)
     }
 
     func editProfile(field: String, fieldValue: String) async throws {

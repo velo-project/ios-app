@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class UserAPIClient {
     private let client = APIClient()
@@ -37,12 +38,12 @@ final class UserAPIClient {
         try await client.request(UserEndpoint.editProfile(field: field, fieldValue: fieldValue))
     }
     
-    func editBanner(imageData: Data) async throws -> StatusResponse {
-        try await client.request(UserEndpoint.editBanner(imageData: imageData))
+    func editBanner(image: UIImage) async throws -> StatusResponse {
+        try await client.request(UserEndpoint.editBanner(image: image))
     }
     
-    func editPhoto(imageData: Data) async throws -> StatusResponse {
-        try await client.request(UserEndpoint.editPhoto(imageData: imageData))
+    func editPhoto(image: UIImage) async throws -> StatusResponse {
+        try await client.request(UserEndpoint.editPhoto(image: image))
     }
     
     // MARK: - Admin

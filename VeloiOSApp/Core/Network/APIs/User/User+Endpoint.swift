@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum UserEndpoint: Endpoint {
     // MARK: - User
@@ -18,9 +19,9 @@ enum UserEndpoint: Endpoint {
     case refreshToken(token: String)
     
     // MARK: - Edit User Profile
-    case editBanner(imageData: Data)
+    case editBanner(image: UIImage)
     case editProfile(field: String, fieldValue: String)
-    case editPhoto(imageData: Data)
+    case editPhoto(image: UIImage)
     
     // MARK: - Admin
     case blockUser(nickname: String)
@@ -51,29 +52,12 @@ enum UserEndpoint: Endpoint {
             return "GET"
         case .login, .verificationCode, .register, .refreshToken:
             return "POST"
-        case .editBanner, .editProfile, .editPhoto, .blockUser, .unblockUser:
+        case .editPhoto, .editBanner:
+            return "PUT"
+        case .editProfile, .blockUser, .unblockUser:
             return "PATCH"
         case .deleteUser:
             return "DELETE"
-        }
-    }
-    
-    private var multipartComponents: (boundary: String, body: Data)? {
-        switch self {
-        case .editBanner(let imageData), .editPhoto(let imageData):
-            let boundary = "Boundary-\(UUID().uuidString)"
-            var body = Data()
-            let lineBreak = "\r\n"
-
-            body.append("--\(boundary)\(lineBreak)".data(using: .utf8)!)
-            body.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\(lineBreak)".data(using: .utf8)!)
-            body.append("Content-Type: image/jpeg\(lineBreak)\(lineBreak)".data(using: .utf8)!)
-            body.append(imageData)
-            body.append("\(lineBreak)--\(boundary)--\(lineBreak)".data(using: .utf8)!)
-            
-            return (boundary, body)
-        default:
-            return nil
         }
     }
     
@@ -83,17 +67,13 @@ enum UserEndpoint: Endpoint {
         var baseHeaders: [String: String] = [
             "Accept": "application/json"
         ]
-
-        if let multipartComponents = multipartComponents {
-            baseHeaders["Content-Type"] = "multipart/form-data; boundary=\(multipartComponents.boundary)"
-        } else {
-            baseHeaders["Content-Type"] = "application/json"
-        }
-
+        
+        baseHeaders["Content-Type"] = "application/json"
+        
         if requiresAuth {
             baseHeaders["Authorization"] = "Bearer \(token)"
         }
-
+        
         return baseHeaders
     }
     
@@ -122,10 +102,6 @@ enum UserEndpoint: Endpoint {
     
     // MARK: - Body
     var body: Data? {
-        if let multipartComponents = multipartComponents {
-            return multipartComponents.body
-        }
-        
         switch self {
         case .login(let email, let password):
             return try? JSONSerialization.data(withJSONObject: [
@@ -153,6 +129,15 @@ enum UserEndpoint: Endpoint {
                 "field": field,
                 "fieldValue": fieldValue
             ])
+        default:
+            return nil
+        }
+    }
+
+    func getImage() -> UIImage? {
+        switch self {
+        case .editBanner(let image), .editPhoto(let image):
+            return image
         default:
             return nil
         }

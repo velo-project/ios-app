@@ -23,9 +23,9 @@ extension Endpoint {
         var components = URLComponents(url: baseUrl.appendingPathComponent(path), resolvingAgainstBaseURL: false)!
         components.queryItems = queryItems
         var request = URLRequest(url: components.url!)
+        headers?.forEach { request.setValue($1, forHTTPHeaderField: $0) }
         request.httpMethod = method
         request.httpBody = body
-        headers?.forEach { request.setValue($1, forHTTPHeaderField: $0) }
         return request
     }
 }

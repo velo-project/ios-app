@@ -36,7 +36,9 @@ struct EditUserProfileView: View {
                         .onChange(of: selectedBanner) { _, newItem in
                             Task {
                                 if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                                    await viewModel.uploadBanner(imageData: data)
+                                    if let image = UIImage(data: data) {
+                                        await viewModel.uploadBanner(image: image)
+                                    }
                                 }
                             }
                         }
@@ -54,7 +56,9 @@ struct EditUserProfileView: View {
                         .onChange(of: selectedPhoto) { _, newItem in
                             Task {
                                 if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                                    await viewModel.uploadProfilePhoto(imageData: data)
+                                    if let image = UIImage(data: data) {
+                                        await viewModel.uploadProfilePhoto(image: image)
+                                    }
                                 }
                             }
                         }
