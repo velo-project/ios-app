@@ -71,19 +71,19 @@ struct MainAppView: View {
                     }
                 }
                 
-                Tab("amigos", systemImage: "person.2", value: .communities) {
-                    if tokenStore.isAuthenticated {
-                        NavigationStack(path: $socialPath) {
-                            CommunitiesView()
-                                .veloCommonToolbar {
-                                    socialPath.append(.userProfile)
-                                }
-                                .veloUserProfileNavigation()
-                        }
-                    } else {
-                        Text("Faça login para continuar")
-                    }
-                }
+//                Tab("amigos", systemImage: "person.2", value: .communities) {
+//                    if tokenStore.isAuthenticated {
+//                        NavigationStack(path: $socialPath) {
+//                            CommunitiesView()
+//                                .veloCommonToolbar {
+//                                    socialPath.append(.userProfile)
+//                                }
+//                                .veloUserProfileNavigation()
+//                        }
+//                    } else {
+//                        Text("Faça login para continuar")
+//                    }
+//                }
                 
                 Tab(value: .search, role: .search) {
                     SearchView()

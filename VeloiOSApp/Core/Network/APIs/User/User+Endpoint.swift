@@ -58,20 +58,51 @@ enum UserEndpoint: Endpoint {
         }
     }
     
+    private var multipartComponents: (boundary: String, body: Data)? {
+        switch self {
+        case .editBanner(let imageData), .editPhoto(let imageData):
+            let boundary = "Boundary-\(UUID().uuidString)"
+            var body = Data()
+            let lineBreak = "\r\n"
+
+            body.append("--\(boundary)\(lineBreak)".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\(lineBreak)".data(using: .utf8)!)
+            body.append("Content-Type: image/jpeg\(lineBreak)\(lineBreak)".data(using: .utf8)!)
+            body.append(imageData)
+            body.append("\(lineBreak)--\(boundary)--\(lineBreak)".data(using: .utf8)!)
+            
+            return (boundary, body)
+        default:
+            return nil
+        }
+    }
+    
     // MARK: - Headers
     var headers: [String: String]? {
         let token = TokenStore.shared.getJwtToken().token ?? ""
         var baseHeaders: [String: String] = [
-            "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Accept": "application/json"
         ]
-        
+
+        if let multipartComponents = multipartComponents {
+            baseHeaders["Content-Type"] = "multipart/form-data; boundary=\(multipartComponents.boundary)"
+        } else {
+            baseHeaders["Content-Type"] = "application/json"
+        }
+
+        if requiresAuth {
+            baseHeaders["Authorization"] = "Bearer \(token)"
+        }
+
+        return baseHeaders
+    }
+    
+    private var requiresAuth: Bool {
         switch self {
         case .search, .login, .verificationCode, .register, .refreshToken:
-            return baseHeaders
+            return false
         default:
-            baseHeaders["Authorization"] = "Bearer \(token)"
-            return baseHeaders
+            return true
         }
     }
     
@@ -91,6 +122,10 @@ enum UserEndpoint: Endpoint {
     
     // MARK: - Body
     var body: Data? {
+        if let multipartComponents = multipartComponents {
+            return multipartComponents.body
+        }
+        
         switch self {
         case .login(let email, let password):
             return try? JSONSerialization.data(withJSONObject: [
@@ -118,19 +153,6 @@ enum UserEndpoint: Endpoint {
                 "field": field,
                 "fieldValue": fieldValue
             ])
-        case .editBanner(let imageData), .editPhoto(let imageData):
-            let boundary = UUID().uuidString
-            var body = Data()
-            let lineBreak = "\r\n"
-            
-            body.append("--\(boundary + lineBreak)")
-            body.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\(lineBreak)")
-            body.append("Content-Type: image/jpeg\(lineBreak + lineBreak)")
-            body.append(imageData)
-            body.append(lineBreak)
-            body.append("--\(boundary)--\(lineBreak)")
-            
-            return body
         default:
             return nil
         }

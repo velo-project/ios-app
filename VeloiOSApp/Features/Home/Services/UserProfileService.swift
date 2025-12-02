@@ -25,4 +25,8 @@ actor UserProfileService {
     func uploadBanner(imageData: Data) async throws {
         _ = try await apiClient.editBanner(imageData: imageData)
     }
+
+    func editProfile(field: String, fieldValue: String) async throws {
+        _ = try await apiClient.editProfile(field: field, fieldValue: fieldValue)
+    }
 }

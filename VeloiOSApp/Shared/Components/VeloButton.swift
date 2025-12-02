@@ -40,3 +40,13 @@ struct VeloButton<Content: View>: View {
         .buttonStyle(.plain)
     }
 }
+
+extension VeloButton where Content == Text {
+    init(text: String, action: @escaping () async -> Void) {
+        self.init(content: { Text(text) }, action: action)
+    }
+    
+    init(text: String, action: @escaping () -> Void) {
+        self.init(content: { Text(text) }, action: action)
+    }
+}

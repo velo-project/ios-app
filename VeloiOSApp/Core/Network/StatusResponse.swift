@@ -7,6 +7,6 @@
 
 
 struct StatusResponse: Codable {
-    let status: Int
+    let statusCode: Int
     let message: String
 }

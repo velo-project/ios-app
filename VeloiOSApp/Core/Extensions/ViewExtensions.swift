@@ -16,6 +16,8 @@ extension View {
                 switch destination {
                 case .userProfile:
                     UserProfileView()
+                case .editUserProfile(let user):
+                    EditUserProfileView(user: user)
                 }
             }
     }

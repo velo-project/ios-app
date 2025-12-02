@@ -10,8 +10,7 @@ import PhotosUI
 
 struct UserProfileView: View {
     @StateObject private var viewModel = UserProfileViewModel()
-    @State private var selectedPhoto: PhotosPickerItem?
-    @State private var selectedBanner: PhotosPickerItem?
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         ScrollView {
@@ -40,42 +39,34 @@ struct UserProfileView: View {
                     .frame(height: 250)
 
                     HStack {
-                        Text(user.name)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
+                        VStack(alignment: .leading) {
+                            Text(user.name)
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                            Text("@\(user.nickname)")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
                         Spacer()
+                        NavigationLink(value: ViewDestination.editUserProfile(user: user)) {
+                            Image(systemName: "pencil")
+                                .foregroundStyle(.black)
+                                .bold()
+                                .padding()
+                                .background(.green)
+                                .clipShape(RoundedRectangle(cornerRadius: 50))
+                                .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 4)
+                        }
+                        .buttonStyle(.plain)
                     }.padding()
                     
-                    Text(user.description ?? "Sem descrição.")
+                    Text(user.description ?? "Sem descrição")
                         .padding()
-
-                    HStack {
-                        PhotosPicker(selection: $selectedPhoto, matching: .images) {
-                            Text("Alterar Foto")
-                        }
-                        .onChange(of: selectedPhoto) { _, newItem in
-                            Task {
-                                if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                                    await viewModel.uploadProfilePhoto(imageData: data)
-                                }
-                            }
-                        }
-
-                        PhotosPicker(selection: $selectedBanner, matching: .images) {
-                            Text("Alterar Banner")
-                        }
-                        .onChange(of: selectedBanner) { _, newItem in
-                            Task {
-                                if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                                    await viewModel.uploadBanner(imageData: data)
-                                 }
-                            }
-                        }
-                    }
-                    .buttonStyle(.bordered)
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
                     Button("Sair da Conta") {
                         viewModel.logout()
+                        dismiss()
                     }
                     .foregroundColor(.red)
                     .padding()
@@ -92,6 +83,6 @@ struct UserProfileView: View {
                 await viewModel.fetchUser()
             }
         }
-        .navigationTitle("Perfil")
+        .navigationTitle("perfil")
     }
 }

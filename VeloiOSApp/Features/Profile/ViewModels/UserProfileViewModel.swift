@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Foundation
+import Sentry
 
 @MainActor
 class UserProfileViewModel: ObservableObject {
@@ -28,29 +29,7 @@ class UserProfileViewModel: ObservableObject {
             let response = try await userProfileService.fetchUser(nickname: nickname)
             user = response.user
         } catch {
-            print("Error fetching user: \(error)")
-        }
-        isLoading = false
-    }
-    
-    func uploadProfilePhoto(imageData: Data) async {
-        isLoading = true
-        do {
-            try await userProfileService.uploadProfilePhoto(imageData: imageData)
-            await fetchUser() // Refresh user data
-        } catch {
-            print("Error uploading profile photo: \(error)")
-        }
-        isLoading = false
-    }
-    
-    func uploadBanner(imageData: Data) async {
-        isLoading = true
-        do {
-            try await userProfileService.uploadBanner(imageData: imageData)
-            await fetchUser() // Refresh user data
-        } catch {
-            print("Error uploading banner: \(error)")
+            SentrySDK.capture(error: error)
         }
         isLoading = false
     }

@@ -5,7 +5,7 @@
 //  Created by Gabriel Araújo on 09/11/25.
 //
 
-struct User: Codable {
+struct User: Codable, Hashable, Equatable {
     let name: String
     let email: String
     let nickname: String
