@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Sentry
 
 @MainActor
 class CommunitiesViewModel: ObservableObject {
@@ -25,12 +26,12 @@ class CommunitiesViewModel: ObservableObject {
         errorMessage = nil
         
         do {
-            let feed = try await socialMediaAPIClient.getFeed()
+            let feeds = try await socialMediaAPIClient.getFeed()
             
-            // FIXME: The API only returns a user ID (`postedBy`).
+            // TODO: The API only returns a user ID (`postedBy`).
             // We need an endpoint like `getUser(byId: Int)` to fetch user details.
             // For now, we are using placeholder data.
-            self.posts = feed.map { post in
+            self.posts = feeds.feed.map { post in
                 PostResponseModel(
                     content: post.content,
                     hashtags: post.hashtags.map { "#\($0)" }.joined(separator: " "),
@@ -41,9 +42,19 @@ class CommunitiesViewModel: ObservableObject {
                 )
             }
         } catch {
-            errorMessage = "Erro ao carregar o feed. Tente novamente mais tarde."
-            // TODO: Log the actual error for debugging
-            print(error.localizedDescription)
+            if let apiError = error as? APIError {
+                switch apiError {
+                case .unauthorized:
+                    errorMessage = "Sessão expirada. Por favor, faça login novamente."
+                case .badServerResponse:
+                    errorMessage = "O servidor não está respondendo. Tente novamente mais tarde."
+                    SentrySDK.capture(error: error)
+                }
+            } else {
+                errorMessage = "Erro ao carregar o feed. Verifique sua conexão e tente novamente."
+                SentrySDK.capture(error: error)
+            }
+            print("Failed to fetch posts: \(error)")
         }
         
         isLoading = false

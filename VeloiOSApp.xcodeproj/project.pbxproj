@@ -60,6 +60,7 @@
 		E56FD9DC2EDF5E5F002CC556 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56FD9D92EDF5E5F002CC556 /* ForgotPasswordViewModel.swift */; };
 		E56FD9DE2EDF5E79002CC556 /* RecoveryKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56FD9DD2EDF5E79002CC556 /* RecoveryKeyStore.swift */; };
 		E56FD9E02EDF5EED002CC556 /* RecoveryPasswordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56FD9DF2EDF5EE8002CC556 /* RecoveryPasswordResponse.swift */; };
+		E56FD9E22EDF827F002CC556 /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56FD9E12EDF8276002CC556 /* FeedResponse.swift */; };
 		E5733F962ED7E1DE00284FB1 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5733F952ED7E1DE00284FB1 /* RegisterView.swift */; };
 		E5733F982ED7E1FD00284FB1 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5733F972ED7E1FD00284FB1 /* RegisterViewModel.swift */; };
 		E581D0232ED7F3C700F65B27 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581D0212ED7F3C700F65B27 /* UserProfileService.swift */; };
@@ -186,6 +187,7 @@
 		E56FD9DA2EDF5E5F002CC556 /* RecoveryPasswordConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPasswordConfirmationViewModel.swift; sourceTree = "<group>"; };
 		E56FD9DD2EDF5E79002CC556 /* RecoveryKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryKeyStore.swift; sourceTree = "<group>"; };
 		E56FD9DF2EDF5EE8002CC556 /* RecoveryPasswordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPasswordResponse.swift; sourceTree = "<group>"; };
+		E56FD9E12EDF8276002CC556 /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
 		E5733F952ED7E1DE00284FB1 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		E5733F972ED7E1FD00284FB1 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		E581D0212ED7F3C700F65B27 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
@@ -813,6 +815,7 @@
 		E5F9BA0A2EC00FB50035244D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E56FD9E12EDF8276002CC556 /* FeedResponse.swift */,
 				E5F9BA172EC0147B0035244D /* UsersLiked.swift */,
 				E5F9BA152EC0127E0035244D /* Follower.swift */,
 				E5F9BA132EC012100035244D /* Member.swift */,
@@ -1010,6 +1013,7 @@
 				E56C8FF72ECF76EC002312D3 /* TabStore.swift in Sources */,
 				E5F9BA062EC008C30035244D /* SocialMedia+APIClient.swift in Sources */,
 				911983822E42C5AD0040C992 /* AuthService.swift in Sources */,
+				E56FD9E22EDF827F002CC556 /* FeedResponse.swift in Sources */,
 				E55209352EA133D000382679 /* VeloRouteCard.swift in Sources */,
 				E50795362ECEAB6500C3F641 /* TargetLocation.swift in Sources */,
 				E5B583062EC14B46000A6A1B /* RegisterResponse.swift in Sources */,

@@ -11,7 +11,7 @@ final class SocialMediaAPIClient {
     private let client = APIClient()
 
     // MARK: - Feed
-    func getFeed() async throws -> [Feed] {
+    func getFeed() async throws -> FeedResponse {
         try await client.request(SocialMediaEndpoint.getFeed)
     }
 
