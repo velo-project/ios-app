@@ -44,7 +44,10 @@ actor AuthService {
 
     func forgotPassword(email: String) async throws {
         let response = try await apiClient.forgotPassword(email: email)
-        recoveryKeyStore.saveKey(key: response.status)
+        
+        if let key = response.key {
+            recoveryKeyStore.saveKey(key: key)
+        }
     }
 
     func recoveryPasswordConfirmation(code: String, password: String) async throws {

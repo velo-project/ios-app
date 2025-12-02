@@ -6,24 +6,25 @@
 //
 
 import Foundation
+import KeychainSwift
 
 final class RecoveryKeyStore {
     static let shared = RecoveryKeyStore()
-    private let userDefaults: UserDefaults
+    private let keychain: KeychainSwift
     
-    private init(userDefaults: UserDefaults = .standard) {
-        self.userDefaults = userDefaults
+    private init(keychain: KeychainSwift = KeychainSwift()) {
+        self.keychain = keychain
     }
     
     func saveKey(key: String) {
-        userDefaults.set(key, forKey: "recovery_key")
+        keychain.set(key, forKey: "recovery_key")
     }
     
     func getKey() -> String? {
-        userDefaults.string(forKey: "recovery_key")
+        keychain.get("recovery_key")
     }
     
     func deleteKey() {
-        userDefaults.removeObject(forKey: "recovery_key")
+        keychain.delete("recovery_key")
     }
 }

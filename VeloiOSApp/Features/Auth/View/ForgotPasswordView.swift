@@ -11,8 +11,10 @@ struct ForgotPasswordView: View {
     @StateObject private var viewModel = ForgotPasswordViewModel()
     @StateObject private var sheetStore = SheetStore.shared
     
-    @State private var isLoading: Bool = false
+    @Binding var isLoading: Bool
     
+    @State private var showAlert = false
+
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -44,8 +46,12 @@ struct ForgotPasswordView: View {
                         } action: {
                             if viewModel.email != "" {
                                 isLoading = true
-                                await viewModel.forgotPassword()
-                                sheetStore.sheet = .recoveryPasswordConfirmation
+                                let success = await viewModel.forgotPassword()
+                                if success {
+                                    sheetStore.sheet = .recoveryPasswordConfirmation
+                                } else {
+                                    showAlert = true
+                                }
                                 isLoading = false
                             }
                         }
@@ -66,4 +72,10 @@ struct ForgotPasswordView: View {
                 ProgressView()
             }
         }
+        .alert("Erro", isPresented: $showAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("Ocorreu um erro ao tentar enviar o e-mail de recuperação. Verifique o e-mail digitado e tente novamente.")
+        }
+    }
 }

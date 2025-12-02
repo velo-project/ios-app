@@ -141,7 +141,7 @@ enum UserEndpoint: Endpoint {
             return try? JSONSerialization.data(withJSONObject: [
                 "key": key,
                 "code": code,
-                "password": password
+                "newPassword": password
             ])
         default:
             return nil

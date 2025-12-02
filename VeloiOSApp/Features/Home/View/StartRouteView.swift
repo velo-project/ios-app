@@ -40,6 +40,14 @@ struct StartRouteView: View {
         self.finalLocation = finalLocation
         self.routePolyline = routePolyline
     }
+
+    init() {
+        self.route = nil
+        self.initialLocation = ""
+        self.finalLocation = ""
+        self.routePolyline = nil
+    }
+    
     
     
     private func deleteRoute(route: Route, viewModel: HomeViewModel) {

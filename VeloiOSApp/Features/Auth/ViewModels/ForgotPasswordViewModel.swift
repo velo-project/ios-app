@@ -13,11 +13,13 @@ class ForgotPasswordViewModel: ObservableObject {
     
     private var authService = AuthService()
     
-    func forgotPassword() async -> Void {
+    func forgotPassword() async -> Bool {
         do {
             try await authService.forgotPassword(email: email)
+            return true
         } catch {
-            print("erro ocorreu")
+            print("erro ocorreu: \(error)")
+            return false
         }
     }
 }

@@ -54,6 +54,12 @@
 		E56C8FFB2ECF96D8002312D3 /* SheetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C8FFA2ECF96CA002312D3 /* SheetStore.swift */; };
 		E56C8FFD2ECF96E9002312D3 /* Sheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C8FFC2ECF96E9002312D3 /* Sheets.swift */; };
 		E56C8FFF2ECF9946002312D3 /* StartRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56C8FFE2ECF993A002312D3 /* StartRouteView.swift */; };
+		E56FD9D72EDF5E4D002CC556 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56FD9D52EDF5E4D002CC556 /* ForgotPasswordView.swift */; };
+		E56FD9D82EDF5E4D002CC556 /* RecoveryPasswordConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56FD9D62EDF5E4D002CC556 /* RecoveryPasswordConfirmationView.swift */; };
+		E56FD9DB2EDF5E5F002CC556 /* RecoveryPasswordConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56FD9DA2EDF5E5F002CC556 /* RecoveryPasswordConfirmationViewModel.swift */; };
+		E56FD9DC2EDF5E5F002CC556 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56FD9D92EDF5E5F002CC556 /* ForgotPasswordViewModel.swift */; };
+		E56FD9DE2EDF5E79002CC556 /* RecoveryKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56FD9DD2EDF5E79002CC556 /* RecoveryKeyStore.swift */; };
+		E56FD9E02EDF5EED002CC556 /* RecoveryPasswordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56FD9DF2EDF5EE8002CC556 /* RecoveryPasswordResponse.swift */; };
 		E5733F962ED7E1DE00284FB1 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5733F952ED7E1DE00284FB1 /* RegisterView.swift */; };
 		E5733F982ED7E1FD00284FB1 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5733F972ED7E1FD00284FB1 /* RegisterViewModel.swift */; };
 		E581D0232ED7F3C700F65B27 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581D0212ED7F3C700F65B27 /* UserProfileService.swift */; };
@@ -174,6 +180,12 @@
 		E56C8FFA2ECF96CA002312D3 /* SheetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetStore.swift; sourceTree = "<group>"; };
 		E56C8FFC2ECF96E9002312D3 /* Sheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheets.swift; sourceTree = "<group>"; };
 		E56C8FFE2ECF993A002312D3 /* StartRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRouteView.swift; sourceTree = "<group>"; };
+		E56FD9D52EDF5E4D002CC556 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		E56FD9D62EDF5E4D002CC556 /* RecoveryPasswordConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPasswordConfirmationView.swift; sourceTree = "<group>"; };
+		E56FD9D92EDF5E5F002CC556 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		E56FD9DA2EDF5E5F002CC556 /* RecoveryPasswordConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPasswordConfirmationViewModel.swift; sourceTree = "<group>"; };
+		E56FD9DD2EDF5E79002CC556 /* RecoveryKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryKeyStore.swift; sourceTree = "<group>"; };
+		E56FD9DF2EDF5EE8002CC556 /* RecoveryPasswordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryPasswordResponse.swift; sourceTree = "<group>"; };
 		E5733F952ED7E1DE00284FB1 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		E5733F972ED7E1FD00284FB1 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		E581D0212ED7F3C700F65B27 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
@@ -278,6 +290,8 @@
 		911B83622E3BFBC300281364 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E56FD9D92EDF5E5F002CC556 /* ForgotPasswordViewModel.swift */,
+				E56FD9DA2EDF5E5F002CC556 /* RecoveryPasswordConfirmationViewModel.swift */,
 				911B83632E3BFBD700281364 /* LoginViewModel.swift */,
 				E5733F972ED7E1FD00284FB1 /* RegisterViewModel.swift */,
 			);
@@ -455,6 +469,8 @@
 		91A5B68C2E3B0A3900038DE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E56FD9D52EDF5E4D002CC556 /* ForgotPasswordView.swift */,
+				E56FD9D62EDF5E4D002CC556 /* RecoveryPasswordConfirmationView.swift */,
 				E5733F952ED7E1DE00284FB1 /* RegisterView.swift */,
 				E5B5830B2EC15327000A6A1B /* MFAView.swift */,
 				91A5B68D2E3B0A4400038DE9 /* LoginView.swift */,
@@ -546,6 +562,7 @@
 		E560B4602E526BB30074C5CB /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				E56FD9DD2EDF5E79002CC556 /* RecoveryKeyStore.swift */,
 				E51914AE2ED0D2ED00D9BD83 /* RoutesStore.swift */,
 				E56C8FFA2ECF96CA002312D3 /* SheetStore.swift */,
 				E56C8FF62ECF76E4002312D3 /* TabStore.swift */,
@@ -613,6 +630,7 @@
 		E5B582F62EC1466F000A6A1B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E56FD9DF2EDF5EE8002CC556 /* RecoveryPasswordResponse.swift */,
 				E558C6792EDB6F6200B9A780 /* FetchUserResponse.swift */,
 				E5B24BE72ED22B6F002EFB56 /* RefreshTokenResponse.swift */,
 				E5B583052EC14B46000A6A1B /* RegisterResponse.swift */,
@@ -1013,6 +1031,9 @@
 				E5F9BA0C2EC00FCA0035244D /* Feed.swift in Sources */,
 				E5B582FC2EC14AFF000A6A1B /* User.swift in Sources */,
 				E5D5E48B2ECE329B00C4FFC4 /* GoogleMaps+PlaceManager.swift in Sources */,
+				E56FD9D72EDF5E4D002CC556 /* ForgotPasswordView.swift in Sources */,
+				E56FD9DE2EDF5E79002CC556 /* RecoveryKeyStore.swift in Sources */,
+				E56FD9D82EDF5E4D002CC556 /* RecoveryPasswordConfirmationView.swift in Sources */,
 				E5733F982ED7E1FD00284FB1 /* RegisterViewModel.swift in Sources */,
 				E5F9BA182EC014830035244D /* UsersLiked.swift in Sources */,
 				E5AC973A2E71EBEA00B27508 /* SavedRoutesViewModel.swift in Sources */,
@@ -1021,6 +1042,8 @@
 				E581D02A2ED7F3D800F65B27 /* UserProfileViewModel.swift in Sources */,
 				911B83612E3BE67400281364 /* MainAppView.swift in Sources */,
 				E5B5E0252EAAF045000D15D5 /* DetailedEventView.swift in Sources */,
+				E56FD9DB2EDF5E5F002CC556 /* RecoveryPasswordConfirmationViewModel.swift in Sources */,
+				E56FD9DC2EDF5E5F002CC556 /* ForgotPasswordViewModel.swift in Sources */,
 				E51944C52EDE81D100151609 /* EditUserProfileViewModel.swift in Sources */,
 				E5D24FAF2EA951AE00FEEEF5 /* EventsView.swift in Sources */,
 				E581D0232ED7F3C700F65B27 /* UserProfileService.swift in Sources */,
@@ -1030,6 +1053,7 @@
 				911B83642E3BFBD700281364 /* LoginViewModel.swift in Sources */,
 				E53FEFCB2ED2544F00223355 /* Notifications.swift in Sources */,
 				91A50B212E3C603C0010E208 /* Font.swift in Sources */,
+				E56FD9E02EDF5EED002CC556 /* RecoveryPasswordResponse.swift in Sources */,
 				E558C67A2EDB6F6900B9A780 /* FetchUserResponse.swift in Sources */,
 				E54008732E503FFF00AF4B34 /* SearchView.swift in Sources */,
 				E5B5F6192E8DA15600A61167 /* PostResponseModel.swift in Sources */,
