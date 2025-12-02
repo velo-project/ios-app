@@ -33,6 +33,14 @@ final class UserAPIClient {
         try await client.request(UserEndpoint.refreshToken(token: token))
     }
     
+    func forgotPassword(email: String) async throws -> StatusResponse {
+        try await client.request(UserEndpoint.recoveryPassword(email: email))
+    }
+
+    func recoveryPasswordConfirmation(key: String, code: String, password: String) async throws -> StatusResponse {
+        try await client.request(UserEndpoint.recoveryPasswordConfirmation(key: key, code: code, password: password))
+    }
+    
     // MARK: - Edit User Profile
     func editProfile(field: String, fieldValue: String) async throws -> StatusResponse {
         try await client.request(UserEndpoint.editProfile(field: field, fieldValue: fieldValue))

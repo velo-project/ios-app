@@ -97,6 +97,12 @@ struct MainAppView: View {
                 case .register:
                     RegisterView(isLoading: $isLoading)
                         .presentationDragIndicator(.visible)
+                case .forgotPassword:
+                    ForgotPasswordView(isLoading: $isLoading)
+                        .presentationDragIndicator(.visible)
+                case .recoveryPasswordConfirmation:
+                    RecoveryPasswordConfirmationView(isLoading: $isLoading)
+                        .presentationDragIndicator(.visible)
                 case .mfa:
                     MFAView(code: $code, isLoading: $isLoading)
                         .presentationDragIndicator(.visible)

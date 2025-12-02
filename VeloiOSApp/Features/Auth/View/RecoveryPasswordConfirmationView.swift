@@ -1,14 +1,14 @@
 //
-//  LoginView.swift
+//  RecoveryPasswordConfirmationView.swift
 //  VeloiOSApp
 //
-//  Created by Gabriel Araújo Lima on 30/07/25.
+//  Created by Gabriel Araújo Lima on 02/12/25.
 //
 
 import SwiftUI
 
-struct LoginView: View {
-    @StateObject private var viewModel = LoginViewModel()
+struct RecoveryPasswordConfirmationView: View {
+    @StateObject private var viewModel = RecoveryPasswordConfirmationViewModel()
     @StateObject private var sheetStore = SheetStore.shared
     
     @Binding var isLoading: Bool
@@ -25,52 +25,40 @@ struct LoginView: View {
                     .padding(.horizontal, .none)
                     .padding(.top, 50)
                 VStack(alignment: .leading) {
-                    Text("bem vindo.")
+                    Text("crie uma nova senha")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("insira suas credenciais\npara entrar.")
+                    Text("insira o código enviado para o seu e-mail e crie uma nova senha.")
                 }
                 VStack(spacing: 20) {
                     VStack {
                         VeloTextField(
-                            text: $viewModel.email,
-                            placeholder: "email",
-                            icon: "envelope")
+                            text: $viewModel.code,
+                            placeholder: "código",
+                            icon: "number")
                         
                         VeloTextField(
                             text: $viewModel.password,
-                            placeholder: "senha",
+                            placeholder: "nova senha",
                             icon: "lock",
                             isSecure: true)
                     }
                     
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            dismiss()
-                            sheetStore.sheet = .forgotPassword
-                        }) {
-                            Text("esqueci a senha")
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                    
                     VeloButton {
-                        Text("entrar")
+                        Text("salvar")
                     } action: {
-                        if viewModel.email != "" && viewModel.password != "" {
+                        if viewModel.code != "" && viewModel.password != "" {
                             isLoading = true
                             dismiss()
-                            await viewModel.login()
-                            sheetStore.sheet = .mfa
+                            await viewModel.recoveryPasswordConfirmation()
                         }
                     }
                     
                     Button(action: {
                         dismiss()
-                        sheetStore.sheet = .register
+                        sheetStore.sheet = .login
                     }) {
-                        Text("Não possui conta? Cadastre-se")
+                        Text("Lembrou a senha? Faça login")
                     }
                 }
             }

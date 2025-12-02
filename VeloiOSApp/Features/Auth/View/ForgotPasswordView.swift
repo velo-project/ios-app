@@ -1,14 +1,14 @@
 //
-//  LoginView.swift
+//  ForgotPasswordView.swift
 //  VeloiOSApp
 //
-//  Created by Gabriel Araújo Lima on 30/07/25.
+//  Created by Gabriel Araújo Lima on 02/12/25.
 //
 
 import SwiftUI
 
-struct LoginView: View {
-    @StateObject private var viewModel = LoginViewModel()
+struct ForgotPasswordView: View {
+    @StateObject private var viewModel = ForgotPasswordViewModel()
     @StateObject private var sheetStore = SheetStore.shared
     
     @Binding var isLoading: Bool
@@ -25,10 +25,10 @@ struct LoginView: View {
                     .padding(.horizontal, .none)
                     .padding(.top, 50)
                 VStack(alignment: .leading) {
-                    Text("bem vindo.")
+                    Text("esqueceu sua senha?")
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("insira suas credenciais\npara entrar.")
+                    Text("insira seu e-mail para\nrecuperar sua senha.")
                 }
                 VStack(spacing: 20) {
                     VStack {
@@ -36,41 +36,24 @@ struct LoginView: View {
                             text: $viewModel.email,
                             placeholder: "email",
                             icon: "envelope")
-                        
-                        VeloTextField(
-                            text: $viewModel.password,
-                            placeholder: "senha",
-                            icon: "lock",
-                            isSecure: true)
                     }
-                    
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            dismiss()
-                            sheetStore.sheet = .forgotPassword
-                        }) {
-                            Text("esqueci a senha")
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
                     
                     VeloButton {
-                        Text("entrar")
+                        Text("enviar")
                     } action: {
-                        if viewModel.email != "" && viewModel.password != "" {
+                        if viewModel.email != "" {
                             isLoading = true
                             dismiss()
-                            await viewModel.login()
-                            sheetStore.sheet = .mfa
+                            await viewModel.forgotPassword()
+                            sheetStore.sheet = .recoveryPasswordConfirmation
                         }
                     }
                     
                     Button(action: {
                         dismiss()
-                        sheetStore.sheet = .register
+                        sheetStore.sheet = .login
                     }) {
-                        Text("Não possui conta? Cadastre-se")
+                        Text("Lembrou a senha? Faça login")
                     }
                 }
             }

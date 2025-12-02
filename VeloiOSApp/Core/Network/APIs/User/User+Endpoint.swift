@@ -17,6 +17,8 @@ enum UserEndpoint: Endpoint {
     case verificationCode(key: String, code: String)
     case register(name: String, nickname: String, email: String, password: String)
     case refreshToken(token: String)
+    case recoveryPassword(email: String)
+    case recoveryPasswordConfirmation(key: String, code: String, password: String) // use after the first recovery password
     
     // MARK: - Edit User Profile
     case editBanner(image: UIImage)
@@ -42,6 +44,8 @@ enum UserEndpoint: Endpoint {
         case .blockUser: return "/api/user/v1/block"
         case .unblockUser: return "/api/user/v1/unblock"
         case .deleteUser: return "/api/user/v1/delete"
+        case .recoveryPassword(email: let email): return "/api/user/v1/password-recovery"
+        case .recoveryPasswordConfirmation(key: let key, code: let code, password: let password): return "/api/user/v1/password-recovery/confirmation"
         }
     }
     
@@ -50,7 +54,7 @@ enum UserEndpoint: Endpoint {
         switch self {
         case .search:
             return "GET"
-        case .login, .verificationCode, .register, .refreshToken:
+        case .login, .verificationCode, .register, .refreshToken, .recoveryPassword, .recoveryPasswordConfirmation:
             return "POST"
         case .editPhoto, .editBanner:
             return "PUT"
@@ -79,7 +83,7 @@ enum UserEndpoint: Endpoint {
     
     private var requiresAuth: Bool {
         switch self {
-        case .search, .login, .verificationCode, .register, .refreshToken:
+        case .search, .login, .verificationCode, .register, .refreshToken, .recoveryPassword, .recoveryPasswordConfirmation:
             return false
         default:
             return true
@@ -128,6 +132,16 @@ enum UserEndpoint: Endpoint {
             return try? JSONSerialization.data(withJSONObject: [
                 "field": field,
                 "fieldValue": fieldValue
+            ])
+        case .recoveryPassword(let email):
+            return try? JSONSerialization.data(withJSONObject: [
+                "email": email
+            ])
+        case .recoveryPasswordConfirmation(let key, let code, let password):
+            return try? JSONSerialization.data(withJSONObject: [
+                "key": key,
+                "code": code,
+                "password": password
             ])
         default:
             return nil
