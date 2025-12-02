@@ -60,7 +60,7 @@ struct UserProfileView: View {
                         .buttonStyle(.plain)
                     }.padding()
                     
-                    Text(user.description ?? "Sem descrição")
+                    Text(user.description ?? "sem descrição")
                         .padding()
                         .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -83,6 +83,5 @@ struct UserProfileView: View {
                 await viewModel.fetchUser()
             }
         }
-        .navigationTitle("perfil")
     }
 }

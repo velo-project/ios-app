@@ -16,6 +16,36 @@ struct SearchView: View {
     var body: some View {
         NavigationStack {
             List {
+                if !viewModel.events.isEmpty {
+                    Section {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("eventos")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                Spacer()
+                                Button("ver todos") {
+                                    TabStore.shared.tab = .events
+                                }
+                                .font(.callout)
+                            }
+                            .padding(.horizontal)
+                            
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 20) {
+                                    ForEach(viewModel.events.prefix(5)) { event in
+                                        VeloEventComponent(event: event)
+                                    }
+                                }
+                                .padding(.horizontal)
+                                .padding(.bottom)
+                            }
+                        }
+                    }
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.clear)
+                }
+
                 if let errorMessage = viewModel.errorMessage {
                     Section {
                         Text(errorMessage)
@@ -46,17 +76,18 @@ struct SearchView: View {
                 }
             }
             .listStyle(.plain)
-            .navigationTitle("Buscar")
+            .navigationTitle("buscar")
             .navigationBarTitleDisplayMode(.inline)
-            .searchable(text: $viewModel.query, placement: .navigationBarDrawer(displayMode: .always), prompt: "buscar endereço")
+            .searchable(text: $viewModel.query, placement: .navigationBarDrawer(displayMode: .always), prompt: "buscar endereço ou eventos")
             .overlay {
-                if viewModel.suggestions.isEmpty && !viewModel.query.isEmpty {
+                if viewModel.suggestions.isEmpty && viewModel.events.isEmpty && !viewModel.query.isEmpty {
                     ContentUnavailableView.search(text: viewModel.query)
                 }
             }
         }
     }
 }
+
 
 #Preview {
     SearchView()

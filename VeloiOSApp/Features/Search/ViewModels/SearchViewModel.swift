@@ -14,17 +14,24 @@ class SearchViewModel: ObservableObject {
     @Published var query: String = ""
     
     @Published var suggestions: [GMSAutocompleteSuggestion] = []
+    @Published var events: [Event] = []
     @Published var errorMessage: String?
     
     private let placesManager: GoogleMapsPlacesManager
     private let locationService: MapsLocationServiceImpl
+    private let eventsService: EventsServiceable
     private let tabStore = TabStore.shared
     private let sheetStore = SheetStore.shared
     private var cancellables = Set<AnyCancellable>()
     
-    init(placesManager: GoogleMapsPlacesManager = GoogleMapsPlacesManager(), locationService: MapsLocationServiceImpl = MapsLocationServiceImpl()) {
+    init(
+        placesManager: GoogleMapsPlacesManager = GoogleMapsPlacesManager(),
+        locationService: MapsLocationServiceImpl = MapsLocationServiceImpl(),
+        eventsService: EventsServiceable = APIClient()
+    ) {
         self.placesManager = placesManager
         self.locationService = locationService
+        self.eventsService = eventsService
         setupBindings()
     }
     
@@ -33,6 +40,7 @@ class SearchViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .sink { [weak self] text in
                 self?.placesManager.query = text
+                self?.searchEvents(query: text)
             }
             .store(in: &cancellables)
         
@@ -43,6 +51,31 @@ class SearchViewModel: ObservableObject {
         placesManager.$errorMessage
             .receive(on: RunLoop.main)
             .assign(to: &$errorMessage)
+    }
+    
+    private func searchEvents(query: String) {
+        Task {
+            do {
+                let eventsResponse = try await eventsService.getEvents()
+                var allEvents = eventsResponse.recommendedEvents
+                allEvents.append(contentsOf: eventsResponse.trendingEvents)
+                allEvents.append(contentsOf: eventsResponse.lastParticipatedEvents)
+                allEvents.append(contentsOf: eventsResponse.subscribedEvents)
+                
+                let uniqueEvents = Array(Set(allEvents))
+                
+                if query.isEmpty {
+                    self.events = uniqueEvents
+                } else {
+                    self.events = uniqueEvents.filter { event in
+                        event.name.localizedCaseInsensitiveContains(query)
+                    }
+                }
+            } catch {
+                // Handle error, maybe set an error message
+                print("Error searching events: \(error)")
+            }
+        }
     }
     
     func didSelectPlace(_ place: GMSAutocompleteSuggestion) {
@@ -78,5 +111,15 @@ class SearchViewModel: ObservableObject {
                 }
             }
         }
+    }
+}
+
+extension Event: Hashable {
+    public static func == (lhs: Event, rhs: Event) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
