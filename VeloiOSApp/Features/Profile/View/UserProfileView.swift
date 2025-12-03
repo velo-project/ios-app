@@ -78,6 +78,8 @@ struct UserProfileView: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .ignoresSafeArea(.container, edges: .top)
         .onAppear {
             Task {
                 await viewModel.fetchUser()

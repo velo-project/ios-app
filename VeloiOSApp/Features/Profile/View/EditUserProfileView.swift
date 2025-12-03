@@ -123,6 +123,8 @@ struct EditUserProfileView: View {
             }
         }
         .navigationTitle("Editar Perfil")
+        .navigationBarTitleDisplayMode(.inline)
+        .ignoresSafeArea(.container, edges: .top)
         .alert("Erro", isPresented: $viewModel.showErrorAlert) {
             Button("OK", role: .cancel) { }
         } message: {
