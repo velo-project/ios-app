@@ -26,38 +26,60 @@ struct EditUserProfileView: View {
                 } else if let user = viewModel.user {
                     ZStack(alignment: .bottomLeading) {
                         PhotosPicker(selection: $selectedBanner, matching: .images) {
-                            AsyncImage(url: URL(string: user.bannerPhotoUrl ?? "")) { image in
-                                image.resizable()
-                            } placeholder: {
-                                Color.gray.opacity(0.3)
+                            ZStack {
+                                AsyncImage(url: URL(string: user.bannerPhotoUrl ?? "")) { image in
+                                    image.resizable()
+                                } placeholder: {
+                                    Color.gray.opacity(0.3)
+                                }
+                                .frame(height: 200)
+                                Image(systemName: "camera.fill")
+                                    .font(.title)
+                                    .foregroundColor(.white)
+                                    .padding(16)
+                                    .background(Color.black.opacity(0.6))
+                                    .clipShape(Circle())
+                                    .offset(x: 5, y: 5)
+                                    .shadow(radius: 5)
                             }
-                            .frame(height: 200)
                         }
                         .onChange(of: selectedBanner) { _, newItem in
                             Task {
                                 if let data = try? await newItem?.loadTransferable(type: Data.self) {
                                     if let image = UIImage(data: data) {
                                         await viewModel.uploadBanner(image: image)
+                                        dismiss()
                                     }
                                 }
                             }
                         }
 
                         PhotosPicker(selection: $selectedPhoto, matching: .images) {
-                            AsyncImage(url: URL(string: user.profilePhotoUrl ?? "")) { image in
-                                image.resizable()
-                            } placeholder: {
-                                Color.gray
+                            ZStack(alignment: .bottomTrailing) {
+                                AsyncImage(url: URL(string: user.profilePhotoUrl ?? "")) { image in
+                                    image.resizable()
+                                } placeholder: {
+                                    Color.gray
+                                }
+                                .frame(width: 100, height: 100)
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+
+                                Image(systemName: "camera.fill")
+                                    .font(.body)
+                                    .foregroundColor(.white)
+                                    .padding(8)
+                                    .background(Color.black.opacity(0.6))
+                                    .clipShape(Circle())
+                                    .offset(x: 5, y: 5)
                             }
-                            .frame(width: 100, height: 100)
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.white, lineWidth: 4))
                         }
                         .onChange(of: selectedPhoto) { _, newItem in
                             Task {
                                 if let data = try? await newItem?.loadTransferable(type: Data.self) {
                                     if let image = UIImage(data: data) {
                                         await viewModel.uploadProfilePhoto(image: image)
+                                        dismiss()
                                     }
                                 }
                             }
