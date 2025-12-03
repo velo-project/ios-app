@@ -68,6 +68,7 @@
 		E581D02A2ED7F3D800F65B27 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581D0262ED7F3D800F65B27 /* UserProfileViewModel.swift */; };
 		E589BD462EA13B9A003568E6 /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589BD452EA13B84003568E6 /* GoogleMapsView.swift */; };
 		E58D21752EABEE4700FF5EF5 /* VeloButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D21742EABEE3E00FF5EF5 /* VeloButton.swift */; };
+		E599F6EC2EDFC6D600A5AA7D /* NicknameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F6EB2EDFC6D600A5AA7D /* NicknameStore.swift */; };
 		E59F59302EC667720037A8A4 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F592F2EC6676A0037A8A4 /* Route.swift */; };
 		E59F59322EC6691A0037A8A4 /* Tracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F59312EC669150037A8A4 /* Tracks.swift */; };
 		E5AC973A2E71EBEA00B27508 /* SavedRoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC97392E71EBDD00B27508 /* SavedRoutesViewModel.swift */; };
@@ -195,6 +196,7 @@
 		E581D0262ED7F3D800F65B27 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		E589BD452EA13B84003568E6 /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
 		E58D21742EABEE3E00FF5EF5 /* VeloButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloButton.swift; sourceTree = "<group>"; };
+		E599F6EB2EDFC6D600A5AA7D /* NicknameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameStore.swift; sourceTree = "<group>"; };
 		E59F592F2EC6676A0037A8A4 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		E59F59312EC669150037A8A4 /* Tracks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracks.swift; sourceTree = "<group>"; };
 		E5AC97392E71EBDD00B27508 /* SavedRoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRoutesViewModel.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 		E560B4602E526BB30074C5CB /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				E599F6EB2EDFC6D600A5AA7D /* NicknameStore.swift */,
 				E56FD9DD2EDF5E79002CC556 /* RecoveryKeyStore.swift */,
 				E51914AE2ED0D2ED00D9BD83 /* RoutesStore.swift */,
 				E56C8FFA2ECF96CA002312D3 /* SheetStore.swift */,
@@ -1087,6 +1090,7 @@
 				E51FDF5D2ED6186F00E2842B /* Event.swift in Sources */,
 				E5F9BA142EC012130035244D /* Member.swift in Sources */,
 				E56C8FFD2ECF96E9002312D3 /* Sheets.swift in Sources */,
+				E599F6EC2EDFC6D600A5AA7D /* NicknameStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

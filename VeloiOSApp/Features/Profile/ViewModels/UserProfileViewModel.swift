@@ -20,13 +20,10 @@ class UserProfileViewModel: ObservableObject {
     @ObservedObject private var tokenStore = TokenStore.shared
     @ObservedObject private var tabStore = TabStore.shared
     
-    // Hardcoded for now, should be dynamically retrieved
-    private let nickname = "dotrujos_" 
-    
     func fetchUser() async {
         isLoading = true
         do {
-            let response = try await userProfileService.fetchUser(nickname: nickname)
+            let response = try await userProfileService.fetchUser()
             user = response.user
         } catch {
             SentrySDK.capture(error: error)

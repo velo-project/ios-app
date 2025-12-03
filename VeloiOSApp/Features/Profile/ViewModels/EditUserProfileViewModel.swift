@@ -22,6 +22,7 @@ class EditUserProfileViewModel: ObservableObject {
     @Published var successMessage = ""
 
     private var userProfileService = UserProfileService()
+    private var nicknameStore = NicknameStore.shared
 
     init(user: User) {
         self.user = user
@@ -65,6 +66,7 @@ class EditUserProfileViewModel: ObservableObject {
             }
             if nickname != user?.nickname {
                 try await userProfileService.editProfile(field: "NICKNAME", fieldValue: nickname)
+                nicknameStore.saveNickname(nickname: nickname)
             }
             if description != user?.description {
                 try await userProfileService.editProfile(field: "DESCRIPTION", fieldValue: description)
