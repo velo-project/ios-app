@@ -68,6 +68,9 @@
 		E581D02A2ED7F3D800F65B27 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581D0262ED7F3D800F65B27 /* UserProfileViewModel.swift */; };
 		E589BD462EA13B9A003568E6 /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589BD452EA13B84003568E6 /* GoogleMapsView.swift */; };
 		E58D21752EABEE4700FF5EF5 /* VeloButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D21742EABEE3E00FF5EF5 /* VeloButton.swift */; };
+		E595BAD22EE0615D00070066 /* GetCommunityByIdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E595BAD12EE0615200070066 /* GetCommunityByIdResponse.swift */; };
+		E595BAD42EE0691700070066 /* OtherUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E595BAD32EE0691700070066 /* OtherUserProfileView.swift */; };
+		E595BAD62EE0692800070066 /* OtherUserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E595BAD52EE0692800070066 /* OtherUserProfileViewModel.swift */; };
 		E599F6EC2EDFC6D600A5AA7D /* NicknameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F6EB2EDFC6D600A5AA7D /* NicknameStore.swift */; };
 		E599F6F22EDFFA7E00A5AA7D /* GetUserCommunitiesQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F6F12EDFFA7E00A5AA7D /* GetUserCommunitiesQueryResult.swift */; };
 		E599F6F32EDFFA7E00A5AA7D /* GetFriendsQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F6EF2EDFFA7E00A5AA7D /* GetFriendsQueryResult.swift */; };
@@ -199,6 +202,9 @@
 		E581D0262ED7F3D800F65B27 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		E589BD452EA13B84003568E6 /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
 		E58D21742EABEE3E00FF5EF5 /* VeloButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloButton.swift; sourceTree = "<group>"; };
+		E595BAD12EE0615200070066 /* GetCommunityByIdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCommunityByIdResponse.swift; sourceTree = "<group>"; };
+		E595BAD32EE0691700070066 /* OtherUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserProfileView.swift; sourceTree = "<group>"; };
+		E595BAD52EE0692800070066 /* OtherUserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserProfileViewModel.swift; sourceTree = "<group>"; };
 		E599F6EB2EDFC6D600A5AA7D /* NicknameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameStore.swift; sourceTree = "<group>"; };
 		E599F6EF2EDFFA7E00A5AA7D /* GetFriendsQueryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFriendsQueryResult.swift; sourceTree = "<group>"; };
 		E599F6F02EDFFA7E00A5AA7D /* GetPostsByNicknameQueryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostsByNicknameQueryResult.swift; sourceTree = "<group>"; };
@@ -596,6 +602,7 @@
 		E581D0252ED7F3D800F65B27 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E595BAD32EE0691700070066 /* OtherUserProfileView.swift */,
 				E51944C22EDE81BA00151609 /* EditUserProfileView.swift */,
 				E581D0242ED7F3D800F65B27 /* UserProfileView.swift */,
 			);
@@ -605,6 +612,7 @@
 		E581D0272ED7F3D800F65B27 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E595BAD52EE0692800070066 /* OtherUserProfileViewModel.swift */,
 				E51944C42EDE81D100151609 /* EditUserProfileViewModel.swift */,
 				E581D0262ED7F3D800F65B27 /* UserProfileViewModel.swift */,
 			);
@@ -824,6 +832,7 @@
 		E5F9BA0A2EC00FB50035244D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E595BAD12EE0615200070066 /* GetCommunityByIdResponse.swift */,
 				E599F6EF2EDFFA7E00A5AA7D /* GetFriendsQueryResult.swift */,
 				E599F6F02EDFFA7E00A5AA7D /* GetPostsByNicknameQueryResult.swift */,
 				E599F6F12EDFFA7E00A5AA7D /* GetUserCommunitiesQueryResult.swift */,
@@ -1041,6 +1050,7 @@
 				E5D5E4942ECE35D900C4FFC4 /* SearchViewModel.swift in Sources */,
 				E5E07EB32EC65A290021A887 /* Track.swift in Sources */,
 				E5B5F6152E8DA02C00A61167 /* CommunitiesViewModel.swift in Sources */,
+				E595BAD22EE0615D00070066 /* GetCommunityByIdResponse.swift in Sources */,
 				E5B582F52EC145B5000A6A1B /* User+Endpoint.swift in Sources */,
 				E54483C42ECCE92900E34870 /* ViewDestination.swift in Sources */,
 				911B835D2E3BDA2A00281364 /* HomeViewModel.swift in Sources */,
@@ -1068,12 +1078,14 @@
 				E581D0232ED7F3C700F65B27 /* UserProfileService.swift in Sources */,
 				E59F59302EC667720037A8A4 /* Route.swift in Sources */,
 				91A5B65A2E3B058900038DE9 /* VeloiOSApp.swift in Sources */,
+				E595BAD62EE0692800070066 /* OtherUserProfileViewModel.swift in Sources */,
 				E5B583082EC14B52000A6A1B /* StatusResponse.swift in Sources */,
 				911B83642E3BFBD700281364 /* LoginViewModel.swift in Sources */,
 				E53FEFCB2ED2544F00223355 /* Notifications.swift in Sources */,
 				91A50B212E3C603C0010E208 /* Font.swift in Sources */,
 				E56FD9E02EDF5EED002CC556 /* RecoveryPasswordResponse.swift in Sources */,
 				E558C67A2EDB6F6900B9A780 /* FetchUserResponse.swift in Sources */,
+				E595BAD42EE0691700070066 /* OtherUserProfileView.swift in Sources */,
 				E54008732E503FFF00AF4B34 /* SearchView.swift in Sources */,
 				E5B5F6192E8DA15600A61167 /* PostResponseModel.swift in Sources */,
 				E5F9BA0E2EC010350035244D /* Hashtag.swift in Sources */,

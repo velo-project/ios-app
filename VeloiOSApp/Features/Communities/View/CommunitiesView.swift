@@ -9,87 +9,98 @@ import SwiftUI
 
 struct CommunitiesView: View {
     @StateObject private var viewModel = CommunitiesViewModel()
+    @FocusState private var isTextEditorFocused: Bool
     
     var body: some View {
-        ZStack {
-            if viewModel.isLoading && viewModel.posts.isEmpty {
-                ProgressView("Carregando...")
-            } else if let errorMessage = viewModel.errorMessage {
-                VStack {
-                    Text(errorMessage)
-                        .foregroundColor(.red)
-                    Button("Tentar Novamente") {
+        VStack(alignment: .leading) {
+            Picker("CommunitiesPage", selection: $viewModel.selectedPage) {
+                Text("feed").tag(0)
+//                Text("comunidades").tag(1)
+                Text("amigos").tag(2)
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
+
+            if viewModel.selectedPage == 0 {
+                VStack(alignment: .trailing) {
+                    TextEditor(text: $viewModel.newPostContent)
+                        .frame(height: 80)
+                        .padding(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                        )
+                        .focused($isTextEditorFocused)
+                    
+                    Button(action: {
                         Task {
-                            await viewModel.fetchFeed()
+                            await viewModel.createPost()
+                            isTextEditorFocused = false // Dismiss keyboard
+                        }
+                    }) {
+                        if viewModel.isCreatingPost {
+                            ProgressView().padding(.horizontal, 16)
+                        } else {
+                            Text("Publicar")
                         }
                     }
+                    .padding(.vertical, 8).padding(.horizontal, 16)
+                    .background(Color.accentColor).foregroundColor(.white)
+                    .cornerRadius(20)
+                    .disabled(viewModel.newPostContent.isEmpty || viewModel.isCreatingPost)
+                    
+                    if let createError = viewModel.createPostError {
+                        Text(createError).font(.caption).foregroundColor(.red).padding(.top, 4)
+                    }
                 }
+                .padding(.horizontal)
+            }
+
+            if viewModel.isLoading && viewModel.posts.isEmpty {
+                Spacer()
+                ProgressView("Carregando...")
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Spacer()
             } else {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
-                        Picker("CommunitiesPage", selection: $viewModel.selectedPage) {
-                            Text("feed").tag(0)
-                            Text("comunidades").tag(1)
-                            Text("amigos").tag(2)
-                        }
-                        .pickerStyle(.segmented)
-
-                        // --- ÁREA DE CRIAÇÃO DE POST (APENAS NO FEED) ---
-                        if viewModel.selectedPage == 0 {
-                            VStack(alignment: .trailing) {
-                                TextEditor(text: $viewModel.newPostContent)
-                                    .frame(height: 80)
-                                    .padding(8)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .stroke(Color.gray.opacity(0.5), lineWidth: 1)
-                                    )
-                                
-                                Button(action: { Task { await viewModel.createPost() } }) {
-                                    if viewModel.isCreatingPost {
-                                        ProgressView().padding(.horizontal, 16)
-                                    } else {
-                                        Text("Publicar")
-                                    }
-                                }
-                                .padding(.vertical, 8).padding(.horizontal, 16)
-                                .background(Color.accentColor).foregroundColor(.white)
-                                .cornerRadius(20)
-                                .disabled(viewModel.newPostContent.isEmpty || viewModel.isCreatingPost)
-                                
-                                if let createError = viewModel.createPostError {
-                                    Text(createError).font(.caption).foregroundColor(.red).padding(.top, 4)
-                                }
-                            }
-                            .padding(.horizontal)
-                        }
-                        
-                        // --- SELETOR DE CONTEÚDO DA ABA ---
+                    LazyVStack(spacing: 20) {
                         switch viewModel.selectedPage {
                         case 0:
-                            // --- ABA FEED ---
                             if viewModel.posts.isEmpty && !viewModel.isLoading {
-                                Text("Seu feed está vazio. Que tal criar a primeira publicação?")
-                                    .foregroundColor(.gray)
-                                    .padding()
+                                VStack {
+                                    Spacer()
+                                    VStack(alignment: .center, spacing: 8) {
+                                        Text("seu feed está vazio").bold()
+                                        Text("que tal criar a primeira publicação?")
+                                            .multilineTextAlignment(.center)
+                                    }
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    Spacer()
+                                }
+                                .padding()
                             } else {
                                 ForEach(viewModel.posts) { post in
                                     VeloPostComponent(post: post, onLikeTapped: {
                                         Task { await viewModel.toggleLike(postID: post.id) }
                                     })
-                                    .padding(.horizontal)
                                 }
                             }
                         case 1:
-                            // --- ABA COMUNIDADES ---
                             if viewModel.communities.isEmpty && !viewModel.isLoading {
-                                Text("Você ainda não participa de nenhuma comunidade.")
-                                    .foregroundColor(.gray)
-                                    .padding()
+                                VStack {
+                                    Spacer()
+                                    VStack(alignment: .center, spacing: 8) {
+                                        Text("você não participa de nenhuma comunidade").bold()
+                                        Text("procure por comunidades e junte-se a elas!")
+                                            .multilineTextAlignment(.center)
+                                    }
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    Spacer()
+                                }
+                                .padding()
                             } else {
                                 ForEach(viewModel.communities) { community in
                                     HStack {
-                                        // TODO: Adicionar imagem da comunidade quando a API retornar
                                         VStack(alignment: .leading) {
                                             Text(community.name).font(.headline)
                                             Text(community.description).font(.caption).foregroundColor(.gray).lineLimit(1)
@@ -101,15 +112,21 @@ struct CommunitiesView: View {
                                     .background(Color(uiColor: .systemBackground))
                                     .cornerRadius(8)
                                     .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
-                                    .padding(.horizontal)
                                 }
                             }
                         case 2:
-                            // --- ABA AMIGOS ---
                             if viewModel.friends.isEmpty && !viewModel.isLoading {
-                                Text("Você ainda não tem amigos.")
-                                    .foregroundColor(.gray)
-                                    .padding()
+                                VStack {
+                                    Spacer()
+                                    VStack(alignment: .center, spacing: 8) {
+                                        Text("você não tem amigos").bold()
+                                        Text("procure por amigos e siga-os!")
+                                            .multilineTextAlignment(.center)
+                                    }
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                    Spacer()
+                                }
+                                .padding()
                             } else {
                                 ForEach(viewModel.friends, id: \.self) { friendNickname in
                                     HStack {
@@ -125,7 +142,6 @@ struct CommunitiesView: View {
                                     .background(Color(uiColor: .systemBackground))
                                     .cornerRadius(8)
                                     .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
-                                    .padding(.horizontal)
                                 }
                             }
                         default:
@@ -134,17 +150,26 @@ struct CommunitiesView: View {
                     }
                     .padding()
                 }
+                .onTapGesture {
+                    isTextEditorFocused = false
+                }
                 .refreshable {
                     await viewModel.loadDataForCurrentPage()
                 }
             }
         }
         .task {
-            // Carrega os dados da aba inicial (Feed) apenas uma vez
             if viewModel.posts.isEmpty {
                 await viewModel.loadDataForCurrentPage()
             }
         }
+        .alert("Ops!", isPresented: Binding<Bool>(
+            get: { viewModel.errorMessage != nil },
+            set: { _,_ in viewModel.errorMessage = nil }
+        )) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(viewModel.errorMessage ?? "Erro desconhecido")
+        }
         .navigationTitle("comunidades")
-    }
-}
+    }}

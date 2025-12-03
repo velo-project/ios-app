@@ -34,7 +34,7 @@ final class SocialMediaAPIClient {
         try await client.request(SocialMediaEndpoint.searchCommunities(query: query))
     }
 
-    func getCommunityById(communityId: Int) async throws -> Community {
+    func getCommunityById(communityId: Int) async throws -> GetCommunityByIdResponse {
         try await client.request(SocialMediaEndpoint.getCommunityById(communityId: communityId))
     }
     

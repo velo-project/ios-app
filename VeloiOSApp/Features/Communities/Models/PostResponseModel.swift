@@ -15,7 +15,7 @@ struct PostResponseModel: Identifiable {
     let postedById: Int      // ID para navegação futura
     let postedAt: String
     let postedIn: String     // Nome da comunidade
-    let profileImage: String
+        let profileImage: String?
     let imageUrl: String?    // Foto do post, se tiver
     
     // Propriedades mutáveis para a UI reagir instantaneamente

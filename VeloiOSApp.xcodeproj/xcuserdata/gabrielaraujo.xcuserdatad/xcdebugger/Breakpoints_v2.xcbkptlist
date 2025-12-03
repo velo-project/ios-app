@@ -39,16 +39,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F3681A82-9425-4307-982A-535B57721CF7"
+            uuid = "9CFC39B7-E283-44DF-81DE-7266C09B9694"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VeloiOSApp/Features/Communities/ViewModels/CommunitiesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "fetchFeed()"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "fetchUserCommunities()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

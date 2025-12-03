@@ -6,6 +6,7 @@
 //
 
 struct User: Codable, Hashable, Equatable {
+    let id: Int?
     let name: String
     let email: String
     let nickname: String
@@ -13,6 +14,7 @@ struct User: Codable, Hashable, Equatable {
     let profilePhotoUrl: String?
     let description: String?
     let isBlocked: Bool
-    let registeredAt: String
-    let roles: [Role]
+    let isDeleted: Bool?
+    let registeredAt: String?
+    let roles: [Role]?
 }

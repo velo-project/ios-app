@@ -16,6 +16,10 @@ final class UserAPIClient {
         try await client.request(UserEndpoint.search(nickname: nickname))
     }
     
+    func searchUserById(id: Int) async throws -> FetchUserResponse {
+        try await client.request(UserEndpoint.searchById(id: id))
+    }
+    
     // MARK: - Auth
     func login(email: String, password: String) async throws -> LoginKeyResponse {
         try await client.request(UserEndpoint.login(email: email, password: password))

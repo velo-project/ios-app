@@ -11,6 +11,7 @@ import UIKit
 enum UserEndpoint: Endpoint {
     // MARK: - User
     case search(nickname: String)
+    case searchById(id: Int)
     
     // MARK: - Auth
     case login(email: String, password: String)
@@ -34,6 +35,7 @@ enum UserEndpoint: Endpoint {
     var path: String {
         switch self {
         case .search: return "/api/user/v1/search"
+        case .searchById: return "/api/user/v2/search"
         case .login: return "/api/user/v1/login"
         case .verificationCode: return "/api/user/v1/login/2fa"
         case .refreshToken: return "/api/user/v1/refresh"
@@ -44,15 +46,15 @@ enum UserEndpoint: Endpoint {
         case .blockUser: return "/api/user/v1/block"
         case .unblockUser: return "/api/user/v1/unblock"
         case .deleteUser: return "/api/user/v1/delete"
-        case .recoveryPassword(email: let email): return "/api/user/v1/password-recovery"
-        case .recoveryPasswordConfirmation(key: let key, code: let code, password: let password): return "/api/user/v1/password-recovery/confirmation"
+        case .recoveryPassword: return "/api/user/v1/password-recovery"
+        case .recoveryPasswordConfirmation: return "/api/user/v1/password-recovery/confirmation"
         }
     }
     
     // MARK: - HTTP Method
     var method: String {
         switch self {
-        case .search:
+        case .search, .searchById:
             return "GET"
         case .login, .verificationCode, .register, .refreshToken, .recoveryPassword, .recoveryPasswordConfirmation:
             return "POST"
@@ -95,6 +97,8 @@ enum UserEndpoint: Endpoint {
         switch self {
         case .search(let nickname):
             return [URLQueryItem(name: "nickname", value: nickname)]
+        case .searchById(let id):
+            return [URLQueryItem(name: "id", value: "\(id)")]
         case .blockUser(let nickname),
                 .unblockUser(let nickname),
                 .deleteUser(let nickname):

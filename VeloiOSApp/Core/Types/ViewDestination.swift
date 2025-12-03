@@ -8,4 +8,5 @@
 enum ViewDestination: Hashable {
     case userProfile
     case editUserProfile(user: User)
+    case otherUserProfile(user: User)
 }

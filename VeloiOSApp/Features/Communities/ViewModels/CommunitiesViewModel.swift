@@ -77,16 +77,17 @@ class CommunitiesViewModel: ObservableObject {
                     id: feedItem.id,
                     content: feedItem.content,
                     hashtags: feedItem.hashtags.map { "#\($0.tag)" }.joined(separator: " "),
-                    postedBy: "Usuário \(feedItem.postedBy)", // Placeholder
+                    postedBy: "",
                     postedById: feedItem.postedBy,
                     postedAt: feedItem.postedAt,
                     postedIn: feedItem.postedIn?.name ?? "Feed Pessoal",
-                    profileImage: "https://i.pravatar.cc/150?u=\(feedItem.postedBy)",
+                    profileImage: nil,
                     imageUrl: feedItem.imageUrl,
-                    likesCount: 0, // Placeholder
-                    isLikedByMe: false // Placeholder
+                    likesCount: 0,
+                    isLikedByMe: false
                 )
             }
+            print("Fetched posts: \(self.posts)")
         } catch {
             handleError(error)
         }
@@ -102,7 +103,7 @@ class CommunitiesViewModel: ObservableObject {
             let communityIds = try await socialMediaAPIClient.getUserCommunities(nickname: nickname)
             
             // Usando um TaskGroup para buscar detalhes das comunidades em paralelo
-            self.communities = await withTaskGroup(of: Community?.self, returning: [Community].self) { group in
+            self.communities = await withTaskGroup(of: GetCommunityByIdResponse?.self, returning: [Community].self) { group in
                 for id in communityIds {
                     group.addTask {
                         try? await self.socialMediaAPIClient.getCommunityById(communityId: id)
@@ -110,8 +111,8 @@ class CommunitiesViewModel: ObservableObject {
                 }
                 
                 var collected: [Community] = []
-                for await community in group {
-                    if let community = community {
+                for await response in group {
+                    if let community = response?.community {
                         collected.append(community)
                     }
                 }
@@ -134,18 +135,14 @@ class CommunitiesViewModel: ObservableObject {
     // MARK: - Ações do Usuário (Like)
     
     func toggleLike(postID: Int) async {
-        // 1. Encontrar o post na lista local
         guard let index = posts.firstIndex(where: { $0.id == postID }) else { return }
-        
-        // 2. Guardar estado original para caso de erro (Optimistic UI)
+         
         let originalPost = posts[index]
         let isNowLiked = !originalPost.isLikedByMe
         
-        // 3. Atualizar a UI imediatamente
         posts[index].isLikedByMe = isNowLiked
         posts[index].likesCount += isNowLiked ? 1 : -1
         
-        // 4. Chamar a API em background
         do {
             if isNowLiked {
                 try await socialMediaAPIClient.likePost(postId: postID)

@@ -110,6 +110,18 @@ enum SocialMediaEndpoint: Endpoint {
         if case .createCommunity(_, _, let photo, let banner) = self, photo != nil || banner != nil {
             headers["Content-Type"] = "application/json"
         }
+        if case .followUser = self {
+            headers["Content-Type"] = "application/json"
+        }
+        if case .likePost = self {
+            headers["Content-Type"] = "application/json"
+        }
+        if case .joinCommunity = self {
+            headers["Content-Type"] = "application/json"
+        }
+        if case .publishComment = self {
+            headers["Content-Type"] = "application/json"
+        }
         return headers
     }
 

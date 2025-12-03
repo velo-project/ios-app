@@ -18,6 +18,8 @@ extension View {
                     UserProfileView()
                 case .editUserProfile(let user):
                     EditUserProfileView(user: user)
+                case .otherUserProfile(let user):
+                    OtherUserProfileView(user: user)
                 }
             }
     }

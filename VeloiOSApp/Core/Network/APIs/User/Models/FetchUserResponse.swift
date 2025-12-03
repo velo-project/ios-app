@@ -12,11 +12,4 @@ struct FetchUserResponse: Codable {
     var user: User
     var statusCode: Int
     var timestamp: String
-    
-    enum CodingKeys: String, CodingKey {
-        case message
-        case user
-        case statusCode
-        case timestamp
-    }
 }
