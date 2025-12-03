@@ -14,6 +14,7 @@ class CommunitiesViewModel: ObservableObject {
     @Published var posts: [PostResponseModel] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
+    @Published var selectedPage = 0
 
     private let socialMediaAPIClient: SocialMediaAPIClient
 

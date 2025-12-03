@@ -27,16 +27,17 @@ struct CommunitiesView: View {
             } else {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
-                        // TODO: Implementar a seção "Suas Comunidades"
-                        Text("atividades Recentes")
-                            .bold()
-                            .font(.title2)
-                            .padding(.horizontal)
+                        Picker("CommunitiesPage", selection: $viewModel.selectedPage) {
+                            Text("feed").tag(0)
+                            Text("comunidades").tag(1)
+                            Text("amigos").tag(2)
+                        }
+                        .pickerStyle(.segmented)
                         
-                                            ForEach(viewModel.posts) { post in
-                                                VeloPostComponent(post: post)
-                                                    .padding(.horizontal)
-                                            }                    }
+                        ForEach(viewModel.posts) { post in
+                            VeloPostComponent(post: post)
+                                .padding(.horizontal)
+                        }                    }
                     .padding(.vertical)
                 }
                 .refreshable {
