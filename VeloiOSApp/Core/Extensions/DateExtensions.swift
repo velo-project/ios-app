@@ -22,3 +22,20 @@ extension Date {
         return formatter.localizedString(for: self, relativeTo: Date())
     }
 }
+
+// MARK: - String Extension for Date Conversion
+
+// Formatter created once for efficiency
+private let iso8601Formatter = ISO8601DateFormatter()
+
+extension String {
+    func timeAgoDisplay() -> String {
+        // Attempt to convert the string to a Date
+        guard let date = iso8601Formatter.date(from: self) else {
+            // If parsing fails, return a sensible default
+            return "agora mesmo"
+        }
+        // If successful, use the existing Date extension
+        return date.timeAgoDisplay()
+    }
+}

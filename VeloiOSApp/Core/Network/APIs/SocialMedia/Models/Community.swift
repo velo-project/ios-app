@@ -11,8 +11,9 @@ struct Community: Decodable, Identifiable {
     let id: Int
     let name: String
     let description: String
-    let embeddings: [Float]?
+    let photoUrl: String?
+    let bannerUrl: String?
     let createdBy: Int
-    let createdAt: Date
+    let createdAt: String
     let isDeleted: Bool
 }

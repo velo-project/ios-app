@@ -69,6 +69,9 @@
 		E589BD462EA13B9A003568E6 /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589BD452EA13B84003568E6 /* GoogleMapsView.swift */; };
 		E58D21752EABEE4700FF5EF5 /* VeloButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D21742EABEE3E00FF5EF5 /* VeloButton.swift */; };
 		E599F6EC2EDFC6D600A5AA7D /* NicknameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F6EB2EDFC6D600A5AA7D /* NicknameStore.swift */; };
+		E599F6F22EDFFA7E00A5AA7D /* GetUserCommunitiesQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F6F12EDFFA7E00A5AA7D /* GetUserCommunitiesQueryResult.swift */; };
+		E599F6F32EDFFA7E00A5AA7D /* GetFriendsQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F6EF2EDFFA7E00A5AA7D /* GetFriendsQueryResult.swift */; };
+		E599F6F42EDFFA7E00A5AA7D /* GetPostsByNicknameQueryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F6F02EDFFA7E00A5AA7D /* GetPostsByNicknameQueryResult.swift */; };
 		E59F59302EC667720037A8A4 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F592F2EC6676A0037A8A4 /* Route.swift */; };
 		E59F59322EC6691A0037A8A4 /* Tracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F59312EC669150037A8A4 /* Tracks.swift */; };
 		E5AC973A2E71EBEA00B27508 /* SavedRoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AC97392E71EBDD00B27508 /* SavedRoutesViewModel.swift */; };
@@ -197,6 +200,9 @@
 		E589BD452EA13B84003568E6 /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
 		E58D21742EABEE3E00FF5EF5 /* VeloButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeloButton.swift; sourceTree = "<group>"; };
 		E599F6EB2EDFC6D600A5AA7D /* NicknameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameStore.swift; sourceTree = "<group>"; };
+		E599F6EF2EDFFA7E00A5AA7D /* GetFriendsQueryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFriendsQueryResult.swift; sourceTree = "<group>"; };
+		E599F6F02EDFFA7E00A5AA7D /* GetPostsByNicknameQueryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostsByNicknameQueryResult.swift; sourceTree = "<group>"; };
+		E599F6F12EDFFA7E00A5AA7D /* GetUserCommunitiesQueryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserCommunitiesQueryResult.swift; sourceTree = "<group>"; };
 		E59F592F2EC6676A0037A8A4 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		E59F59312EC669150037A8A4 /* Tracks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tracks.swift; sourceTree = "<group>"; };
 		E5AC97392E71EBDD00B27508 /* SavedRoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRoutesViewModel.swift; sourceTree = "<group>"; };
@@ -818,6 +824,9 @@
 		E5F9BA0A2EC00FB50035244D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E599F6EF2EDFFA7E00A5AA7D /* GetFriendsQueryResult.swift */,
+				E599F6F02EDFFA7E00A5AA7D /* GetPostsByNicknameQueryResult.swift */,
+				E599F6F12EDFFA7E00A5AA7D /* GetUserCommunitiesQueryResult.swift */,
 				E56FD9E12EDF8276002CC556 /* FeedResponse.swift */,
 				E5F9BA172EC0147B0035244D /* UsersLiked.swift */,
 				E5F9BA152EC0127E0035244D /* Follower.swift */,
@@ -1042,6 +1051,9 @@
 				E56FD9DE2EDF5E79002CC556 /* RecoveryKeyStore.swift in Sources */,
 				E56FD9D82EDF5E4D002CC556 /* RecoveryPasswordConfirmationView.swift in Sources */,
 				E5733F982ED7E1FD00284FB1 /* RegisterViewModel.swift in Sources */,
+				E599F6F22EDFFA7E00A5AA7D /* GetUserCommunitiesQueryResult.swift in Sources */,
+				E599F6F32EDFFA7E00A5AA7D /* GetFriendsQueryResult.swift in Sources */,
+				E599F6F42EDFFA7E00A5AA7D /* GetPostsByNicknameQueryResult.swift in Sources */,
 				E5F9BA182EC014830035244D /* UsersLiked.swift in Sources */,
 				E5AC973A2E71EBEA00B27508 /* SavedRoutesViewModel.swift in Sources */,
 				E5F9BA102EC010510035244D /* Community.swift in Sources */,

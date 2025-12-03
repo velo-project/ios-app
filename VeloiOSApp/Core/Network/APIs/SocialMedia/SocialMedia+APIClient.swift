@@ -1,10 +1,3 @@
-//
-//  SocialMediaAPIClient.swift
-//  VeloiOSApp
-//
-//  Created by Gabriel Araújo on 08/11/25.
-//
-
 import Foundation
 
 final class SocialMediaAPIClient {
@@ -29,8 +22,8 @@ final class SocialMediaAPIClient {
     }
 
     // MARK: - Communities
-    func createCommunity(name: String, description: String) async throws {
-        try await client.requestNoResponse(SocialMediaEndpoint.createCommunity(name: name, description: description))
+    func createCommunity(name: String, description: String, photo: Data?, banner: Data?) async throws {
+        try await client.requestNoResponse(SocialMediaEndpoint.createCommunity(name: name, description: description, photo: photo, banner: banner))
     }
 
     func deleteCommunity(communityId: Int) async throws {
@@ -43,6 +36,11 @@ final class SocialMediaAPIClient {
 
     func getCommunityById(communityId: Int) async throws -> Community {
         try await client.request(SocialMediaEndpoint.getCommunityById(communityId: communityId))
+    }
+    
+    func getUserCommunities(nickname: String) async throws -> [Int] {
+        let result: GetUserCommunitiesQueryResult = try await client.request(SocialMediaEndpoint.getUserCommunities(nickname: nickname))
+        return result.communityIds
     }
 
     // MARK: - Members
@@ -58,13 +56,13 @@ final class SocialMediaAPIClient {
         try await client.requestNoResponse(SocialMediaEndpoint.leaveCommunity(communityId: communityId))
     }
 
-    // MARK: - Followers
-    func followUser(userId: Int) async throws {
-        try await client.requestNoResponse(SocialMediaEndpoint.followUser(userId: userId))
+    // MARK: - Friends & Followers
+    func followUser(nickname: String) async throws {
+        try await client.requestNoResponse(SocialMediaEndpoint.followUser(nickname: nickname))
     }
 
-    func unfollowUser(userId: Int) async throws {
-        try await client.requestNoResponse(SocialMediaEndpoint.unfollowUser(userId: userId))
+    func unfollowUser(nickname: String) async throws {
+        try await client.requestNoResponse(SocialMediaEndpoint.unfollowUser(nickname: nickname))
     }
 
     func getFollowers(userId: Int, page: Int) async throws -> [Follower] {
@@ -73,6 +71,11 @@ final class SocialMediaAPIClient {
 
     func getFollowing(userId: Int, page: Int) async throws -> [Follower] {
         try await client.request(SocialMediaEndpoint.getFollowing(userId: userId, page: page))
+    }
+    
+    func getFriends() async throws -> [String] {
+        let result: GetFriendsQueryResult = try await client.request(SocialMediaEndpoint.getFriends)
+        return result.friends
     }
 
     // MARK: - Likes
@@ -103,6 +106,11 @@ final class SocialMediaAPIClient {
 
     func getPostsByUser(userId: Int, page: Int) async throws -> [Feed] {
         try await client.request(SocialMediaEndpoint.getPostsByUser(userId: userId, page: page))
+    }
+    
+    func getPostsByNickname(nickname: String, page: Int) async throws -> [Feed] {
+        let result: GetPostsByNicknameQueryResult = try await client.request(SocialMediaEndpoint.getPostsByNickname(nickname: nickname, page: page))
+        return result.posts
     }
 }
 

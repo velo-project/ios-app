@@ -9,9 +9,11 @@ import SwiftUI
 
 struct VeloPostComponent: View {
     let post: PostResponseModel
+    var onLikeTapped: () -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
+            // ... (código do cabeçalho do post continua o mesmo)
             HStack(spacing: 10) {
                 AsyncImage(url: URL(string: post.profileImage ?? "")) { phase in
                     if let image = phase.image {
@@ -35,7 +37,7 @@ struct VeloPostComponent: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(post.postedBy)
                         .font(.custom("Outfit-Bold", size: 16))
-                    Text("publicou em \(post.postedIn) • \(post.postedAt.timeAgoDisplay())")
+                    Text("publicou em \(post.postedIn) • \(post.postedAt)")
                         .font(.custom("Outfit-Regular", size: 14))
                         .foregroundColor(.gray)
                 }
@@ -50,6 +52,34 @@ struct VeloPostComponent: View {
                     .font(.custom("Outfit-Medium", size: 14))
                     .foregroundColor(.accentColor)
             }
+            
+            // --- Nova Seção de Ações ---
+            HStack(spacing: 16) {
+                Button(action: onLikeTapped) {
+                    HStack(spacing: 4) {
+                        Image(systemName: post.isLikedByMe ? "heart.fill" : "heart")
+                            .foregroundColor(post.isLikedByMe ? .red : .gray)
+                        Text("\(post.likesCount)")
+                            .font(.custom("Outfit-Medium", size: 14))
+                            .foregroundColor(.gray)
+                    }
+                }
+                
+                Button(action: {
+                    // TODO: Implementar ação de comentar
+                }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "bubble.left")
+                            .foregroundColor(.gray)
+                        // TODO: Adicionar contador de comentários quando a API suportar
+                        // Text("0")
+                    }
+                }
+                
+                Spacer()
+            }
+            .padding(.top, 8)
+            
         }
         .padding(20)
         .background(Color(uiColor: .systemBackground))
@@ -58,20 +88,3 @@ struct VeloPostComponent: View {
     }
 }
 
-// Preview Provider for easy debugging in Xcode Previews
-struct VeloPostComponent_Previews: PreviewProvider {
-    static var previews: some View {
-        let samplePost = PostResponseModel(
-            content: "Acabei de testar o novo percurso de montanha! 🚵‍♂️ As vistas são incríveis e o desafio é na medida certa. Quem mais já foi?",
-            hashtags: "#ciclismo #trilha #aventura",
-            postedBy: "Joana Alves",
-            postedAt: Date().addingTimeInterval(-3600), // 1 hour ago
-            postedIn: "Amantes de Ciclismo",
-            profileImage: "https://i.pravatar.cc/100?u=joana"
-        )
-        
-        VeloPostComponent(post: samplePost)
-            .padding()
-            .background(Color.gray.opacity(0.1))
-    }
-}
