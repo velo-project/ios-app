@@ -46,8 +46,8 @@ struct EventsView: View {
                         if !viewModel.recommendedEvents.isEmpty {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 16) {
-                                    ForEach(viewModel.recommendedEvents) { event in
-                                        VeloEventComponent(event: event)
+                                    ForEach(Array(zip(viewModel.recommendedEvents.indices, viewModel.recommendedEvents)), id: \.1.id) { index, event in
+                                        VeloEventComponent(event: event, isRightAligned: index % 2 != 0)
                                             .frame(width: 280)
                                             .onTapGesture {
                                                 viewModel.selectedEvent = event
@@ -72,8 +72,8 @@ struct EventsView: View {
                         if !viewModel.trendingEvents.isEmpty {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 16) {
-                                    ForEach(viewModel.trendingEvents) { event in
-                                        VeloEventComponent(event: event)
+                                    ForEach(Array(zip(viewModel.trendingEvents.indices, viewModel.trendingEvents)), id: \.1.id) { index, event in
+                                        VeloEventComponent(event: event, isRightAligned: index % 2 != 0)
                                             .frame(width: 280)
                                             .onTapGesture {
                                                 viewModel.selectedEvent = event
@@ -98,8 +98,8 @@ struct EventsView: View {
                         if !viewModel.lastParticipatedEvents.isEmpty {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 16) {
-                                    ForEach(viewModel.lastParticipatedEvents) { event in
-                                        VeloEventComponent(event: event)
+                                    ForEach(Array(zip(viewModel.lastParticipatedEvents.indices, viewModel.lastParticipatedEvents)), id: \.1.id) { index, event in
+                                        VeloEventComponent(event: event, isRightAligned: index % 2 != 0)
                                             .frame(width: 280)
                                             .onTapGesture {
                                                 viewModel.selectedEvent = event

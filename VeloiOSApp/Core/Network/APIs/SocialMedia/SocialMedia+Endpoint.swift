@@ -1,4 +1,5 @@
 import Foundation
+import UIKit // Import UIKit for UIImage
 
 enum SocialMediaEndpoint: Endpoint {
     // MARK: - Feed
@@ -133,10 +134,36 @@ enum SocialMediaEndpoint: Endpoint {
             return try? JSONSerialization.data(withJSONObject: ["userId": id])
         case .likePost(let id):
             return try? JSONSerialization.data(withJSONObject: ["postId": id])
-        case .publishPost(let content, let postedIn, _):
+        case .publishPost(let content, let postedIn, _): // Remove imageData from here
             var json: [String: Any] = ["content": content]
             if let postedIn { json["postedIn"] = postedIn }
             return try? JSONSerialization.data(withJSONObject: json)
+        default:
+            return nil
+        }
+    }
+    
+    // MARK: - Image and Parameter Handling for Multipart
+    func getImage() -> UIImage? {
+        switch self {
+        case .publishPost(_, _, let imageData):
+            if let imageData = imageData {
+                return UIImage(data: imageData)
+            }
+            return nil
+        default:
+            return nil
+        }
+    }
+    
+    func getParameters() -> [String: Any]? {
+        switch self {
+        case .publishPost(let content, let postedIn, _):
+            var params: [String: Any] = ["content": content]
+            if let postedIn = postedIn {
+                params["postedIn"] = postedIn
+            }
+            return params
         default:
             return nil
         }
